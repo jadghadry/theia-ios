@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder {
@@ -23,6 +24,17 @@ class AppDelegate: UIResponder {
         FirebaseApp.configure()
     }
     
+    
+    
+    fileprivate func grantPermissions() {
+        
+        // Video permission used for image processing functionalities.
+        AVCaptureDevice.requestAccess(for: .video, completionHandler: { authorized in
+            UserDefaults.standard.set(authorized, forKey: "videoPermission")
+        })
+        
+    }
+    
 }
 
 
@@ -35,6 +47,7 @@ extension AppDelegate: UIApplicationDelegate {
         
         // App configurations
         self.configureFirebase()
+        self.grantPermissions()
         
         return true
         

@@ -1,5 +1,5 @@
 //
-//  InitialViewController.swift
+//  MainViewController.swift
 //  theia-ios
 //
 //  Created by Jad Ghadry on 9/29/18.
@@ -10,7 +10,7 @@ import UIKit
 import Speech
 import Lottie
 
-class InitialViewController: JGBaseViewController {
+class MainViewController: JGBaseViewController {
     
     // MARK: - Outlets
     
@@ -41,17 +41,14 @@ class InitialViewController: JGBaseViewController {
         // Check whether we need to stop running the audio recording or not.
         if self.audioEngine.isRunning {
             
-            // Provide a vibrating feedback.
-            AudioServicesPlaySystemSound(UInt32(kSystemSoundID_Vibrate))
-            
             self.audioEngine.stop()
             self.recognitionRequest?.endAudio()
             self.stopSpeechRecognition()
             self.lottieVoiceAnimation.stop()
+            self.runCommand(self.command)
             
-            if let command = self.command {
-                self.runCommand(command)
-            }
+            // Provide a vibrating feedback.
+            AudioServicesPlaySystemSound(UInt32(kSystemSoundID_Vibrate))
             
             
         } else {
@@ -68,7 +65,7 @@ class InitialViewController: JGBaseViewController {
     
     // MARK: - Functions
     
-    fileprivate func requestSpeechRecognitionAuthorization(completion: ((Bool) -> Void)? = nil) {
+    internal func requestSpeechRecognitionAuthorization(completion: ((Bool) -> Void)? = nil) {
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
             completion?(authStatus == .authorized)
         }
@@ -76,51 +73,13 @@ class InitialViewController: JGBaseViewController {
     
     
     
-    fileprivate func runCommand(_ command: String) {
-        
-        let normalizedCommand = command.uppercased()
-        
-        switch(normalizedCommand) {
-            
-        case "READ THIS TEXT FOR ME":
-            ImagePickerHelper.shared.showUIImagePickerController(withEditPictureSource: .camera, inViewController: self, completion: { image in
-                
-                DispatchQueue.main.async {
-                    
-                    // Perform OCR operation.
-                    let vision = Vision.vision()
-                    let textRecognizer = vision.onDeviceTextRecognizer()
-                    let capturedImage = VisionImage(image: image)
-                    
-                    textRecognizer.process(capturedImage, completion: { result, error in
-                        
-                        if let result = result, error == nil {
-                            print(result.text)
-                        }
-                        
-                    })
-                }
-                
-            })
-            
-        default:
-            return
-            
-        }
-        
-        self.command = nil
-        
-    }
-    
-    
-    
-    fileprivate func setUpLottieAnimations() {
+    internal func setUpLottieAnimations() {
         self.lottieVoiceAnimation.loopAnimation = true
     }
     
     
     
-    fileprivate func setUpSpeechRecognizer() {
+    internal func setUpSpeechRecognizer() {
         
         // Define the language that will be interpreted by the speech recognizer.
         let englishLocale = Locale(identifier: "en-US")
@@ -148,7 +107,7 @@ class InitialViewController: JGBaseViewController {
     
     
     
-    fileprivate func startRecognitionTask(forSpeechRecognizer speechRecognizer: SFSpeechRecognizer,
+    internal func startRecognitionTask(forSpeechRecognizer speechRecognizer: SFSpeechRecognizer,
                                           withRecognitionRequest recognitionRequest: SFSpeechAudioBufferRecognitionRequest) {
         
         self.recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
@@ -161,10 +120,13 @@ class InitialViewController: JGBaseViewController {
                 // Print the error to the console.
                 print(error.localizedDescription)
                 
-            } else if let result = result {
+            } else if
+                let result = result,
+                let _ = self.recognitionTask {
                 
                 // Update the received command.
                 self.command = result.bestTranscription.formattedString
+                print(result.bestTranscription.formattedString)
                 
             }
             
@@ -174,7 +136,7 @@ class InitialViewController: JGBaseViewController {
     
     
     
-    fileprivate func startRecording() {
+    internal func startRecording() {
         
         // Instantiate the recognitionRequest property.
         self.recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
@@ -216,7 +178,7 @@ class InitialViewController: JGBaseViewController {
     
     
     
-    fileprivate func stopSpeechRecognition() {
+    internal func stopSpeechRecognition() {
         
         // Stop the audioEngine.
         self.audioEngine.stop()
@@ -237,7 +199,7 @@ class InitialViewController: JGBaseViewController {
 
 // MARK: - SFSpeechRecognizerDelegate Extension
 
-extension InitialViewController: SFSpeechRecognizerDelegate {
+extension MainViewController: SFSpeechRecognizerDelegate {
     
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         
