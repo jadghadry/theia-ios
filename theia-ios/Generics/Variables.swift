@@ -12,8 +12,6 @@ import Foundation
 
 struct THEIAColor {
     
-    // Mobile App Static Colors
-    
     static let lightBlue = UIColor(RGB: 0x4d9bd3)
     
 }

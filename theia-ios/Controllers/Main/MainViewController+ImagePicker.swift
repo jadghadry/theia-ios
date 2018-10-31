@@ -13,7 +13,7 @@ extension MainViewController {
     
     // MARK: - Functions
 
-    internal func takeTextPicture() {
+    internal func takePicture() {
         
         AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { authorized in
             
@@ -27,16 +27,8 @@ extension MainViewController {
                 
             } else {
                 
-                DispatchQueue.main.async {
-                    let alertTitle = "CAMERA ACCESS DENIED"
-                    let alertMessage = "Please allow access to your camera in your device settings."
-                    let dismissButtonTitle = "OK"
-                    let errorAlert = self.createErrorAlert(withAlertTitle: alertTitle,
-                                                           alertMessage: alertMessage,
-                                                           andDismissButtonTitle: dismissButtonTitle)
-                    self.present(errorAlert, animated: true, completion: nil)
-                }
-                
+                self.speak(text: "Camera access denied, please allow access before taking any pictures")
+                    
             }
             
         })
@@ -69,7 +61,7 @@ extension MainViewController: UIImagePickerControllerDelegate, UINavigationContr
             textRecognizer.process(capturedImage, completion: { result, error in
                 
                 if let result = result, error == nil {
-                    print(result.text)
+                    self.speak(text: result.text)
                 }
                 
             })

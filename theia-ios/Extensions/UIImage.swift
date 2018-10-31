@@ -12,61 +12,79 @@ extension UIImage {
     
     // MARK: - Functions
     
+    /**
+     Returns an instance of the same image with an upwards image orientation.
+     This is particularly useful when taking a picture from the camera directly.
+     */
+    
     func fixImageOrientation() -> UIImage? {
         
         if (self.imageOrientation == .up) {
             return self
         }
         
-        var transform: CGAffineTransform = CGAffineTransform.identity
+        var transform = CGAffineTransform.identity
         
-        if (self.imageOrientation == .left || self.imageOrientation == .leftMirrored) {
-            // Orientations defined by .left or .leftMirrored
-            transform = transform.translatedBy(x: self.size.width, y: 0)
-            transform = transform.rotated(by: CGFloat(Double.pi / 2.0))
-        
-        } else if (self.imageOrientation == .right || self.imageOrientation == .rightMirrored) {
-            // Orientations defined by .right or .rightMirrored
-            transform = transform.translatedBy(x: 0, y: self.size.height)
-            transform = transform.rotated(by: CGFloat(-Double.pi / 2.0))
+        // Apply generic transformations based on image orientation.
+        switch self.imageOrientation {
             
-        } else if (self.imageOrientation == .down || self.imageOrientation == .downMirrored) {
-            // Orientations defined by .down or .downMirrored
+        case .down, .downMirrored:
             transform = transform.translatedBy(x: self.size.width, y: self.size.height)
-            transform = transform.rotated(by: CGFloat(Double.pi))
+            transform = transform.rotated(by: .pi)
             
-        } else if (self.imageOrientation == .upMirrored || self.imageOrientation == .downMirrored) {
-            // Orientations defined by .upMirrored or .downMirrored
+        case .left, .leftMirrored:
+            transform = transform.translatedBy(x: self.size.width, y: 0)
+            transform = transform.rotated(by: .pi/2)
+            
+        case .right, .rightMirrored:
+            transform = transform.translatedBy(x: 0, y: self.size.height)
+            transform = transform.rotated(by: -.pi/2)
+            
+        default:
+            break
+            
+        }
+        
+        // Apply transformations for mirrored-only orientations.
+        switch self.imageOrientation {
+            
+        case .upMirrored, .downMirrored:
             transform = transform.translatedBy(x: self.size.width, y: 0)
             transform = transform.scaledBy(x: -1, y: 1)
             
-        } else if (self.imageOrientation == .leftMirrored || self.imageOrientation == .rightMirrored) {
-            // Orientations defined by .leftMirrored or .rightMirrored
+        case .leftMirrored, .rightMirrored:
             transform = transform.translatedBy(x: self.size.height, y: 0)
             transform = transform.scaledBy(x: -1, y: 1)
+            
+        default:
+            break
+            
         }
         
         // Define the new context to draw the image from.
-        if let context: CGContext = CGContext(data: nil,
+        if
+            let quartzImage = self.cgImage,
+            let context: CGContext = CGContext(data: nil,
                                               width: Int(self.size.width),
                                               height: Int(self.size.height),
-                                              bitsPerComponent: self.cgImage!.bitsPerComponent,
+                                              bitsPerComponent: quartzImage.bitsPerComponent,
                                               bytesPerRow: 0,
-                                              space: self.cgImage!.colorSpace!,
+                                              space: quartzImage.colorSpace!,
                                               bitmapInfo: self.cgImage!.bitmapInfo.rawValue) {
             
             context.concatenate(transform)
             
-            if (self.imageOrientation == UIImage.Orientation.left ||
+            if
+                self.imageOrientation == UIImage.Orientation.left ||
                 self.imageOrientation == UIImage.Orientation.leftMirrored ||
                 self.imageOrientation == UIImage.Orientation.right ||
-                self.imageOrientation == UIImage.Orientation.rightMirrored) {
+                self.imageOrientation == UIImage.Orientation.rightMirrored {
                 
-                context.draw(self.cgImage!, in: CGRect(x: 0,y: 0,width: self.size.height,height: self.size.width))
+                context.draw(quartzImage, in: CGRect(x: 0, y: 0, width: self.size.height, height: self.size.width))
                 
             } else {
                 
-                context.draw(self.cgImage!, in: CGRect(x: 0,y: 0,width: self.size.width,height: self.size.height))
+                context.draw(quartzImage, in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
                 
             }
             

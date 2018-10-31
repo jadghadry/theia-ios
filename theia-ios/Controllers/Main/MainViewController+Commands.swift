@@ -21,7 +21,7 @@ extension MainViewController {
              This represents one of the core features of the application.
              Image processing and machine learning modules will be deployed in order read text from a static image.
              */
-            self.takeTextPicture()
+            self.takePicture()
             
         case "PROCESS BILL":
             /*
@@ -31,7 +31,7 @@ extension MainViewController {
             break
             
         default:
-            break
+            self.speak(text: "Command not found")
             
         }
         

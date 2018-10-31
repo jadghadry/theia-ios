@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2657DA5E2188664800F45147 /* MainViewController+Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2657DA5D2188664800F45147 /* MainViewController+Commands.swift */; };
-		266ED79621888A240029DC1A /* FrameExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266ED79521888A240029DC1A /* FrameExtractor.swift */; };
-		266ED79D2188B7060029DC1A /* JGBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266ED79C2188B7060029DC1A /* JGBaseViewController.swift */; };
 		266ED79F2188B7D90029DC1A /* MainViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266ED79E2188B7D90029DC1A /* MainViewController+ImagePicker.swift */; };
 		266ED7A12188C1080029DC1A /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266ED7A02188C1080029DC1A /* UIImage.swift */; };
 		269A125C2187C4CF00A1C268 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 269A125B2187C4CF00A1C268 /* GoogleService-Info.plist */; };
@@ -25,8 +23,6 @@
 
 /* Begin PBXFileReference section */
 		2657DA5D2188664800F45147 /* MainViewController+Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Commands.swift"; sourceTree = "<group>"; };
-		266ED79521888A240029DC1A /* FrameExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameExtractor.swift; sourceTree = "<group>"; };
-		266ED79C2188B7060029DC1A /* JGBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JGBaseViewController.swift; sourceTree = "<group>"; };
 		266ED79E2188B7D90029DC1A /* MainViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+ImagePicker.swift"; sourceTree = "<group>"; };
 		266ED7A02188C1080029DC1A /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		269A125B2187C4CF00A1C268 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -60,7 +56,6 @@
 		266ED79B2188B6F60029DC1A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				266ED79C2188B7060029DC1A /* JGBaseViewController.swift */,
 				266ED7A02188C1080029DC1A /* UIImage.swift */,
 			);
 			path = Extensions;
@@ -147,7 +142,6 @@
 		26DD466A215FF5D7000B10E5 /* Generics */ = {
 			isa = PBXGroup;
 			children = (
-				266ED79521888A240029DC1A /* FrameExtractor.swift */,
 				26E6BFC62187528900ACF4D6 /* Variables.swift */,
 			);
 			path = Generics;
@@ -341,9 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				266ED79D2188B7060029DC1A /* JGBaseViewController.swift in Sources */,
 				266ED7A12188C1080029DC1A /* UIImage.swift in Sources */,
-				266ED79621888A240029DC1A /* FrameExtractor.swift in Sources */,
 				26E6BFC72187528900ACF4D6 /* Variables.swift in Sources */,
 				2657DA5E2188664800F45147 /* MainViewController+Commands.swift in Sources */,
 				266ED79F2188B7D90029DC1A /* MainViewController+ImagePicker.swift in Sources */,
