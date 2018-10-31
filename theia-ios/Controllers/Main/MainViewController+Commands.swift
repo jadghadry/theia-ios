@@ -14,7 +14,12 @@ extension MainViewController {
     
     internal func runCommand(_ command: String?) {
         
-        switch(command?.uppercased()) {
+        // Check if a non-empty command was initiated.
+        guard let command = command?.uppercased() else {
+            return
+        }
+        
+        switch(command) {
             
         case "READ TEXT":
             /*

@@ -23,11 +23,13 @@ extension MainViewController {
                     imagePicker.sourceType = .camera
                     imagePicker.delegate = self
                 
-                self.present(imagePicker, animated: true, completion: nil)
+                self.present(imagePicker, animated: true, completion: {
+                    self.speak(text: "You can now take a picture.")
+                })
                 
             } else {
                 
-                self.speak(text: "Camera access denied, please allow access before taking any pictures")
+                self.speak(text: "Camera access denied, please allow access before taking any pictures.")
                     
             }
             
@@ -61,7 +63,8 @@ extension MainViewController: UIImagePickerControllerDelegate, UINavigationContr
             textRecognizer.process(capturedImage, completion: { result, error in
                 
                 if let result = result, error == nil {
-                    self.speak(text: result.text)
+                    self.speak(text: result.text, rate: 0.4)
+                    print(result.text)
                 }
                 
             })

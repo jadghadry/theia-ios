@@ -1,5 +1,5 @@
 //
-//  Variables.swift
+//  AppConfig.swift
 //  theia-ios
 //
 //  Created by Jad Ghadry on 10/29/18.
