@@ -13,7 +13,7 @@ extension UIImage {
     // MARK: - Functions
     
     /**
-     Returns an instance of the same image with an upwards image orientation.
+     Returns an instance of the same image with an upwards orientation.
      This is particularly useful when taking a picture from the camera directly.
      */
     
@@ -80,11 +80,13 @@ extension UIImage {
                 self.imageOrientation == UIImage.Orientation.right ||
                 self.imageOrientation == UIImage.Orientation.rightMirrored {
                 
-                context.draw(quartzImage, in: CGRect(x: 0, y: 0, width: self.size.height, height: self.size.width))
+                let bounds = CGRect(x: 0, y: 0, width: self.size.height, height: self.size.width)
+                context.draw(quartzImage, in: bounds)
                 
             } else {
                 
-                context.draw(quartzImage, in: CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height))
+                let bounds = CGRect(x: 0, y: 0, width: self.size.width, height: self.size.height)
+                context.draw(quartzImage, in: bounds)
                 
             }
             

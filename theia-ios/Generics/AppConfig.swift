@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - THEIAColor
 
-struct THEIAColor {
+struct THEColor {
     
     static let lightBlue = UIColor(RGB: 0x4d9bd3)
     
