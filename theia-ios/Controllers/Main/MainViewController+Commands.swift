@@ -28,15 +28,8 @@ extension MainViewController {
              */
             self.takePicture()
             
-        case "PROCESS BILL":
-            /*
-             This represents one of the core features of the application.
-             Image processing and machine learning modules will be deployed in order to analyze bills from a static image.
-             */
-            break
-            
         default:
-            self.speak(text: "Command not found")
+            THSpeechSynthesizer.shared.speak(text: "Command not found")
             
         }
         

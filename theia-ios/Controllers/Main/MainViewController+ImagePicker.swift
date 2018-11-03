@@ -12,31 +12,38 @@ import AVFoundation
 extension MainViewController {
     
     // MARK: - Functions
-
+    
     internal func takePicture() {
         
         AVCaptureDevice.requestAccess(for: AVMediaType.video, completionHandler: { authorized in
             
-            if authorized {
-                
-                let imagePicker = UIImagePickerController()
-                    imagePicker.sourceType = .camera
-                    imagePicker.delegate = self
-                
-                self.present(imagePicker, animated: true, completion: {
-                    self.speak(text: "You can now take a picture.")
-                })
-                
-            } else {
-                
-                self.speak(text: "Camera access denied, please allow access before taking any pictures.")
-                    
+            let synthesizer = THSpeechSynthesizer.shared
+            
+            // Check whether camera access was pauthorized by the user or not.
+            guard authorized else {
+                synthesizer.speak(text: "Camera access denied. Please allow access before taking any pictures.")
+                return
             }
+            
+            // Check whether there is a rear camera available or not.
+            guard UIImagePickerController.isCameraDeviceAvailable(.rear) else {
+                synthesizer.speak(text: "There are no back cameras installed on your device.")
+                return
+            }
+            
+            // If all of the above conditions are met, then we are ready to take a picture for processing.
+            let imagePicker = UIImagePickerController()
+                imagePicker.sourceType = .camera
+                imagePicker.delegate = self
+            
+            self.present(imagePicker, animated: true, completion: {
+                synthesizer.speak(text: "You can now take a picture.")
+            })
             
         })
         
     }
-
+    
 }
 
 
@@ -56,14 +63,13 @@ extension MainViewController: UIImagePickerControllerDelegate, UINavigationContr
             let fixedImage = imageTaken.fixImageOrientation() {
             
             // Perform OCR operation on the image whose orientation was fixed.
-            let vision = Vision.vision()
-            let textRecognizer = vision.onDeviceTextRecognizer()
+            let textRecognizer = Vision.vision().onDeviceTextRecognizer()
             let capturedImage = VisionImage(image: fixedImage)
             
             textRecognizer.process(capturedImage, completion: { result, error in
                 
                 if let result = result, error == nil {
-                    self.speak(text: result.text, rate: 0.4)
+                    THSpeechSynthesizer.shared.speak(text: result.text, rate: 0.4)
                     print(result.text)
                 }
                 

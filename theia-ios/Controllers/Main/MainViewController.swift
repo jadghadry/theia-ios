@@ -21,7 +21,6 @@ class MainViewController: JGBaseViewController {
     // MARK: - Constant Properties
     
     let audioEngine = AVAudioEngine()
-    let synthesizer = AVSpeechSynthesizer()
     
     
     
@@ -38,20 +37,22 @@ class MainViewController: JGBaseViewController {
     
     @IBAction func didTapView(_ sender: UITapGestureRecognizer) {
         
+        let synthesizer = THSpeechSynthesizer.shared.synthesizer
+        
         // Check wether the synthesizer is speaking.
-        if self.synthesizer.isSpeaking {
+        if synthesizer.isSpeaking {
             
-            // Stop the speech
-            self.synthesizer.stopSpeaking(at: .immediate)
+            // Stop the speech.
+            synthesizer.stopSpeaking(at: .immediate)
             
             // Provide a vibrating feedback.
             AudioServicesPlaySystemSound(UInt32(kSystemSoundID_Vibrate))
             
-            // Exit the function scope
+            // Exit the function scope.
             return
         }
         
-        // Check audio engine status
+        // Check the audio engine status.
         if self.audioEngine.isRunning {
             
             // If the audio engine was running, then we need to stop listenting for additional audio.

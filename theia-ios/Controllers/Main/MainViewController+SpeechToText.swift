@@ -18,7 +18,7 @@ extension MainViewController {
      */
     
     internal func requestSpeechRecognitionAuthorization(completion: ((Bool) -> Void)? = nil) {
-        SFSpeechRecognizer.requestAuthorization { (authStatus) in
+        SFSpeechRecognizer.requestAuthorization { authStatus in
             completion?(authStatus == .authorized)
         }
     }
@@ -26,33 +26,35 @@ extension MainViewController {
     
     
     /**
-     Installs an audio tap on the bus to record, monitor, and observe thexoutput of the node.
+     Installs an audio tap on the bus to record, monitor, and observe the output of the node.
      
      Only one tap may be installed on any bus. Taps may be safely installed and removed while the engine is running.
      */
-    internal func setUpAudioInputTap() {
+    internal func configureAudioTap() {
         
-        let format = self.audioEngine.inputNode.outputFormat(forBus: 0)
-        self.audioEngine.inputNode.installTap(onBus: 0, bufferSize: 512, format: format, block: { buffer, _ in
+        let inputNode = self.audioEngine.inputNode
+        let inputNodeFormat = inputNode.outputFormat(forBus: 0)
+        
+        self.audioEngine.inputNode.installTap(onBus: 0, bufferSize: 512, format: inputNodeFormat, block: { [unowned self] buffer, time in
             self.recognitionRequest?.append(buffer)
         })
         
     }
-    
+
     
     
     /**
      Sets the category, mode, and desired options on the shared AVAudioSession, then activates it for audio multi-routing.
     */
     
-    internal func setUpAudioSession() {
+    internal func configureAudioSession() {
         
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(.multiRoute, mode: .default, options: [.defaultToSpeaker, .duckOthers])
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
-            print("An error has occured while setting the audioSession properties.")
+            print("An error has occurred while setting the AVAudioSession.")
         }
         
     }
@@ -120,14 +122,10 @@ extension MainViewController {
         // Instantiate the recognitionRequest property.
         self.recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
-        // Set up the audio session.
-        self.setUpAudioSession()
-        
-        // Start the speech recognition task.
+        // Set up the audio session and recognition task.
+        self.configureAudioSession()
+        self.configureAudioTap()
         self.startRecognitionTask()
-        
-        // Add an audio input to the recognitionRequest property.
-        self.setUpAudioInputTap()
         
         // Start the audioEngine.
         do {

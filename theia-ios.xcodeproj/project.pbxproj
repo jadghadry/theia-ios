@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		261928182189B68B001734BD /* MainViewController+SpeechToText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261928172189B68B001734BD /* MainViewController+SpeechToText.swift */; };
-		2619281B2189D2AC001734BD /* MainViewController+SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2619281A2189D2AC001734BD /* MainViewController+SpeechSynthesizer.swift */; };
+		26360D2C218DFD4600565EBA /* THSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26360D2B218DFD4600565EBA /* THSpeechSynthesizer.swift */; };
 		2657DA5E2188664800F45147 /* MainViewController+Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2657DA5D2188664800F45147 /* MainViewController+Commands.swift */; };
 		266ED79F2188B7D90029DC1A /* MainViewController+ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266ED79E2188B7D90029DC1A /* MainViewController+ImagePicker.swift */; };
 		266ED7A12188C1080029DC1A /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266ED7A02188C1080029DC1A /* UIImage.swift */; };
@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		261928172189B68B001734BD /* MainViewController+SpeechToText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+SpeechToText.swift"; sourceTree = "<group>"; };
-		2619281A2189D2AC001734BD /* MainViewController+SpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+SpeechSynthesizer.swift"; sourceTree = "<group>"; };
+		26360D2B218DFD4600565EBA /* THSpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THSpeechSynthesizer.swift; sourceTree = "<group>"; };
 		2657DA5D2188664800F45147 /* MainViewController+Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Commands.swift"; sourceTree = "<group>"; };
 		266ED79E2188B7D90029DC1A /* MainViewController+ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+ImagePicker.swift"; sourceTree = "<group>"; };
 		266ED7A02188C1080029DC1A /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -57,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26360D2A218DFD2900565EBA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				26360D2B218DFD4600565EBA /* THSpeechSynthesizer.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		266ED79B2188B6F60029DC1A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +97,7 @@
 				26DD4662215FEB99000B10E5 /* Controllers */,
 				266ED79B2188B6F60029DC1A /* Extensions */,
 				26DD466A215FF5D7000B10E5 /* Generics */,
+				26360D2A218DFD2900565EBA /* Models */,
 				26DD4663215FEBA3000B10E5 /* Storyboards */,
 				26DD4660215FEB30000B10E5 /* Supporting Files */,
 				26DD4655215FEAF6000B10E5 /* Assets.xcassets */,
@@ -140,7 +149,6 @@
 				2657DA5D2188664800F45147 /* MainViewController+Commands.swift */,
 				266ED79E2188B7D90029DC1A /* MainViewController+ImagePicker.swift */,
 				261928172189B68B001734BD /* MainViewController+SpeechToText.swift */,
-				2619281A2189D2AC001734BD /* MainViewController+SpeechSynthesizer.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -342,13 +350,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				266ED7A12188C1080029DC1A /* UIImage.swift in Sources */,
+				26360D2C218DFD4600565EBA /* THSpeechSynthesizer.swift in Sources */,
 				26E6BFC72187528900ACF4D6 /* AppConfig.swift in Sources */,
 				2657DA5E2188664800F45147 /* MainViewController+Commands.swift in Sources */,
 				261928182189B68B001734BD /* MainViewController+SpeechToText.swift in Sources */,
 				266ED79F2188B7D90029DC1A /* MainViewController+ImagePicker.swift in Sources */,
 				26DD464F215FEAF5000B10E5 /* AppDelegate.swift in Sources */,
 				26DD4667215FED65000B10E5 /* MainViewController.swift in Sources */,
-				2619281B2189D2AC001734BD /* MainViewController+SpeechSynthesizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
