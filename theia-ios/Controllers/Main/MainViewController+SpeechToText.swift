@@ -35,42 +35,9 @@ extension MainViewController {
         let inputNode = self.audioEngine.inputNode
         let inputNodeFormat = inputNode.outputFormat(forBus: 0)
         
-        self.audioEngine.inputNode.installTap(onBus: 0, bufferSize: 512, format: inputNodeFormat, block: { [unowned self] buffer, time in
+        self.audioEngine.inputNode.installTap(onBus: 0, bufferSize: 1024, format: inputNodeFormat, block: { [unowned self] buffer, time in
             self.recognitionRequest?.append(buffer)
         })
-        
-    }
-
-    
-    
-    /**
-     Sets the category, mode, and desired options on the shared AVAudioSession, then activates it for audio multi-routing.
-    */
-    
-    internal func configureAudioSession() {
-        
-        let audioSession = AVAudioSession.sharedInstance()
-        do {
-            try audioSession.setCategory(.multiRoute, mode: .default, options: [.defaultToSpeaker, .duckOthers])
-            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-        } catch {
-            print("An error has occurred while setting the AVAudioSession.")
-        }
-        
-    }
-    
-    
-    
-    /**
-     Initializes the SFSpeechRecognizer object using an english locale.
-     */
-    
-    internal func setUpSpeechRecognizer() {
-        
-        let englishLocale = Locale(identifier: "en-US")
-        
-        self.speechRecognizer = SFSpeechRecognizer(locale: englishLocale)
-        self.speechRecognizer?.delegate = self
         
     }
     
@@ -122,12 +89,12 @@ extension MainViewController {
         // Instantiate the recognitionRequest property.
         self.recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
-        // Set up the audio session and recognition task.
-        self.configureAudioSession()
+        // Set up the audio session.
         self.configureAudioTap()
         self.startRecognitionTask()
         
-        // Start the audioEngine.
+        // Start the audioEngine and the recognition task.
+        self.audioEngine.prepare()
         do {
             try self.audioEngine.start()
         } catch {
@@ -155,7 +122,7 @@ extension MainViewController {
         self.recognitionRequest?.endAudio()
         self.recognitionRequest = nil
         
-        // Cancel and deallocate the recognition task.
+        // Finish, cancel and deallocate the recognition task.
         self.recognitionTask?.cancel()
         self.recognitionTask = nil
         

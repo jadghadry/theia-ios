@@ -25,20 +25,24 @@ extension MainViewController {
                 return
             }
             
-            // Check whether there is a rear camera available or not.
+            // Check whether there is a camera installed on the device.
             guard UIImagePickerController.isCameraDeviceAvailable(.rear) else {
-                synthesizer.speak(text: "There are no back cameras installed on your device.")
+                synthesizer.speak(text: "There are no cameras installed on your device.")
                 return
             }
             
             // If all of the above conditions are met, then we are ready to take a picture for processing.
-            let imagePicker = UIImagePickerController()
-                imagePicker.sourceType = .camera
-                imagePicker.delegate = self
-            
-            self.present(imagePicker, animated: true, completion: {
-                synthesizer.speak(text: "You can now take a picture.")
-            })
+            DispatchQueue.main.async {
+                
+                let imagePicker = UIImagePickerController()
+                    imagePicker.sourceType = .camera
+                    imagePicker.delegate = self
+                
+                self.present(imagePicker, animated: true, completion: {
+                    synthesizer.speak(text: "You can now take a picture.")
+                })
+                
+            }
             
         })
         

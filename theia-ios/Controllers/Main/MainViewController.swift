@@ -75,8 +75,45 @@ class MainViewController: JGBaseViewController {
     
     // MARK: - Functions
     
-    internal func setUpLottieAnimations() {
+    /**
+     Configures the SFSpeechRecognizer object using an english locale.
+     */
+    
+    internal func configureLottieAnimation() {
         self.lottieVoiceAnimation.loopAnimation = true
+    }
+    
+    
+    
+    /**
+     Sets the category, mode, and desired options on the shared AVAudioSession, then activates it for audio multi-routing.
+     */
+    
+    internal func setUpAudioSession() {
+        
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker, .duckOthers])
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        } catch {
+            print("An error has occurred while setting the AVAudioSession.")
+        }
+        
+    }
+    
+    
+    
+    /**
+     Initializes the SFSpeechRecognizer object using an english locale.
+     */
+    
+    internal func setUpSpeechRecognizer() {
+        
+        let englishLocale = Locale(identifier: "en-US")
+        
+        self.speechRecognizer = SFSpeechRecognizer(locale: englishLocale)
+        self.speechRecognizer?.delegate = self
+        
     }
     
     
@@ -86,8 +123,9 @@ class MainViewController: JGBaseViewController {
         super.setUpViewController()
         
         // Call relevant view controller configurations.
-        self.setUpLottieAnimations()
         self.setUpSpeechRecognizer()
+        self.setUpAudioSession()
+        self.configureLottieAnimation()
         
         // Request speech input authorization.
         self.requestSpeechRecognitionAuthorization()

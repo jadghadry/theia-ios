@@ -23,7 +23,6 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xw2-ke-pTE" customClass="LOTAnimationView">
                                         <rect key="frame" x="64" y="200" width="215" height="215"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="xw2-ke-pTE" secondAttribute="height" id="FKp-DF-GN9"/>
                                         </constraints>

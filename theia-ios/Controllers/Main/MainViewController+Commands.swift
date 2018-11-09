@@ -12,6 +12,11 @@ extension MainViewController {
     
     // MARK: - Functions
     
+    /**
+     Runs a transcribed static command.
+     Future updates to this method should include dynamic compatibility.
+     */
+    
     internal func runCommand(_ command: String?) {
         
         // Check if a non-empty command was initiated.
@@ -23,8 +28,7 @@ extension MainViewController {
             
         case "READ TEXT":
             /*
-             This represents one of the core features of the application.
-             Image processing and machine learning modules will be deployed in order read text from a static image.
+             Image processing and machine learning modules are deployed in order read text from a static image.
              */
             self.takePicture()
             
