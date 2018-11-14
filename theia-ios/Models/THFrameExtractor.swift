@@ -12,14 +12,14 @@ import CoreVideo
 
 
 
-fileprivate struct dispatchQueue {
+fileprivate struct THFrameExtractorQueue {
     static let session = DispatchQueue(label: "sessionQueue")
     static let sampleBuffer = DispatchQueue(label: "sampleBuffer")
 }
 
 
 
-protocol THFrameExtractorDelegate {
+@objc protocol THFrameExtractorDelegate {
     func didCaptureSampleBuffer(_ buffer: CMSampleBuffer)
 }
 
@@ -29,7 +29,8 @@ class THFrameExtractor: NSObject {
 
     // MARK: - Constant Properties
     
-    internal let captureSession = AVCaptureSession()
+    let captureSession = AVCaptureSession()
+    let context = CIContext()
     
     
     
@@ -59,6 +60,7 @@ class THFrameExtractor: NSObject {
         
         let videoAuthorized = UserDefaults.standard.bool(forKey: "videoPermission")
         
+        // Input Configuration.
         guard
             videoAuthorized,
             let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back),
@@ -68,8 +70,13 @@ class THFrameExtractor: NSObject {
         
         self.captureSession.addInput(videoInput)
  
+        // Output Configuration.
+        let bufferPixelFormatTypeKey = kCVPixelBufferPixelFormatTypeKey as String
+        let videoSettings = [bufferPixelFormatTypeKey: kCVPixelFormatType_32BGRA]
+        
         let videoOutput = AVCaptureVideoDataOutput()
-            videoOutput.setSampleBufferDelegate(self, queue: dispatchQueue.sampleBuffer)
+            videoOutput.videoSettings = videoSettings
+            videoOutput.setSampleBufferDelegate(self, queue: THFrameExtractorQueue.sampleBuffer)
 
         self.captureSession.addOutput(videoOutput)
         
@@ -78,17 +85,44 @@ class THFrameExtractor: NSObject {
     
     
     /**
+     Returns an optional UIImage from a CMSampleBuffer frame.
+     
+     - Parameter sampleBuffer: The CMSampleBuffer to be converted.
+     */
+    
+    private func imageFromSampleBuffer(_ sampleBuffer: CMSampleBuffer) -> UIImage? {
+        
+        // Transform the CMSampleBuffer to a CVImageBuffer.
+        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+            return nil
+        }
+        
+        // Create a CIImage from the imageBuffer object.
+        let ciImage = CIImage(cvPixelBuffer: imageBuffer)
+        
+        // Get a CGImage from the CIContext.
+        guard let cgImage = self.context.createCGImage(ciImage, from: ciImage.extent) else {
+            return nil
+        }
+        
+        return UIImage(cgImage: cgImage)
+        
+    }
+    
+    
+    
+    /**
      Requests video recording access in order to capture the relevant image frames.
-     This method is responsible of suspending the session queue and only resumes it after receiving the authorization status.
+     This method is responsible of suspending the session queue and only resumes it after receiving the asynchronous authorization status.
      */
     
     internal func requestVideoPermission() {
         
-        dispatchQueue.session.suspend()
+        THFrameExtractorQueue.session.suspend()
         
         AVCaptureDevice.requestAccess(for: .video, completionHandler: { authorized in
             UserDefaults.standard.set(authorized, forKey: "videoPermission")
-            dispatchQueue.session.resume()
+            THFrameExtractorQueue.session.resume()
         })
         
     }
@@ -104,7 +138,7 @@ class THFrameExtractor: NSObject {
         self.requestVideoPermission()
         
         // Perform the asynchronous operations on the session thread.
-        dispatchQueue.session.async { [unowned self] in
+        THFrameExtractorQueue.session.async { [unowned self] in
             self.configureSession()
             self.captureSession.startRunning()
         }
@@ -120,9 +154,7 @@ class THFrameExtractor: NSObject {
 extension THFrameExtractor: AVCaptureVideoDataOutputSampleBufferDelegate {
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        DispatchQueue.main.async {
-            self.delegate?.didCaptureSampleBuffer(sampleBuffer)
-        }
+        self.delegate?.didCaptureSampleBuffer(sampleBuffer)
     }
     
 }

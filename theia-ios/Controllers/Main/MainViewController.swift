@@ -41,14 +41,8 @@ class MainViewController: JGBaseViewController {
         
         // Check wether the synthesizer is speaking.
         if synthesizer.isSpeaking {
-            
-            // Stop the speech.
             synthesizer.stopSpeaking(at: .immediate)
-            
-            // Provide a vibrating feedback.
             AudioServicesPlaySystemSound(UInt32(kSystemSoundID_Vibrate))
-            
-            // Exit the function scope.
             return
         }
         

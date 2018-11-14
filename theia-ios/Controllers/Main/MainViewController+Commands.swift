@@ -32,6 +32,12 @@ extension MainViewController {
              */
             self.takePicture()
             
+        case "IMAGE":
+            /*
+             Image processing and machine learning modules are deployed in order read text from a static image.
+             */
+            self.performSegue(withIdentifier: "segueToImageLabeling", sender: nil)
+            
         default:
             THSpeechSynthesizer.shared.speak(text: "Command not found")
             

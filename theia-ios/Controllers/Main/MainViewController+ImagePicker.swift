@@ -19,7 +19,7 @@ extension MainViewController {
             
             let synthesizer = THSpeechSynthesizer.shared
             
-            // Check whether camera access was pauthorized by the user or not.
+            // Check whether camera access was authorized by the user or not.
             guard authorized else {
                 synthesizer.speak(text: "Camera access denied. Please allow access before taking any pictures.")
                 return
@@ -62,24 +62,24 @@ extension MainViewController: UIImagePickerControllerDelegate, UINavigationContr
     
     @objc open func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        if
+        guard
             let imageTaken = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
-            let fixedImage = imageTaken.fixImageOrientation() {
-            
-            // Perform OCR operation on the image whose orientation was fixed.
-            let textRecognizer = Vision.vision().onDeviceTextRecognizer()
-            let capturedImage = VisionImage(image: fixedImage)
-            
-            textRecognizer.process(capturedImage, completion: { result, error in
-                
-                if let result = result, error == nil {
-                    THSpeechSynthesizer.shared.speak(text: result.text, rate: 0.4)
-                    print(result.text)
-                }
-                
-            })
-            
+            let fixedImage = imageTaken.fixImageOrientation() else {
+                return
         }
+
+        // Perform OCR operation on the image whose orientation was fixed.
+        let textRecognizer = Vision.vision().onDeviceTextRecognizer()
+        let capturedImage = VisionImage(image: fixedImage)
+        
+        textRecognizer.process(capturedImage, completion: { result, error in
+            
+            if let result = result, error == nil {
+                THSpeechSynthesizer.shared.speak(text: result.text, rate: 0.4)
+                print(result.text)
+            }
+            
+        })
         
         picker.dismiss(animated: true, completion: nil)
         

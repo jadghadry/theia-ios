@@ -16,6 +16,7 @@ target 'theia-ios' do
   pod 'Firebase/Core'
   pod 'Firebase/MLVision'
   pod 'Firebase/MLVisionTextModel'
+  pod 'Firebase/MLVisionLabelModel'
   pod 'JGFramework'
   pod 'lottie-ios'
 
