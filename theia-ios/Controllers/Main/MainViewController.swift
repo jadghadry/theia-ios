@@ -112,11 +112,14 @@ class MainViewController: JGBaseViewController {
     
     
     
+    /**
+     Call relevant view controller configurations.
+     */
+    
     override func setUpViewController() {
         
         super.setUpViewController()
         
-        // Call relevant view controller configurations.
         self.setUpSpeechRecognizer()
         self.setUpAudioSession()
         self.configureLottieAnimation()

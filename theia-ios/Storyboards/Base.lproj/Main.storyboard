@@ -75,6 +75,7 @@
                     <connections>
                         <outlet property="lottieVoiceAnimation" destination="xw2-ke-pTE" id="G8S-YH-iUn"/>
                         <segue destination="bRL-9e-s4U" kind="presentation" identifier="segueToImageLabeling" id="5su-lx-k5B"/>
+                        <segue destination="9eP-47-ldx" kind="presentation" identifier="segueToTextRecognizer" id="K80-jr-v09"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -86,10 +87,10 @@
             </objects>
             <point key="canvasLocation" x="40.799999999999997" y="26.53673163418291"/>
         </scene>
-        <!--Image Labeling View Controller-->
+        <!--Image Classification View Controller-->
         <scene sceneID="WCJ-Ko-pFn">
             <objects>
-                <viewController storyboardIdentifier="BarcodeScannerViewController" modalPresentationStyle="overFullScreen" id="bRL-9e-s4U" customClass="ImageLabelingViewController" customModule="theia_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overFullScreen" id="bRL-9e-s4U" customClass="ImageClassificationViewController" customModule="theia_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e2n-hR-gc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,7 +98,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yvn-HN-AFf">
                                 <rect key="frame" x="32" y="579" width="311" height="64"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6h0-Rg-eyQ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing Detected" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6h0-Rg-eyQ">
                                         <rect key="frame" x="24" y="23" width="263" height="18"/>
                                         <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="13"/>
                                         <nil key="textColor"/>
@@ -127,21 +128,37 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bqr-OM-5l1"/>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="15m-Yp-Dxh" appends="YES" id="Yb5-TF-eS0"/>
+                            <outletCollection property="gestureRecognizers" destination="thC-UR-lOI" appends="YES" id="iki-WL-EfM"/>
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="lblDescription" destination="6h0-Rg-eyQ" id="sH1-iT-sxz"/>
+                        <outlet property="lblObjectDescription" destination="6h0-Rg-eyQ" id="ePH-Jb-SML"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXX-op-YwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="15m-Yp-Dxh">
+                <tapGestureRecognizer numberOfTapsRequired="2" id="thC-UR-lOI">
                     <connections>
-                        <action selector="didTapView:" destination="bRL-9e-s4U" id="MbT-PL-1CY"/>
+                        <action selector="didTapView:" destination="bRL-9e-s4U" id="DuV-Vu-0sG"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="928.79999999999995" y="26.53673163418291"/>
+            <point key="canvasLocation" x="1063" y="419"/>
+        </scene>
+        <!--Text Recognition View Controller-->
+        <scene sceneID="4Tj-1G-C9B">
+            <objects>
+                <viewController modalPresentationStyle="overFullScreen" id="9eP-47-ldx" customClass="TextRecognitionViewController" customModule="theia_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kkQ-YQ-y4u">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="XL3-tH-Afg"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KBe-yX-vxu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1062" y="-397"/>
         </scene>
     </scenes>
 </document>

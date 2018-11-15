@@ -145,6 +145,16 @@ class THFrameExtractor: NSObject {
         
     }
     
+    
+    
+    /**
+     Tells the AVCaptureSession object to stop running.
+     */
+    
+    func stopRunning() {
+        self.captureSession.stopRunning()
+    }
+    
 }
 
 

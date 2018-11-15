@@ -30,9 +30,9 @@ extension MainViewController {
             /*
              Image processing and machine learning modules are deployed in order read text from a static image.
              */
-            self.takePicture()
+            self.performSegue(withIdentifier: "segueToTextRecognizer", sender: nil)
             
-        case "IMAGE":
+        case "CLASSIFY IMAGE":
             /*
              Image processing and machine learning modules are deployed in order read text from a static image.
              */
