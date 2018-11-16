@@ -21,7 +21,7 @@ class THUtilities {
         
         let deviceOrientation = UIDevice.current.orientation
 
-        switch deviceOrientation {
+        switch (deviceOrientation) {
         case .portrait:
             return .right
         case .portraitUpsideDown:
@@ -45,7 +45,7 @@ class THUtilities {
     
     static func visionImageOrientation(from imageOrientation: UIImage.Orientation) -> VisionDetectorImageOrientation {
     
-        switch imageOrientation {
+        switch (imageOrientation) {
         
         case .up:
             return .topLeft

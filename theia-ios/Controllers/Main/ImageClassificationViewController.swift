@@ -16,26 +16,10 @@ class ImageClassificationViewController: CaptureSessionViewController {
     @IBOutlet weak var lblObjectDescription: UILabel!
     
     
+    
     // MARK: - Optional Properties
     
     var labelDetector: VisionLabelDetector?
-    
-    
-    
-    // MARK: - Actions
-    
-    @IBAction func didTapView(_ sender: UITapGestureRecognizer) {
-        
-        let synthesizer = THSpeechSynthesizer.shared
-        
-        guard let objectDescription = self.lblObjectDescription.text else {
-            synthesizer.speak(text: "There was an error while reading your object.")
-            return
-        }
-        
-        synthesizer.speak(text: objectDescription)
-        
-    }
     
     
     
@@ -60,8 +44,10 @@ class ImageClassificationViewController: CaptureSessionViewController {
                 $0.label > $1.label
             })
             
+            self.processedText = highestConfidenceObject?.label ?? "Nothing detected"
+            
             DispatchQueue.main.async {
-                self.lblObjectDescription.text = highestConfidenceObject?.label ?? "Nothing detected"
+                self.lblObjectDescription.text = self.processedText
             }
             
         })
@@ -93,6 +79,5 @@ class ImageClassificationViewController: CaptureSessionViewController {
         super.setUpViewController()
         self.setUpLabelDetector()
     }
-    
 
 }

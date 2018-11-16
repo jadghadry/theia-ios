@@ -17,7 +17,13 @@ class CaptureSessionViewController: JGBaseViewController {
     
     
     
-    // MARK: - Variable Properties
+    // MARK: - Optional Properties
+    
+    var processedText: String?
+    
+    
+    
+    // MARK: - Lazy Variable Properties
     
     lazy var frameExtractor = THFrameExtractor()
     
@@ -40,10 +46,31 @@ class CaptureSessionViewController: JGBaseViewController {
     
     
     
+    @objc func didTapView(_ sender: UITapGestureRecognizer) {
+        
+        let synthesizer = THSpeechSynthesizer.shared
+        
+        // WARNING: '_BeginSpeaking: couldn't begin playback'.
+        if synthesizer.isSpeaking() {
+            synthesizer.stopSpeaking()
+            return
+        }
+        
+        guard let processedText = self.processedText else {
+            synthesizer.speak(text: "An error has occurred while processing the image.")
+            return
+        }
+        
+        synthesizer.speak(text: processedText)
+        
+    }
+    
+    
+    
     // MARK: - Functions
     
     /**
-     Processes the CMSampleBuffer retrieved from the THFrameExtractorDelegate protocol stub.
+     Processes the VisionImage retrieved from the THFrameExtractorDelegate protocol stub.
      
      - Parameter image: The VisionImage object to be processed.
      */
@@ -98,6 +125,22 @@ class CaptureSessionViewController: JGBaseViewController {
     
     
     /**
+     Adds a UITapGestureRecognizer to the view.
+     */
+    
+    internal func setUpTapGesture() {
+        
+        let tapGesture = UITapGestureRecognizer()
+            tapGesture.numberOfTapsRequired = 2
+            tapGesture.addTarget(self, action: #selector(self.didTapView(_:)))
+        
+        self.view.addGestureRecognizer(tapGesture)
+        
+    }
+    
+    
+    
+    /**
      Configures user interface elements upon loading the view into memory.
      */
     
@@ -119,6 +162,7 @@ class CaptureSessionViewController: JGBaseViewController {
         self.setUpFrameExtractor()
         self.setUpPreviewLayer()
         self.setUpSwipeGesture()
+        self.setUpTapGesture()
         
     }
 

@@ -24,7 +24,7 @@ class TextRecognitionViewController: CaptureSessionViewController {
     
     override func processVisionImage(_ image: VisionImage) {
         
-        self.textRecognizer?.process(image, completion: { result, error in
+        self.textRecognizer?.process(image, completion: { [unowned self] result, error in
             
             // Check whether there was an error in performing OCR on the image.
             if let error = error {
@@ -33,6 +33,7 @@ class TextRecognitionViewController: CaptureSessionViewController {
             }
             
             if let result = result {
+                self.processedText = result.text
                 print(result.text)
             }
             

@@ -24,7 +24,7 @@ extension MainViewController {
             return
         }
         
-        switch(command) {
+        switch (command) {
             
         case "READ TEXT":
             /*
@@ -36,7 +36,7 @@ extension MainViewController {
             /*
              Image processing and machine learning modules are deployed in order read text from a static image.
              */
-            self.performSegue(withIdentifier: "segueToImageLabeling", sender: nil)
+            self.performSegue(withIdentifier: "segueToImageClassifier", sender: nil)
             
         default:
             THSpeechSynthesizer.shared.speak(text: "Command not found")

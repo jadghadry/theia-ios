@@ -52,4 +52,25 @@ class THSpeechSynthesizer {
         
     }
     
+    
+    
+    /**
+     Returns true if the AVSpeechSynthesizer object is currently speaking, false otherwise.
+     */
+    
+    open func isSpeaking() -> Bool {
+        return self.synthesizer.isSpeaking
+    }
+    
+    
+    
+    /**
+     Immediately stops the AVSpeechSynthesizer object from speaking and triggers a vibration.
+     */
+    
+    open func stopSpeaking() {
+        self.synthesizer.stopSpeaking(at: .immediate)
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    }
+    
 }

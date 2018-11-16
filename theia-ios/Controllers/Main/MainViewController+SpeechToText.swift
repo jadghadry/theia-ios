@@ -10,7 +10,37 @@ import UIKit
 import Speech
 
 extension MainViewController {
-
+    
+    // MARK: - Selectors
+    
+    @objc internal func handleRouteChange(_ notification: Notification) {
+        
+        guard
+            let userInfo = notification.userInfo,
+            let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
+            let reason = AVAudioSession.RouteChangeReason(rawValue:reasonValue) else {
+                return
+        }
+        
+        switch reason {
+            
+        // Handle new device available.
+        case .newDeviceAvailable:
+            break
+            
+        // Handle old device removed.
+        case .oldDeviceUnavailable:
+            break
+            
+        default:
+            return
+            
+        }
+        
+    }
+    
+    
+    
     // MARK: - Functions
     
     /**
@@ -32,10 +62,11 @@ extension MainViewController {
      */
     internal func configureAudioTap() {
         
-        let inputNode = self.audioEngine.inputNode
-        let inputNodeFormat = inputNode.outputFormat(forBus: 0)
+        let audioEngine = self.audioEngine
+        let inputNode = audioEngine.inputNode
+        let inputNodeFormat = inputNode.inputFormat(forBus: 0)
         
-        self.audioEngine.inputNode.installTap(onBus: 0, bufferSize: 1024, format: inputNodeFormat, block: { [unowned self] buffer, time in
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: inputNodeFormat, block: { [unowned self] buffer, time in
             self.recognitionRequest?.append(buffer)
         })
         
@@ -139,7 +170,6 @@ extension MainViewController: SFSpeechRecognizerDelegate {
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         
     }
-    
     
 }
 

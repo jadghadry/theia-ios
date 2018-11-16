@@ -37,12 +37,11 @@ class MainViewController: JGBaseViewController {
     
     @IBAction func didTapView(_ sender: UITapGestureRecognizer) {
         
-        let synthesizer = THSpeechSynthesizer.shared.synthesizer
+        let synthesizer = THSpeechSynthesizer.shared
         
         // Check wether the synthesizer is speaking.
-        if synthesizer.isSpeaking {
-            synthesizer.stopSpeaking(at: .immediate)
-            AudioServicesPlaySystemSound(UInt32(kSystemSoundID_Vibrate))
+        if synthesizer.isSpeaking() {
+            synthesizer.stopSpeaking()
             return
         }
         
@@ -80,6 +79,19 @@ class MainViewController: JGBaseViewController {
     
     
     /**
+     Adds an observer to the default Notification Center in order to handle audio routing modifications.
+     */
+ 
+    internal func setUpNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(handleRouteChange),
+                                               name: AVAudioSession.routeChangeNotification,
+                                               object: AVAudioSession.sharedInstance())
+    }
+    
+    
+    
+    /**
      Sets the category, mode, and desired options on the shared AVAudioSession, then activates it for audio multi-routing.
      */
     
@@ -87,7 +99,7 @@ class MainViewController: JGBaseViewController {
         
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker, .duckOthers])
+            try audioSession.setCategory(.playAndRecord, mode: .default, options: [.allowBluetooth, .allowBluetoothA2DP, .defaultToSpeaker, .duckOthers])
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
             print("An error has occurred while setting the AVAudioSession.")
@@ -122,6 +134,7 @@ class MainViewController: JGBaseViewController {
         
         self.setUpSpeechRecognizer()
         self.setUpAudioSession()
+        self.setUpNotifications()
         self.configureLottieAnimation()
         
         // Request speech input authorization.

@@ -74,7 +74,7 @@
                     </view>
                     <connections>
                         <outlet property="lottieVoiceAnimation" destination="xw2-ke-pTE" id="G8S-YH-iUn"/>
-                        <segue destination="bRL-9e-s4U" kind="presentation" identifier="segueToImageLabeling" id="5su-lx-k5B"/>
+                        <segue destination="bRL-9e-s4U" kind="presentation" identifier="segueToImageClassifier" id="5su-lx-k5B"/>
                         <segue destination="9eP-47-ldx" kind="presentation" identifier="segueToTextRecognizer" id="K80-jr-v09"/>
                     </connections>
                 </viewController>
@@ -127,20 +127,12 @@
                             <constraint firstItem="Bqr-OM-5l1" firstAttribute="trailing" secondItem="Yvn-HN-AFf" secondAttribute="trailing" constant="32" id="jao-aQ-vNd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bqr-OM-5l1"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="thC-UR-lOI" appends="YES" id="iki-WL-EfM"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="lblObjectDescription" destination="6h0-Rg-eyQ" id="ePH-Jb-SML"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXX-op-YwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="thC-UR-lOI">
-                    <connections>
-                        <action selector="didTapView:" destination="bRL-9e-s4U" id="DuV-Vu-0sG"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1063" y="419"/>
         </scene>
