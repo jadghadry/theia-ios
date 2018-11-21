@@ -24,6 +24,8 @@ extension MainViewController {
             return
         }
         
+        let synthesizer = THSpeechSynthesizer.shared
+        
         switch (command) {
             
         case "READ TEXT":
@@ -32,14 +34,14 @@ extension MainViewController {
              */
             self.performSegue(withIdentifier: "segueToTextRecognizer", sender: nil)
             
-        case "CLASSIFY IMAGE":
+        case "IDENTIFY":
             /*
              Image processing and machine learning modules are deployed in order read text from a static image.
              */
             self.performSegue(withIdentifier: "segueToImageClassifier", sender: nil)
             
         default:
-            THSpeechSynthesizer.shared.speak(text: "Command not found")
+            synthesizer.speak(text: "Command not found")
             
         }
         

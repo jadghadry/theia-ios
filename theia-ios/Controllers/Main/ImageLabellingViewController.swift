@@ -1,5 +1,5 @@
 //
-//  ImageClassificationViewController.swift
+//  ImageLabellingViewController.swift
 //  theia-ios
 //
 //  Created by Jad Ghadry on 11/13/18.
@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ImageClassificationViewController: CaptureSessionViewController {
+class ImageLabellingViewController: CaptureSessionViewController {
     
     // MARK: - Outlets
     
@@ -39,15 +39,22 @@ class ImageClassificationViewController: CaptureSessionViewController {
                 return
             }
             
+            // Get the list of processed object sorted by their respective confidence levels.
+            let processedObjectsDescription = results?.sorted(by:{
+                $0.confidence > $1.confidence
+            }).map({
+                "\($0.label) detected with \(Int($0.confidence * 100))% confidence."
+            }).joined(separator: "\n")
+            
+            self.processedText = processedObjectsDescription
+            
             // Get the detected object with the highest confidence level.
             let highestConfidenceObject = results?.max(by: {
-                $0.label > $1.label
+                $0.confidence < $1.confidence
             })
             
-            self.processedText = highestConfidenceObject?.label ?? "Nothing detected"
-            
             DispatchQueue.main.async {
-                self.lblObjectDescription.text = self.processedText
+                self.lblObjectDescription.text = highestConfidenceObject?.label ?? "Nothing Detected"
             }
             
         })
@@ -63,7 +70,7 @@ class ImageClassificationViewController: CaptureSessionViewController {
     internal func setUpLabelDetector() {
         
         let vision = Vision.vision()
-        let options = VisionLabelDetectorOptions(confidenceThreshold: 0.50)
+        let options = VisionLabelDetectorOptions(confidenceThreshold: 0.80)
         
         self.labelDetector = vision.labelDetector(options: options)
         

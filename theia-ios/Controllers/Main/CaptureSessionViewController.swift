@@ -33,7 +33,7 @@ class CaptureSessionViewController: JGBaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.frameExtractor.stopRunning()
+        self.stopTasks()
     }
     
     
@@ -62,6 +62,7 @@ class CaptureSessionViewController: JGBaseViewController {
         }
         
         synthesizer.speak(text: processedText)
+        print(processedText)
         
     }
     
@@ -163,6 +164,26 @@ class CaptureSessionViewController: JGBaseViewController {
         self.setUpPreviewLayer()
         self.setUpSwipeGesture()
         self.setUpTapGesture()
+        
+    }
+    
+    
+    
+    /**
+     Stops all the relevant tasks related to the capture session.
+     */
+    
+    internal func stopTasks() {
+        
+        let synthesizer = THSpeechSynthesizer.shared
+        
+        // Stop uttering any current text.
+        if synthesizer.isSpeaking() {
+            synthesizer.stopSpeaking()
+        }
+        
+        // Stop the frame extractor from running.
+        self.frameExtractor.stopRunning()
         
     }
 

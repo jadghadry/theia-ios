@@ -41,11 +41,11 @@ class THSpeechSynthesizer {
      - Parameter rate: The rate at which the utterance will be spoken.
      */
     
-    open func speak(text: String, language: String = "en-GB", rate: Float = AVSpeechUtteranceDefaultSpeechRate) {
+    open func speak(text: String, language: String = "en-US", rate: Float = AVSpeechUtteranceDefaultSpeechRate) {
         
         // Define the utterance to be spoken.
         let utterance = AVSpeechUtterance(string: text)
-            utterance.voice = AVSpeechSynthesisVoice(identifier: language)
+            utterance.voice = AVSpeechSynthesisVoice(language: language)
             utterance.rate = rate
         
         self.synthesizer.speak(utterance)

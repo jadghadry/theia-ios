@@ -87,10 +87,10 @@
             </objects>
             <point key="canvasLocation" x="40.799999999999997" y="26.53673163418291"/>
         </scene>
-        <!--Image Classification View Controller-->
+        <!--Image Labelling View Controller-->
         <scene sceneID="WCJ-Ko-pFn">
             <objects>
-                <viewController modalPresentationStyle="overFullScreen" id="bRL-9e-s4U" customClass="ImageClassificationViewController" customModule="theia_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overFullScreen" id="bRL-9e-s4U" customClass="ImageLabellingViewController" customModule="theia_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e2n-hR-gc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

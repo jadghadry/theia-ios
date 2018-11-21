@@ -34,7 +34,6 @@ class TextRecognitionViewController: CaptureSessionViewController {
             
             if let result = result {
                 self.processedText = result.text
-                print(result.text)
             }
             
         })
