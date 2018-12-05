@@ -63,7 +63,7 @@
 		26DD4658215FEAF6000B10E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26DD465A215FEAF6000B10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26DD4666215FED65000B10E5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		26DD4669215FEDAB000B10E5 /* Theia-Bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Theia-Bridging-header.h"; sourceTree = "<group>"; };
+		26DD4669215FEDAB000B10E5 /* Theia-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Theia-Bridging-Header.h"; sourceTree = "<group>"; };
 		26FED94A218742C900D1D655 /* voice.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = voice.json; sourceTree = "<group>"; };
 		5739E4C3B4B9A86E6CF73E96 /* Pods_theia_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theia_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75D73B7AD121FAB5F4A2C10C /* Pods-theia-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theia-ios.release.xcconfig"; path = "Target Support Files/Pods-theia-ios/Pods-theia-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 				26FED949218742B700D1D655 /* LottieFiles */,
 				26DD465A215FEAF6000B10E5 /* Info.plist */,
 				269A125B2187C4CF00A1C268 /* GoogleService-Info.plist */,
-				26DD4669215FEDAB000B10E5 /* Theia-Bridging-header.h */,
+				26DD4669215FEDAB000B10E5 /* Theia-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
