@@ -20,7 +20,7 @@ fileprivate struct THFrameExtractorQueue {
 
 
 @objc protocol THFrameExtractorDelegate {
-    func didCaptureSampleBuffer(_ buffer: CMSampleBuffer)
+    func didCaptureImage(_ image: UIImage)
 }
 
 
@@ -164,7 +164,14 @@ class THFrameExtractor: NSObject {
 extension THFrameExtractor: AVCaptureVideoDataOutputSampleBufferDelegate {
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        self.delegate?.didCaptureSampleBuffer(sampleBuffer)
+        
+        guard let image = self.imageFromSampleBuffer(sampleBuffer) else {
+            print("⚠️ Unable to retrieve UIImage from CMSampleBuffer.")
+            return
+        }
+        
+        self.delegate?.didCaptureImage(image)
+        
     }
     
 }

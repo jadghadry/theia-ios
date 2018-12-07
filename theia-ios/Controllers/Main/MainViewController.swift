@@ -58,7 +58,7 @@ class MainViewController: JGBaseViewController {
             // If the audio engine was not running, then we need to start listenting and recognizing audio.
             self.startSpeechRecognition()
             self.lottieVoiceAnimation.play()
-            print("Listening")
+            print("🎙 Listening")
             
         }
         
@@ -102,7 +102,7 @@ class MainViewController: JGBaseViewController {
             try audioSession.setCategory(.playAndRecord, mode: .default, options: [.allowBluetooth, .allowBluetoothA2DP, .defaultToSpeaker, .duckOthers])
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         } catch {
-            print("An error has occurred while setting the AVAudioSession.")
+            print("⚠️ An error has occurred while configuring the AVAudioSession.")
         }
         
     }

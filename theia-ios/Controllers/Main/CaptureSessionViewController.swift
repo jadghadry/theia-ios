@@ -20,6 +20,7 @@ class CaptureSessionViewController: JGBaseViewController {
     // MARK: - Optional Properties
     
     var processedText: String?
+    var imageToProcess: VisionImage?
     
     
     
@@ -56,13 +57,13 @@ class CaptureSessionViewController: JGBaseViewController {
             return
         }
         
-        guard let processedText = self.processedText else {
-            synthesizer.speak(text: "An error has occurred while processing the image.")
+        guard let image = self.imageToProcess else {
+            print("⚠️ No image was provided for processing.")
             return
         }
         
-        synthesizer.speak(text: processedText)
-        print(processedText)
+        // If an image was retrieved, send it to processing.
+        self.process(image)
         
     }
     
@@ -76,7 +77,7 @@ class CaptureSessionViewController: JGBaseViewController {
      - Parameter image: The VisionImage object to be processed.
      */
     
-    open func processVisionImage(_ image: VisionImage) {
+    open func process(_ image: VisionImage) {
         
     }
     
@@ -195,7 +196,7 @@ class CaptureSessionViewController: JGBaseViewController {
 
 extension CaptureSessionViewController: THFrameExtractorDelegate {
     
-    func didCaptureSampleBuffer(_ buffer: CMSampleBuffer) {
+    func didCaptureImage(_ image: UIImage) {
         
         // Modify the orientation of the retrieved buffer before sending it to processing.
         let imageOrientation = THUtilities.imageOrientation()
@@ -204,11 +205,11 @@ extension CaptureSessionViewController: THFrameExtractorDelegate {
         let customMetadata = VisionImageMetadata()
             customMetadata.orientation = visionOrientation
         
-        let image = VisionImage(buffer: buffer)
+        let image = VisionImage(image: image)
             image.metadata = customMetadata
         
-        // Process the Vision Image object.
-        self.processVisionImage(image)
+        self.imageToProcess = image
+        
     }
     
 }

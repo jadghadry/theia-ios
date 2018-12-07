@@ -83,7 +83,7 @@ extension MainViewController {
         guard
             let speechRecognizer = self.speechRecognizer,
             let recognitionRequest = self.recognitionRequest else {
-                fatalError("One or more properties could not be instantiated.")
+                fatalError("⚠️ One or more properties could not be instantiated.")
         }
         
         self.recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest, resultHandler: { [unowned self] result, error in
@@ -129,7 +129,7 @@ extension MainViewController {
         do {
             try self.audioEngine.start()
         } catch {
-            print("Could not start the audioEngine property.")
+            print("⚠️ Could not start the audioEngine property.")
         }
         
     }

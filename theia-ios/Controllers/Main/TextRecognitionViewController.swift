@@ -22,19 +22,20 @@ class TextRecognitionViewController: CaptureSessionViewController {
      Performs OCR on the VisionImage input and extracts relevant text accordingly.
      */
     
-    override func processVisionImage(_ image: VisionImage) {
+    override func process(_ image: VisionImage) {
         
-        self.textRecognizer?.process(image, completion: { [unowned self] result, error in
+        let synthesizer = THSpeechSynthesizer.shared
+        
+        self.textRecognizer?.process(image, completion: { (result, error) in
             
             // Check whether there was an error in performing OCR on the image.
             if let error = error {
-                THSpeechSynthesizer.shared.speak(text: error.localizedDescription)
+                synthesizer.speak(text: error.localizedDescription)
                 return
             }
             
-            if let result = result {
-                self.processedText = result.text
-            }
+            synthesizer.speak(text: result?.text)
+            print(result?.text ?? "⚠️ No text detected.")
             
         })
         

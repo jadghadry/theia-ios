@@ -9,11 +9,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Nunito-SemiBold.ttf">
-            <string>Nunito-SemiBold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -94,43 +89,10 @@
                     <view key="view" contentMode="scaleToFill" id="e2n-hR-gc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yvn-HN-AFf">
-                                <rect key="frame" x="32" y="579" width="311" height="64"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nothing Detected" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6h0-Rg-eyQ">
-                                        <rect key="frame" x="24" y="23" width="263" height="18"/>
-                                        <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="13"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="6h0-Rg-eyQ" secondAttribute="trailing" constant="24" id="Brd-lg-6cT"/>
-                                    <constraint firstAttribute="height" constant="64" id="Ccb-ij-XgD"/>
-                                    <constraint firstItem="6h0-Rg-eyQ" firstAttribute="leading" secondItem="Yvn-HN-AFf" secondAttribute="leading" constant="24" id="bQr-3c-HOb"/>
-                                    <constraint firstItem="6h0-Rg-eyQ" firstAttribute="centerY" secondItem="Yvn-HN-AFf" secondAttribute="centerY" id="ohH-lp-HUT"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="16"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="Bqr-OM-5l1" firstAttribute="bottom" secondItem="Yvn-HN-AFf" secondAttribute="bottom" constant="24" id="Dz4-8m-wak"/>
-                            <constraint firstItem="Yvn-HN-AFf" firstAttribute="leading" secondItem="Bqr-OM-5l1" secondAttribute="leading" constant="32" id="EfE-Jq-bcP"/>
-                            <constraint firstItem="Bqr-OM-5l1" firstAttribute="trailing" secondItem="Yvn-HN-AFf" secondAttribute="trailing" constant="32" id="jao-aQ-vNd"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Bqr-OM-5l1"/>
                     </view>
-                    <connections>
-                        <outlet property="lblObjectDescription" destination="6h0-Rg-eyQ" id="ePH-Jb-SML"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXX-op-YwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
