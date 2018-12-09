@@ -6,16 +6,10 @@
 //  Copyright © 2018 Jad Ghadry. All rights reserved.
 //
 
-import UIKit
 import AVFoundation
+import UIKit
 
 class CaptureSessionViewController: JGBaseViewController {
-
-    // MARK: - Variable Properties
-    
-    var previewLayer = AVCaptureVideoPreviewLayer()
-    
-    
     
     // MARK: - Optional Properties
     
@@ -35,36 +29,6 @@ class CaptureSessionViewController: JGBaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.stopTasks()
-    }
-    
-    
-    
-    // MARK: - Selectors
-    
-    @objc func didSwipeView(_ sender: UISwipeGestureRecognizer) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    
-    @objc func didTapView(_ sender: UITapGestureRecognizer) {
-        
-        let synthesizer = THSpeechSynthesizer.shared
-        
-        // WARNING: '_BeginSpeaking: couldn't begin playback'.
-        if synthesizer.isSpeaking() {
-            synthesizer.stopSpeaking()
-            return
-        }
-        
-        guard let image = self.imageToProcess else {
-            print("⚠️ No image was provided for processing.")
-            return
-        }
-        
-        // If an image was retrieved, send it to processing.
-        self.process(image)
-        
     }
     
     
@@ -99,44 +63,13 @@ class CaptureSessionViewController: JGBaseViewController {
     
     internal func setUpPreviewLayer() {
         
-        self.previewLayer.session = self.frameExtractor.captureSession
-        self.previewLayer.frame = UIScreen.main.bounds
-        self.previewLayer.videoGravity = .resizeAspectFill
-        self.previewLayer.zPosition = -1
+        let previewLayer = AVCaptureVideoPreviewLayer()
+            previewLayer.session = self.frameExtractor.captureSession
+            previewLayer.frame = UIScreen.main.bounds
+            previewLayer.videoGravity = .resizeAspectFill
+            previewLayer.zPosition = -1
         
-        self.view.layer.addSublayer(self.previewLayer)
-        
-    }
-    
-    
-    
-    /**
-     Adds a UISwipeGestureRecognizer to the view.
-     */
-    
-    internal func setUpSwipeGesture() {
-        
-        let swipeGesture = UISwipeGestureRecognizer()
-            swipeGesture.direction = .down
-            swipeGesture.addTarget(self, action: #selector(self.didSwipeView(_:)))
-        
-        self.view.addGestureRecognizer(swipeGesture)
-        
-    }
-    
-    
-    
-    /**
-     Adds a UITapGestureRecognizer to the view.
-     */
-    
-    internal func setUpTapGesture() {
-        
-        let tapGesture = UITapGestureRecognizer()
-            tapGesture.numberOfTapsRequired = 2
-            tapGesture.addTarget(self, action: #selector(self.didTapView(_:)))
-        
-        self.view.addGestureRecognizer(tapGesture)
+        self.view.layer.addSublayer(previewLayer)
         
     }
     
@@ -160,11 +93,16 @@ class CaptureSessionViewController: JGBaseViewController {
         
         super.setUpViewController()
         
+        // CaptureSession configurations.
         self.setUpUserInterface()
         self.setUpFrameExtractor()
         self.setUpPreviewLayer()
-        self.setUpSwipeGesture()
-        self.setUpTapGesture()
+        
+        // UIGestureRecognizer configurations.
+        self.setUpDismissSwipeGesture()
+        self.setUpImageProcessingTapGesture()
+        self.setUpTorchActivationSwipeGesture()
+        self.setUpTorchDeactivationSwipeGesture()
         
     }
     

@@ -42,7 +42,7 @@ class ImageLabellingViewController: CaptureSessionViewController {
                 "\($0.label) detected with \(Int($0.confidence * 100))% confidence."
             }).joined(separator: "\n")
             
-            // Speak and print the list of processed objects.
+            // Utter and print the list of processed objects.
             synthesizer.speak(text: processedObjectsDescription)
             print(processedObjectsDescription ?? "⚠️ No Objects Detected.")
             
@@ -59,7 +59,7 @@ class ImageLabellingViewController: CaptureSessionViewController {
     internal func setUpLabelDetector() {
         
         let vision = Vision.vision()
-        let options = VisionLabelDetectorOptions(confidenceThreshold: 0.80)
+        let options = VisionLabelDetectorOptions(confidenceThreshold: 0.50)
         
         self.labelDetector = vision.labelDetector(options: options)
         

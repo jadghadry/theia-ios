@@ -13,6 +13,8 @@ target 'theia-ios' do
   use_frameworks!
 
   # Pods for theia-ios
+  pod 'Crashlytics'
+  pod 'Fabric'
   pod 'Firebase/Core'
   pod 'Firebase/MLVision'
   pod 'Firebase/MLVisionTextModel'

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		261606D821BD135C00219637 /* CaptureSessionViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261606D721BD135C00219637 /* CaptureSessionViewController+Gestures.swift */; };
 		261928182189B68B001734BD /* MainViewController+SpeechToText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261928172189B68B001734BD /* MainViewController+SpeechToText.swift */; };
 		26360D2C218DFD4600565EBA /* THSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26360D2B218DFD4600565EBA /* THSpeechSynthesizer.swift */; };
 		2636340E219622190026E463 /* THFrameExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636340D219622190026E463 /* THFrameExtractor.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		261606D721BD135C00219637 /* CaptureSessionViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaptureSessionViewController+Gestures.swift"; sourceTree = "<group>"; };
 		261928172189B68B001734BD /* MainViewController+SpeechToText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+SpeechToText.swift"; sourceTree = "<group>"; };
 		26360D2B218DFD4600565EBA /* THSpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THSpeechSynthesizer.swift; sourceTree = "<group>"; };
 		2636340D219622190026E463 /* THFrameExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = THFrameExtractor.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				2657DA5D2188664800F45147 /* MainViewController+Commands.swift */,
 				261928172189B68B001734BD /* MainViewController+SpeechToText.swift */,
 				26AFCA0D219DCD33005F89AF /* CaptureSessionViewController.swift */,
+				261606D721BD135C00219637 /* CaptureSessionViewController+Gestures.swift */,
 				264CF38A219A3FBE008535B1 /* ImageLabellingViewController.swift */,
 				26AFCA0F219DD486005F89AF /* TextRecognitionViewController.swift */,
 			);
@@ -232,14 +235,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26DD465D215FEAF6000B10E5 /* Build configuration list for PBXNativeTarget "theia-ios" */;
 			buildPhases = (
-				C77AA0AD4719BF872E6B9EAA /* [CP] Check Pods Manifest.lock */,
+				26916CEE21A2445400239DA8 /* Embed App Extensions */,
 				26DD4647215FEAF5000B10E5 /* Sources */,
 				26DD4648215FEAF5000B10E5 /* Frameworks */,
 				26DD4649215FEAF5000B10E5 /* Resources */,
-				26916CEE21A2445400239DA8 /* Embed App Extensions */,
-				26916CF021A244B200239DA8 /* Warnings */,
-				29479F19C1B0CEA7B47485E0 /* [CP] Embed Pods Frameworks */,
+				C77AA0AD4719BF872E6B9EAA /* [CP] Check Pods Manifest.lock */,
 				415238197E2E14C2A8BB9EF2 /* [CP] Copy Pods Resources */,
+				29479F19C1B0CEA7B47485E0 /* [CP] Embed Pods Frameworks */,
+				2610498921BBC796003ED351 /* Fabric */,
+				26916CF021A244B200239DA8 /* Warnings */,
 			);
 			buildRules = (
 			);
@@ -303,6 +307,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2610498921BBC796003ED351 /* Fabric */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = Fabric;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
+		};
 		26916CF021A244B200239DA8 /* Warnings */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -417,6 +440,7 @@
 				261928182189B68B001734BD /* MainViewController+SpeechToText.swift in Sources */,
 				264CF38B219A3FBE008535B1 /* ImageLabellingViewController.swift in Sources */,
 				2636340E219622190026E463 /* THFrameExtractor.swift in Sources */,
+				261606D821BD135C00219637 /* CaptureSessionViewController+Gestures.swift in Sources */,
 				26B57708219C998400CEACB8 /* THUtilities.swift in Sources */,
 				26DD464F215FEAF5000B10E5 /* AppDelegate.swift in Sources */,
 				26AFCA10219DD486005F89AF /* TextRecognitionViewController.swift in Sources */,
@@ -569,6 +593,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 48SVPGJ6XG;
 				INFOPLIST_FILE = "$(SRCROOT)/$(PROJECT_NAME)/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -590,6 +615,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 48SVPGJ6XG;
 				INFOPLIST_FILE = "$(SRCROOT)/$(PROJECT_NAME)/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
