@@ -153,8 +153,8 @@ extension CaptureSessionViewController {
             
             do {
                 try device.lockForConfiguration()
-                device.torchMode = on ? .on : .off
-                device.unlockForConfiguration()
+                    device.torchMode = on ? .on : .off
+                    device.unlockForConfiguration()
                 
             } catch {
                 print("🔦 Torch could not be used.")
