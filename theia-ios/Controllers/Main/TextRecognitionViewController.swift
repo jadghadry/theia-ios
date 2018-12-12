@@ -34,8 +34,14 @@ class TextRecognitionViewController: CaptureSessionViewController {
                 return
             }
             
-            synthesizer.speak(text: result?.text)
-            print(result?.text ?? "⚠️ No text detected.")
+            // Check whether results were actually retrieved.
+            guard let result = result else {
+                print("⚠️ No text detected.")
+                return
+            }
+            
+            synthesizer.speak(text: result.text)
+            print(result.text)
             
         })
         

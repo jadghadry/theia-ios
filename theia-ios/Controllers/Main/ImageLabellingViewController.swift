@@ -35,8 +35,14 @@ class ImageLabellingViewController: CaptureSessionViewController {
                 return
             }
             
+            // Check whether results were actually retrieved.
+            guard let results = results else {
+                print("⚠️ No Objects Detected.")
+                return
+            }
+            
             // Get the list of processed objects sorted by their respective confidence levels.
-            let processedObjectsDescription = results?.sorted(by:{
+            let processedObjectsDescription = results.sorted(by:{
                 $0.confidence > $1.confidence
             }).map({
                 "\($0.label) detected with \(Int($0.confidence * 100))% confidence."
@@ -44,7 +50,7 @@ class ImageLabellingViewController: CaptureSessionViewController {
             
             // Utter and print the list of processed objects.
             synthesizer.speak(text: processedObjectsDescription)
-            print(processedObjectsDescription ?? "⚠️ No Objects Detected.")
+            print(processedObjectsDescription)
             
         })
 
