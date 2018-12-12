@@ -36,7 +36,7 @@ class THFrameExtractor: NSObject {
     
     // MARK: - Variable Properties
     
-    var delegate: THFrameExtractorDelegate?
+    weak var delegate: THFrameExtractorDelegate?
     
     
     
@@ -58,7 +58,7 @@ class THFrameExtractor: NSObject {
     
     internal func configureSession() {
         
-        let videoAuthorized = UserDefaults.standard.bool(forKey: "videoPermission")
+        let videoAuthorized = UserDefaults.standard.bool(forKey: THSettingsKey.videoPermission)
         
         // Input Configuration.
         guard
@@ -121,7 +121,7 @@ class THFrameExtractor: NSObject {
         THFrameExtractorQueue.session.suspend()
         
         AVCaptureDevice.requestAccess(for: .video, completionHandler: { authorized in
-            UserDefaults.standard.set(authorized, forKey: "videoPermission")
+            UserDefaults.standard.set(authorized, forKey: THSettingsKey.videoPermission)
             THFrameExtractorQueue.session.resume()
         })
         
@@ -170,7 +170,9 @@ extension THFrameExtractor: AVCaptureVideoDataOutputSampleBufferDelegate {
             return
         }
         
-        self.delegate?.didCaptureImage(image)
+        DispatchQueue.main.async { [unowned self] in
+            self.delegate?.didCaptureImage(image)
+        }
         
     }
     

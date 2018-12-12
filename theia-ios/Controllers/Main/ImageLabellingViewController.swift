@@ -59,7 +59,7 @@ class ImageLabellingViewController: CaptureSessionViewController {
     internal func setUpLabelDetector() {
         
         let vision = Vision.vision()
-        let options = VisionLabelDetectorOptions(confidenceThreshold: 0.50)
+        let options = VisionLabelDetectorOptions(confidenceThreshold: 0.70)
         
         self.labelDetector = vision.labelDetector(options: options)
         

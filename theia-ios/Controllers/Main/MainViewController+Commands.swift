@@ -28,18 +28,15 @@ extension MainViewController {
         
         switch (command) {
             
+        // Image processing and machine learning modules are deployed in order to read text.
         case let command where command.contains("TEXT"):
-            /*
-             Image processing and machine learning modules are deployed in order to read text from a static image.
-             */
             self.performSegue(withIdentifier: "segueToTextRecognizer", sender: nil)
             
+        // Image processing and machine learning modules are deployed in order to classify objects.
         case let command where command.contains("IDENTIFY"):
-            /*
-             Image processing and machine learning modules are deployed in order to classify objects from a static image.
-             */
             self.performSegue(withIdentifier: "segueToImageClassifier", sender: nil)
             
+        // Command does not exist.
         default:
             synthesizer.speak(text: "Command not found")
             

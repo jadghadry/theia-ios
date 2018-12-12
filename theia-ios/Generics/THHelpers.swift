@@ -9,7 +9,7 @@
 import AVFoundation
 import Foundation
 
-class THUtilities {
+class THHelpers {
     
     // MARK: - Functions
     
