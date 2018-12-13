@@ -157,7 +157,7 @@ extension CaptureSessionViewController {
                     device.unlockForConfiguration()
                 
             } catch {
-                print("🔦 Torch could not be used.")
+                print("🔦 Torch could not be toggled.")
             }
             
         } else {

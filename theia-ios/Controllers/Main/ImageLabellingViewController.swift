@@ -36,7 +36,7 @@ class ImageLabellingViewController: CaptureSessionViewController {
             }
             
             // Check whether results were actually retrieved.
-            guard let results = results else {
+            guard let results = results, !results.isEmpty else {
                 print("⚠️ No Objects Detected.")
                 return
             }
@@ -64,8 +64,10 @@ class ImageLabellingViewController: CaptureSessionViewController {
     
     internal func setUpLabelDetector() {
         
+        let confidenceThreshold = UserDefaults.standard.float(forKey: THSettingsKey.confidenceThreshold)
+        
         let vision = Vision.vision()
-        let options = VisionLabelDetectorOptions(confidenceThreshold: 0.70)
+        let options = VisionLabelDetectorOptions(confidenceThreshold: confidenceThreshold)
         
         self.labelDetector = vision.labelDetector(options: options)
         
