@@ -127,15 +127,3 @@ class CaptureSessionViewController: JGBaseViewController {
     }
 
 }
-
-
-
-// MARK: - THFrameExtractorDelegate Extension
-
-extension CaptureSessionViewController: THFrameExtractorDelegate {
-    
-    func didCaptureSampleBuffer(_ sampleBuffer: CMSampleBuffer) {
-        self.sampleBufferToProcess = sampleBuffer
-    }
-    
-}

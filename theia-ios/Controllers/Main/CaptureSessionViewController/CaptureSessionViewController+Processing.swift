@@ -43,7 +43,7 @@ extension CaptureSessionViewController {
     
     
     /**
-     Retrieves a VisionImage object to process from a CMSampleBuffer.
+     Returns a VisionImage object to process using a CMSampleBuffer input.
      Also fixes the orientation of the image according to the orientation of the device.
      */
     
@@ -73,6 +73,18 @@ extension CaptureSessionViewController {
         
         return visionImage
         
+    }
+    
+}
+
+
+
+// MARK: - THFrameExtractorDelegate Extension
+
+extension CaptureSessionViewController: THFrameExtractorDelegate {
+    
+    func didCaptureSampleBuffer(_ sampleBuffer: CMSampleBuffer) {
+        self.sampleBufferToProcess = sampleBuffer
     }
     
 }

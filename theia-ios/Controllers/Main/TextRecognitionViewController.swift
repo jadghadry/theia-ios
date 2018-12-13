@@ -30,7 +30,7 @@ class TextRecognitionViewController: CaptureSessionViewController {
             
             // Check whether there was an error in performing OCR on the image.
             if let error = error {
-                synthesizer.speak(text: error.localizedDescription)
+                print(error.localizedDescription)
                 return
             }
             
