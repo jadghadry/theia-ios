@@ -27,7 +27,7 @@ extension CaptureSessionViewController {
      Processes a given VisionImage input depending on the invoked user command.
      */
     
-    @objc func processFrame(_ sender: UITapGestureRecognizer) {
+    @objc func processSampleBuffer(_ sender: UITapGestureRecognizer) {
         
         let synthesizer = THSpeechSynthesizer.shared
         
@@ -37,12 +37,12 @@ extension CaptureSessionViewController {
             return
         }
         
-        guard let image = self.imageToProcess else {
-            print("⚠️ No image was provided for processing.")
+        // Retrieve a VisionImage to process.
+        guard let image = imageToProcess() else {
+            print("⚠️ Could not retrieve a VisionImage object to process.")
             return
         }
         
-        // If an image was retrieved, send it to processing.
         self.process(image)
         
     }
@@ -95,7 +95,7 @@ extension CaptureSessionViewController {
         
         let tapGesture = UITapGestureRecognizer()
             tapGesture.numberOfTapsRequired = 2
-            tapGesture.addTarget(self, action: #selector(self.processFrame(_ :)))
+            tapGesture.addTarget(self, action: #selector(self.processSampleBuffer(_ :)))
         
         self.view.addGestureRecognizer(tapGesture)
         

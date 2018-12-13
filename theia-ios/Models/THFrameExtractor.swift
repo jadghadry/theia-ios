@@ -20,7 +20,7 @@ fileprivate struct THFrameExtractorQueue {
 
 
 @objc protocol THFrameExtractorDelegate {
-    func didCaptureImage(_ image: UIImage)
+    func didCaptureSampleBuffer(_ sampleBuffer: CMSampleBuffer)
 }
 
 
@@ -30,7 +30,6 @@ class THFrameExtractor: NSObject {
     // MARK: - Constant Properties
     
     let captureSession = AVCaptureSession()
-    let context = CIContext()
     
     
     
@@ -79,33 +78,6 @@ class THFrameExtractor: NSObject {
             videoOutput.setSampleBufferDelegate(self, queue: THFrameExtractorQueue.sampleBuffer)
 
         self.captureSession.addOutput(videoOutput)
-        
-    }
-    
-    
-    
-    /**
-     Returns an optional UIImage from a CMSampleBuffer frame.
-     
-     - Parameter sampleBuffer: The CMSampleBuffer to be converted.
-     */
-    
-    private func imageFromSampleBuffer(_ sampleBuffer: CMSampleBuffer) -> UIImage? {
-        
-        // Transform the CMSampleBuffer to a CVImageBuffer.
-        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
-            return nil
-        }
-        
-        // Create a CIImage from the imageBuffer object.
-        let ciImage = CIImage(cvPixelBuffer: imageBuffer)
-        
-        // Get a CGImage from the CIContext.
-        guard let cgImage = self.context.createCGImage(ciImage, from: ciImage.extent) else {
-            return nil
-        }
-        
-        return UIImage(cgImage: cgImage)
         
     }
     
@@ -165,13 +137,8 @@ extension THFrameExtractor: AVCaptureVideoDataOutputSampleBufferDelegate {
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
-        guard let image = self.imageFromSampleBuffer(sampleBuffer) else {
-            print("⚠️ Unable to retrieve UIImage from CMSampleBuffer.")
-            return
-        }
-        
         DispatchQueue.main.async { [unowned self] in
-            self.delegate?.didCaptureImage(image)
+            self.delegate?.didCaptureSampleBuffer(sampleBuffer)
         }
         
     }

@@ -14,7 +14,7 @@ class CaptureSessionViewController: JGBaseViewController {
     // MARK: - Optional Properties
     
     var processedText: String?
-    var imageToProcess: VisionImage?
+    var sampleBufferToProcess: CMSampleBuffer?
     
     
     
@@ -134,20 +134,8 @@ class CaptureSessionViewController: JGBaseViewController {
 
 extension CaptureSessionViewController: THFrameExtractorDelegate {
     
-    func didCaptureImage(_ image: UIImage) {
-        
-        // Modify the orientation of the retrieved buffer before sending it to processing.
-        let imageOrientation = THHelpers.imageOrientation()
-        let visionOrientation = THHelpers.visionImageOrientation(from: imageOrientation)
-        
-        let customMetadata = VisionImageMetadata()
-            customMetadata.orientation = visionOrientation
-        
-        let image = VisionImage(image: image)
-            image.metadata = customMetadata
-        
-        self.imageToProcess = image
-        
+    func didCaptureSampleBuffer(_ sampleBuffer: CMSampleBuffer) {
+        self.sampleBufferToProcess = sampleBuffer
     }
     
 }
