@@ -51,7 +51,7 @@ class MainViewController: JGBaseViewController {
             // If the audio engine was running, then we need to stop listenting for additional audio.
             self.stopSpeechRecognition()
             self.lottieVoiceAnimation.stop()
-            self.runCommand(self.command)
+            self.runCommand()
             
         } else {
             

@@ -17,10 +17,10 @@ extension MainViewController {
      Future updates to this method should include dynamic compatibility.
      */
     
-    internal func runCommand(_ command: String?) {
+    internal func runCommand() {
         
         // Check if a non-empty command was initiated.
-        guard let command = command?.uppercased() else {
+        guard let command = self.command?.uppercased() else {
             return
         }
         
@@ -38,7 +38,11 @@ extension MainViewController {
             
         // Modify the confidence threshold value.
         case let command where command.contains("CONFIDENCE THRESHOLD"):
-            self.modifyConfidenceThreshold(fromCommand: command)
+            self.modifySettings(forKey: THSettingsKey.confidenceThreshold, fromCommand: command)
+            
+        // Modify the speech rate value.
+        case let command where command.contains("SPEECH RATE"):
+            self.modifySettings(forKey: THSettingsKey.speechRate, fromCommand: command)
             
         // Command does not exist.
         default:
@@ -53,31 +57,30 @@ extension MainViewController {
     
     
     /**
-     Modifies the confidence threshold value according to a given command.
+     Modifies user settings according to a given command.
      
-     - Parameter command: The command from which the confidence threshold value should be extracted.
+     - Parameter key: The key of the Theia parameter to change.
+     - Parameter command: The command from which the numerical should be extracted.
      */
     
-    internal func modifyConfidenceThreshold(fromCommand command: String) {
+    internal func modifySettings(forKey key: String, fromCommand command: String) {
         
         let synthesizer = THSpeechSynthesizer.shared
         
-        // Extract the percentage value from the command.
-        let nonDecimalDigits = CharacterSet.decimalDigits.inverted
-        let extractedNumber = Float(command.components(separatedBy: nonDecimalDigits).joined())
-        
-        guard let confidenceThreshold = extractedNumber else {
-            synthesizer.speak(text: "Invalid threshold.")
+        // Check whether the invoked command contains a number.
+        guard let extractedNumber = command.extractNumber() else {
+            synthesizer.speak(text: "Could not extract value.")
             return
         }
         
-        guard (1...100).contains(confidenceThreshold) else {
+        // Check if the extracted number falls between 1 and 100.
+        guard (1...100).contains(extractedNumber) else {
             synthesizer.speak(text: "Please provide a value between 1 and 100%.")
             return
         }
         
-        UserDefaults.standard.set(confidenceThreshold/100.0, forKey: THSettingsKey.confidenceThreshold)
-        synthesizer.speak(text: "Done!")
+        UserDefaults.standard.set(extractedNumber/100.0, forKey: key)
+        synthesizer.speak(text: "Ok, done!")
         
     }
     
