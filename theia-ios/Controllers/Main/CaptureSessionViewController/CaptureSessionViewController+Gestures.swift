@@ -53,7 +53,7 @@ extension CaptureSessionViewController {
      If available, turns on the device's torch.
      */
     
-    @objc internal func turnOnTorch() {
+    @objc internal func turnOnTorch(_ sender: UISwipeGestureRecognizer) {
         self.toggleTorch(true)
     }
     
@@ -63,7 +63,7 @@ extension CaptureSessionViewController {
      If available, turns off the device's torch.
      */
     
-    @objc internal func turnOffTorch() {
+    @objc internal func turnOffTorch(_ sender: UISwipeGestureRecognizer) {
         self.toggleTorch(false)
     }
     
@@ -104,7 +104,7 @@ extension CaptureSessionViewController {
     
     
     /**
-     Adds a UISwipeGestureRecognizer to the view.
+     Adds a UISwipeGestureRecognizer that turns on the torch.
      */
     
     internal func setUpTorchActivationSwipeGesture() {
@@ -121,7 +121,7 @@ extension CaptureSessionViewController {
     
     
     /**
-     Adds a UISwipeGestureRecognizer to the view.
+     Adds a UISwipeGestureRecognizer that turns off the torch.
      */
     
     internal func setUpTorchDeactivationSwipeGesture() {
@@ -138,9 +138,9 @@ extension CaptureSessionViewController {
     
     
     /**
-     If available, toggles the torch of the device according to an input boolean parameter.
+     If available, toggles the torch of the device.
      
-     - Parameter on: A boolean parameter that determines whether the torch should be toggled on or off.
+     - Parameter on: A boolean parameter that determines whether the torch should be turned on or off.
      */
     
     internal func toggleTorch(_ on: Bool) {

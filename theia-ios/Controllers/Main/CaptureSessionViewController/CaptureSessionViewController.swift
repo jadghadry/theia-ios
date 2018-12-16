@@ -36,18 +36,6 @@ class CaptureSessionViewController: JGBaseViewController {
     // MARK: - Functions
     
     /**
-     Processes the VisionImage retrieved from the THFrameExtractorDelegate protocol stub.
-     
-     - Parameter image: The VisionImage object to be processed.
-     */
-    
-    open func process(_ image: VisionImage) {
-        
-    }
-    
-    
-    
-    /**
      Configures the THFrameExtractor instance.
      */
     
@@ -103,6 +91,19 @@ class CaptureSessionViewController: JGBaseViewController {
         self.setUpImageProcessingTapGesture()
         self.setUpTorchActivationSwipeGesture()
         self.setUpTorchDeactivationSwipeGesture()
+        
+    }
+    
+    
+    
+    /**
+     Processes the VisionImage retrieved using the THFrameExtractorDelegate protocol stub.
+     This method should be overridden by inheriting view controllers.
+     
+     - Parameter image: The VisionImage object to be processed.
+     */
+    
+    open func process(_ image: VisionImage) {
         
     }
     
