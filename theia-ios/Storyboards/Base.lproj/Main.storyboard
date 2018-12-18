@@ -68,6 +68,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="animationView" destination="xw2-ke-pTE" id="yFQ-wA-1IH"/>
                         <outlet property="lottieVoiceAnimation" destination="xw2-ke-pTE" id="G8S-YH-iUn"/>
                         <segue destination="bRL-9e-s4U" kind="presentation" identifier="segueToImageClassifier" id="5su-lx-k5B"/>
                         <segue destination="9eP-47-ldx" kind="presentation" identifier="segueToTextRecognizer" id="K80-jr-v09"/>

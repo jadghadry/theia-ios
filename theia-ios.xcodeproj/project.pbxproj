@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		261928182189B68B001734BD /* MainViewController+SpeechToText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261928172189B68B001734BD /* MainViewController+SpeechToText.swift */; };
-		2635653421C031A1007BAF67 /* THSettingsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2635653321C031A1007BAF67 /* THSettingsKey.swift */; };
+		2635653421C031A1007BAF67 /* THKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2635653321C031A1007BAF67 /* THKey.swift */; };
 		26360D2C218DFD4600565EBA /* THSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26360D2B218DFD4600565EBA /* THSpeechSynthesizer.swift */; };
 		2636340E219622190026E463 /* THFrameExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636340D219622190026E463 /* THFrameExtractor.swift */; };
 		264CF38B219A3FBE008535B1 /* ImageLabellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264CF38A219A3FBE008535B1 /* ImageLabellingViewController.swift */; };
@@ -23,7 +23,7 @@
 		269A281821C2D0C00001A4C4 /* CaptureSessionViewController+Processing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A281121C265E30001A4C4 /* CaptureSessionViewController+Processing.swift */; };
 		26AFCA0E219DCD33005F89AF /* CaptureSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFCA0D219DCD33005F89AF /* CaptureSessionViewController.swift */; };
 		26AFCA10219DD486005F89AF /* TextRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFCA0F219DD486005F89AF /* TextRecognitionViewController.swift */; };
-		26B57708219C998400CEACB8 /* THHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B57707219C998400CEACB8 /* THHelpers.swift */; };
+		26B57708219C998400CEACB8 /* THUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B57707219C998400CEACB8 /* THUtilities.swift */; };
 		26DD464F215FEAF5000B10E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DD464E215FEAF5000B10E5 /* AppDelegate.swift */; };
 		26DD4654215FEAF5000B10E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26DD4652215FEAF5000B10E5 /* Main.storyboard */; };
 		26DD4656215FEAF6000B10E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26DD4655215FEAF6000B10E5 /* Assets.xcassets */; };
@@ -50,7 +50,7 @@
 		103ABA80BEA54ABA3355FFB5 /* Pods-theia-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theia-ios.debug.xcconfig"; path = "Target Support Files/Pods-theia-ios/Pods-theia-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		261606D721BD135C00219637 /* CaptureSessionViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaptureSessionViewController+Gestures.swift"; sourceTree = "<group>"; };
 		261928172189B68B001734BD /* MainViewController+SpeechToText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+SpeechToText.swift"; sourceTree = "<group>"; };
-		2635653321C031A1007BAF67 /* THSettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THSettingsKey.swift; sourceTree = "<group>"; };
+		2635653321C031A1007BAF67 /* THKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THKey.swift; sourceTree = "<group>"; };
 		26360D2B218DFD4600565EBA /* THSpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THSpeechSynthesizer.swift; sourceTree = "<group>"; };
 		2636340D219622190026E463 /* THFrameExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = THFrameExtractor.swift; sourceTree = "<group>"; };
 		264CF38A219A3FBE008535B1 /* ImageLabellingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabellingViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		269A281121C265E30001A4C4 /* CaptureSessionViewController+Processing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaptureSessionViewController+Processing.swift"; sourceTree = "<group>"; };
 		26AFCA0D219DCD33005F89AF /* CaptureSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionViewController.swift; sourceTree = "<group>"; };
 		26AFCA0F219DD486005F89AF /* TextRecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionViewController.swift; sourceTree = "<group>"; };
-		26B57707219C998400CEACB8 /* THHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THHelpers.swift; sourceTree = "<group>"; };
+		26B57707219C998400CEACB8 /* THUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THUtilities.swift; sourceTree = "<group>"; };
 		26DD464B215FEAF5000B10E5 /* theia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "theia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26DD464E215FEAF5000B10E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26DD4653215FEAF5000B10E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 			children = (
 				26DD4662215FEB99000B10E5 /* Controllers */,
 				266C6AC621C5A6AF00B52E8A /* Extensions */,
-				26DD466A215FF5D7000B10E5 /* Generics */,
+				26DD466A215FF5D7000B10E5 /* Helpers */,
 				26360D2A218DFD2900565EBA /* Models */,
 				26DD4663215FEBA3000B10E5 /* Storyboards */,
 				26DD4660215FEB30000B10E5 /* Supporting Files */,
@@ -227,13 +227,13 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		26DD466A215FF5D7000B10E5 /* Generics */ = {
+		26DD466A215FF5D7000B10E5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				26B57707219C998400CEACB8 /* THHelpers.swift */,
-				2635653321C031A1007BAF67 /* THSettingsKey.swift */,
+				2635653321C031A1007BAF67 /* THKey.swift */,
+				26B57707219C998400CEACB8 /* THUtilities.swift */,
 			);
-			path = Generics;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		26FED949218742B700D1D655 /* LottieFiles */ = {
@@ -476,8 +476,8 @@
 				261928182189B68B001734BD /* MainViewController+SpeechToText.swift in Sources */,
 				264CF38B219A3FBE008535B1 /* ImageLabellingViewController.swift in Sources */,
 				2636340E219622190026E463 /* THFrameExtractor.swift in Sources */,
-				2635653421C031A1007BAF67 /* THSettingsKey.swift in Sources */,
-				26B57708219C998400CEACB8 /* THHelpers.swift in Sources */,
+				2635653421C031A1007BAF67 /* THKey.swift in Sources */,
+				26B57708219C998400CEACB8 /* THUtilities.swift in Sources */,
 				26DD464F215FEAF5000B10E5 /* AppDelegate.swift in Sources */,
 				26AFCA10219DD486005F89AF /* TextRecognitionViewController.swift in Sources */,
 				26DD4667215FED65000B10E5 /* MainViewController.swift in Sources */,

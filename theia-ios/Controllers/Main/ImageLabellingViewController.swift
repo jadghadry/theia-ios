@@ -64,7 +64,8 @@ class ImageLabellingViewController: CaptureSessionViewController {
     
     internal func setUpLabelDetector() {
         
-        let confidenceThreshold = UserDefaults.standard.float(forKey: THSettingsKey.confidenceThreshold)
+        // Retrieve the user-defined confidence threshold.
+        let confidenceThreshold = UserDefaults.standard.float(forKey: THKey.confidenceThreshold)
         
         let vision = Vision.vision()
         let options = VisionLabelDetectorOptions(confidenceThreshold: confidenceThreshold)

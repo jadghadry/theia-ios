@@ -62,8 +62,8 @@ extension CaptureSessionViewController {
         }
         
         // Modify the orientation of the retrieved buffer before sending it to processing.
-        let imageOrientation = THHelpers.imageOrientation()
-        let visionOrientation = THHelpers.visionImageOrientation(from: imageOrientation)
+        let imageOrientation = THUtilities.imageOrientation
+        let visionOrientation = THUtilities.visionImageOrientation(from: imageOrientation)
         
         let customMetadata = VisionImageMetadata()
             customMetadata.orientation = visionOrientation

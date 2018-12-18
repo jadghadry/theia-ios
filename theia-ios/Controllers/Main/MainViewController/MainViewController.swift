@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Speech
 import Lottie
+import Speech
 
 class MainViewController: JGBaseViewController {
     
@@ -132,6 +132,7 @@ class MainViewController: JGBaseViewController {
         
         super.setUpViewController()
         
+        self.showOnboardingScreens()
         self.setUpSpeechRecognizer()
         self.setUpAudioSession()
         self.setUpNotifications()
@@ -140,6 +141,21 @@ class MainViewController: JGBaseViewController {
         // Request speech input authorization.
         self.requestSpeechRecognitionAuthorization()
         
+    }
+    
+    
+    
+    /**
+     Display tutorial screens to the user.
+     Note that these screens should only be displayed after the first app launch.
+     */
+    
+    internal func showOnboardingScreens() {
+        
+        if THUtilities.isFirstApplicationLaunch() {
+            // WARNING: Add onboarding screens.
+        }
+    
     }
     
 }

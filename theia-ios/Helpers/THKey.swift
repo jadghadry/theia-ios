@@ -8,17 +8,15 @@
 
 import Foundation
 
-struct THSettingsKey {
+struct THKey {
     
-    // Settings
-    
-    static let confidenceThreshold = "CONFIDENCE_THRESHOLD"
-    static let speechRate = "SPEECH_RATE"
-    
-    
+    // Miscellaneous
+    static let notFirstLaunch = "NOT_FIRST_LAUNCH"
     
     // Permissions
-    
     static let videoPermission = "VIDEO_PERMISSION"
+    
+    // Settings
+    static let confidenceThreshold = "CONFIDENCE_THRESHOLD"
     
 }

@@ -57,7 +57,7 @@ class THFrameExtractor: NSObject {
     
     internal func configureSession() {
         
-        let videoAuthorized = UserDefaults.standard.bool(forKey: THSettingsKey.videoPermission)
+        let videoAuthorized = UserDefaults.standard.bool(forKey: THKey.videoPermission)
         
         // Input Configuration.
         guard
@@ -93,7 +93,7 @@ class THFrameExtractor: NSObject {
         THFrameExtractorQueue.session.suspend()
         
         AVCaptureDevice.requestAccess(for: .video, completionHandler: { authorized in
-            UserDefaults.standard.set(authorized, forKey: THSettingsKey.videoPermission)
+            UserDefaults.standard.set(authorized, forKey: THKey.videoPermission)
             THFrameExtractorQueue.session.resume()
         })
         

@@ -31,7 +31,7 @@ extension CaptureSessionViewController {
         
         let synthesizer = THSpeechSynthesizer.shared
         
-        // WARNING: '_BeginSpeaking: couldn't begin playback'.
+        // WARNING: _BeginSpeaking: couldn't begin playback.
         if synthesizer.isSpeaking() {
             synthesizer.stopSpeaking()
             return

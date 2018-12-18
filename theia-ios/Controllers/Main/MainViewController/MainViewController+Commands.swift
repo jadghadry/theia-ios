@@ -38,11 +38,7 @@ extension MainViewController {
             
         // Modify the confidence threshold value.
         case let command where command.contains("CONFIDENCE THRESHOLD"):
-            self.modifySettings(forKey: THSettingsKey.confidenceThreshold, fromCommand: command)
-            
-        // Modify the speech rate value.
-        case let command where command.contains("SPEECH RATE"):
-            self.modifySettings(forKey: THSettingsKey.speechRate, fromCommand: command)
+            self.modifyConfidenceThreshold(fromCommand: command)
             
         // Command does not exist.
         default:
@@ -57,13 +53,12 @@ extension MainViewController {
     
     
     /**
-     Modifies user settings according to a given command.
+     Modifies the confidence threshold based on an invoked command.
      
-     - Parameter key: The key of the Theia parameter to change.
      - Parameter command: The command from which the numerical should be extracted.
      */
     
-    internal func modifySettings(forKey key: String, fromCommand command: String) {
+    internal func modifyConfidenceThreshold(fromCommand command: String) {
         
         let synthesizer = THSpeechSynthesizer.shared
         
@@ -73,13 +68,13 @@ extension MainViewController {
             return
         }
         
-        // Check if the extracted number falls between 1 and 100.
-        guard (1...100).contains(extractedNumber) else {
-            synthesizer.speak(text: "Please provide a value between 1 and 100%.")
+        // Check if the extracted number falls between 25 and 100%.
+        guard (25...100).contains(extractedNumber) else {
+            synthesizer.speak(text: "Please provide a value between 25 and 100%.")
             return
         }
         
-        UserDefaults.standard.set(extractedNumber/100.0, forKey: key)
+        UserDefaults.standard.set(extractedNumber/100.0, forKey: THKey.confidenceThreshold)
         synthesizer.speak(text: "Ok, done!")
         
     }

@@ -23,6 +23,16 @@ class AppDelegate: UIResponder {
         FirebaseApp.configure()
     }
     
+    
+    
+    fileprivate func configureTheia() {
+        
+        if THUtilities.isFirstApplicationLaunch() {
+            UserDefaults.standard.set(0.5, forKey: THKey.confidenceThreshold)
+        }
+        
+    }
+    
 }
 
 
@@ -33,8 +43,9 @@ extension AppDelegate: UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        // App configurations
+        // App configurations.
         self.configureFirebase()
+        self.configureTheia()
         
         return true
         
