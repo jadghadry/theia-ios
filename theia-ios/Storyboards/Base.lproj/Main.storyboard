@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-SemiBold.ttf">
+            <string>Nunito-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -68,7 +73,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="animationView" destination="xw2-ke-pTE" id="yFQ-wA-1IH"/>
                         <outlet property="lottieVoiceAnimation" destination="xw2-ke-pTE" id="G8S-YH-iUn"/>
                         <segue destination="bRL-9e-s4U" kind="presentation" identifier="segueToImageClassifier" id="5su-lx-k5B"/>
                         <segue destination="9eP-47-ldx" kind="presentation" identifier="segueToTextRecognizer" id="K80-jr-v09"/>
@@ -90,10 +94,44 @@
                     <view key="view" contentMode="scaleToFill" id="e2n-hR-gc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcR-AN-zQr">
+                                <rect key="frame" x="32" y="283.5" width="311" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Double Tap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="BeX-Du-d9h">
+                                        <rect key="frame" x="24" y="28" width="263" height="44"/>
+                                        <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="32"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.40397581335616439" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="BeX-Du-d9h" firstAttribute="top" secondItem="jcR-AN-zQr" secondAttribute="top" constant="28" id="TAx-e9-YhT"/>
+                                    <constraint firstAttribute="bottom" secondItem="BeX-Du-d9h" secondAttribute="bottom" constant="28" id="bG9-fo-xS3"/>
+                                    <constraint firstAttribute="trailing" secondItem="BeX-Du-d9h" secondAttribute="trailing" constant="24" id="vLS-T5-E2W"/>
+                                    <constraint firstItem="BeX-Du-d9h" firstAttribute="leading" secondItem="jcR-AN-zQr" secondAttribute="leading" constant="24" id="ykD-IG-YSb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Bqr-OM-5l1" firstAttribute="trailing" secondItem="jcR-AN-zQr" secondAttribute="trailing" constant="32" id="3pJ-lT-qdy"/>
+                            <constraint firstItem="jcR-AN-zQr" firstAttribute="leading" secondItem="Bqr-OM-5l1" secondAttribute="leading" constant="32" id="hZD-6F-3ba"/>
+                            <constraint firstItem="jcR-AN-zQr" firstAttribute="centerY" secondItem="e2n-hR-gc1" secondAttribute="centerY" id="oXD-86-gI5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Bqr-OM-5l1"/>
                     </view>
+                    <connections>
+                        <outlet property="lblProcessedObject" destination="BeX-Du-d9h" id="4LC-v6-pJL"/>
+                        <outlet property="viewBackdrop" destination="jcR-AN-zQr" id="haM-1L-hA2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXX-op-YwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

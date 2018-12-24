@@ -11,6 +11,13 @@ import AVFoundation
 
 class ImageLabellingViewController: CaptureSessionViewController {
     
+    // MARK: - Outlets
+    
+    @IBOutlet weak var lblProcessedObject: UILabel!
+    @IBOutlet weak var viewBackdrop: UIView!
+    
+    
+    
     // MARK: - Optional Properties
     
     var labelDetector: VisionLabelDetector?
@@ -42,7 +49,7 @@ class ImageLabellingViewController: CaptureSessionViewController {
             }
             
             // Get the list of processed objects sorted by their respective confidence levels.
-            let processedObjectsDescription = results.sorted(by:{
+            let processedObjectsDescription = results.sorted(by: {
                 $0.confidence > $1.confidence
             }).map({
                 "\($0.label) detected with \(Int($0.confidence * 100))% confidence."
@@ -51,6 +58,17 @@ class ImageLabellingViewController: CaptureSessionViewController {
             // Utter and print the list of processed objects.
             synthesizer.speak(text: processedObjectsDescription)
             print(processedObjectsDescription)
+            
+            // Get the object identified with the maximum confidence.
+            let maxConfidenceObject = results.max(by: {
+                $0.confidence < $1.confidence
+            })
+            
+            // Modify the label to output the object detected with the highest level of confidence.
+            self.lblProcessedObject.text = maxConfidenceObject?.label
+            
+            // Hide the backdrop view in case no objects were detected.
+            self.viewBackdrop.isHidden = maxConfidenceObject == nil
             
         })
 
