@@ -20,7 +20,7 @@ class ImageLabellingViewController: CaptureSessionViewController {
     
     // MARK: - Optional Properties
     
-    var labelDetector: VisionLabelDetector?
+    var labelDetector: VisionImageLabeler?
     
     
     
@@ -34,7 +34,7 @@ class ImageLabellingViewController: CaptureSessionViewController {
         
         let synthesizer = THSpeechSynthesizer.shared
         
-        self.labelDetector?.detect(in: image, completion: { (results, error) in
+        self.labelDetector?.process(image, completion: { (labels, error) in
             
             // Check whether there was an error in labeling the image.
             if let error = error {
@@ -43,16 +43,20 @@ class ImageLabellingViewController: CaptureSessionViewController {
             }
             
             // Check whether results were actually retrieved.
-            guard let results = results, !results.isEmpty else {
+            guard let labels = labels, !labels.isEmpty else {
                 print("⚠️ No Objects Detected.")
                 return
             }
             
             // Get the list of processed objects sorted by their respective confidence levels.
-            let processedObjectsDescription = results.sorted(by: {
-                $0.confidence > $1.confidence
-            }).map({
-                "\($0.label) detected with \(Int($0.confidence * 100))% confidence."
+            let processedObjectsDescription = labels.map({
+                
+                guard let confidence = $0.confidence?.floatValue else {
+                    return "\($0.text) detected with unknown confidence."
+                }
+                
+                return "\($0.text) detected with \(Int(confidence * 100))% confidence."
+                
             }).joined(separator: "\n")
             
             // Utter and print the list of processed objects.
@@ -60,12 +64,10 @@ class ImageLabellingViewController: CaptureSessionViewController {
             print(processedObjectsDescription)
             
             // Get the object identified with the maximum confidence.
-            let maxConfidenceObject = results.max(by: {
-                $0.confidence < $1.confidence
-            })
+            let maxConfidenceObject = labels.first
             
             // Modify the label to output the object detected with the highest level of confidence.
-            self.lblProcessedObject.text = maxConfidenceObject?.label
+            self.lblProcessedObject.text = maxConfidenceObject?.text
             
             // Hide the backdrop view in case no objects were detected.
             self.viewBackdrop.isHidden = maxConfidenceObject == nil
@@ -85,10 +87,10 @@ class ImageLabellingViewController: CaptureSessionViewController {
         // Retrieve the user-defined confidence threshold.
         let confidenceThreshold = UserDefaults.standard.float(forKey: THKey.confidenceThreshold)
         
-        let vision = Vision.vision()
-        let options = VisionLabelDetectorOptions(confidenceThreshold: confidenceThreshold)
+        let options = VisionOnDeviceImageLabelerOptions()
+            options.confidenceThreshold = confidenceThreshold
         
-        self.labelDetector = vision.labelDetector(options: options)
+        self.labelDetector = Vision.vision().onDeviceImageLabeler(options: options)
         
     }
     

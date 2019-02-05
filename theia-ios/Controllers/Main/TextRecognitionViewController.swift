@@ -50,12 +50,11 @@ class TextRecognitionViewController: CaptureSessionViewController {
     
     
     /**
-     Configures the MLKit label detector with the required models and confidence threshold.
+     Configures the MLKit text recognizer.
      */
     
     internal func setUpTextRecognizer() {
-        let vision = Vision.vision()
-        self.textRecognizer = vision.onDeviceTextRecognizer()
+        self.textRecognizer = Vision.vision().onDeviceTextRecognizer()
     }
     
     
