@@ -60,6 +60,7 @@ extension MainViewController {
      
      Only one tap may be installed on any bus. Taps may be safely installed and removed while the engine is running.
      */
+    
     internal func configureAudioTap() {
         
         let audioEngine = self.audioEngine

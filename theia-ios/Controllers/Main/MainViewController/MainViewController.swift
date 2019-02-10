@@ -48,14 +48,15 @@ class MainViewController: JGBaseViewController {
         // Check the audio engine status.
         if self.audioEngine.isRunning {
             
-            // If the audio engine was running, then we need to stop listenting for additional audio.
+            // If the audio engine was running, then we need to stop receiving audio input.
             self.stopSpeechRecognition()
             self.lottieVoiceAnimation.stop()
             self.runCommand()
+            print("🎙 Stopped listening")
             
         } else {
             
-            // If the audio engine was not running, then we need to start listenting and recognizing audio.
+            // If the audio engine was not running, then we need to start receiving audio input.
             self.startSpeechRecognition()
             self.lottieVoiceAnimation.play()
             print("🎙 Listening")

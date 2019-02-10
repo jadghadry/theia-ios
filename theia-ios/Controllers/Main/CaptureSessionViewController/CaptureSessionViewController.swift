@@ -89,8 +89,7 @@ class CaptureSessionViewController: JGBaseViewController {
         // UIGestureRecognizer configurations.
         self.setUpDismissSwipeGesture()
         self.setUpImageProcessingTapGesture()
-        self.setUpTorchActivationSwipeGesture()
-        self.setUpTorchDeactivationSwipeGesture()
+        self.setUpTorchGestures()
         
     }
     

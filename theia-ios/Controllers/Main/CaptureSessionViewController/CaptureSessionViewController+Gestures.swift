@@ -72,7 +72,7 @@ extension CaptureSessionViewController {
     // MARK: - Functions
 
     /**
-     Adds a UISwipeGestureRecognizer that dismisses the view.
+     Adds a UISwipeGestureRecognizer instance used to dismisses the view.
      */
     
     internal func setUpDismissSwipeGesture() {
@@ -88,7 +88,7 @@ extension CaptureSessionViewController {
     
     
     /**
-     Adds a UITapGestureRecognizer that processes a VisionImage input.
+     Adds a UITapGestureRecognizer instance used to processes a VisionImage input.
      */
     
     internal func setUpImageProcessingTapGesture() {
@@ -104,34 +104,26 @@ extension CaptureSessionViewController {
     
     
     /**
-     Adds a UISwipeGestureRecognizer that turns on the torch.
+     Adds multiple UISwipeGestureRecognizer instances used to control the torch.
      */
     
-    internal func setUpTorchActivationSwipeGesture() {
+    internal func setUpTorchGestures() {
         
-        let swipeGesture = UISwipeGestureRecognizer()
-            swipeGesture.direction = .up
-            swipeGesture.numberOfTouchesRequired = 2
-            swipeGesture.addTarget(self, action: #selector(self.turnOnTorch))
+        // UISwipeGestureRecognizer used to turn the torch on.
+        let onSwipeGesture = UISwipeGestureRecognizer()
+            onSwipeGesture.direction = .up
+            onSwipeGesture.numberOfTouchesRequired = 2
+            onSwipeGesture.addTarget(self, action: #selector(self.turnOnTorch))
         
-        self.view.addGestureRecognizer(swipeGesture)
+        self.view.addGestureRecognizer(onSwipeGesture)
         
-    }
-    
-    
-    
-    /**
-     Adds a UISwipeGestureRecognizer that turns off the torch.
-     */
-    
-    internal func setUpTorchDeactivationSwipeGesture() {
+        // UISwipeGestureRecognizer used to turn the torch off.
+        let offSwipeGesture = UISwipeGestureRecognizer()
+            offSwipeGesture.direction = .down
+            offSwipeGesture.numberOfTouchesRequired = 2
+            offSwipeGesture.addTarget(self, action: #selector(self.turnOffTorch))
         
-        let swipeGesture = UISwipeGestureRecognizer()
-            swipeGesture.direction = .down
-            swipeGesture.numberOfTouchesRequired = 2
-            swipeGesture.addTarget(self, action: #selector(self.turnOffTorch))
-        
-        self.view.addGestureRecognizer(swipeGesture)
+        self.view.addGestureRecognizer(offSwipeGesture)
         
     }
     
