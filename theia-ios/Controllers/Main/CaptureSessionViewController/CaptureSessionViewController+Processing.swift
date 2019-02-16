@@ -18,10 +18,17 @@ extension CaptureSessionViewController {
      - Parameter sampleBuffer: The CMSampleBuffer to be converted.
      */
     
-    internal func imageFromSampleBuffer(_ sampleBuffer: CMSampleBuffer) -> UIImage? {
+    internal func imageFromSampleBuffer(_ sampleBuffer: CMSampleBuffer?) -> UIImage? {
+        
+        // Check if the sampleBuffer is nil.
+        guard let sampleBuffer = sampleBuffer else {
+            print("⚠️ the sample buffer input is nil.")
+            return nil
+        }
         
         // Transform the CMSampleBuffer to a CVImageBuffer.
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+            print("⚠️ Could not retrieve a CVImageBuffer object.")
             return nil
         }
         
@@ -33,6 +40,7 @@ extension CaptureSessionViewController {
         
         // Get a CGImage from the CIContext.
         guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else {
+            print("⚠️ Could not create a CGImage from the input CIImage.")
             return nil
         }
         
@@ -47,16 +55,10 @@ extension CaptureSessionViewController {
      Also fixes the orientation of the image according to the orientation of the device.
      */
     
-    internal func imageToProcess() -> VisionImage? {
-        
-        // Retrieve the CMSampleBuffer to process.
-        guard let sampleBuffer = self.sampleBufferToProcess else {
-            print("⚠️ No buffer was retrieved for processing.")
-            return nil
-        }
-        
+    internal func visionImageToProcess() -> VisionImage? {
+
         // Retrieve a UIImage from the CMSampleBuffer object.
-        guard let image = imageFromSampleBuffer(sampleBuffer) else {
+        guard let image = imageFromSampleBuffer(self.sampleBufferToProcess) else {
             print("⚠️ Could not retrieve a UIImage from the CMSampleBuffer.")
             return nil
         }

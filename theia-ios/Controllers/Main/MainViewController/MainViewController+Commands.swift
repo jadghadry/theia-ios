@@ -28,17 +28,21 @@ extension MainViewController {
         
         switch (command) {
             
-        // Image processing and machine learning modules are deployed in order to read text.
-        case let command where command.contains("TEXT"):
-            self.performSegue(withIdentifier: "segueToTextRecognizer", sender: nil)
+        // Modify the confidence threshold value.
+        case let command where command.contains("CONFIDENCE THRESHOLD"):
+            self.modifyConfidenceThreshold(fromCommand: command)
+            
+        // Image processing and machine learning modules are deployed in order to detect currency values.
+        case let command where command.contains("CURRENCY"):
+            self.performSegue(withIdentifier: "segueToCurrencyClassifier", sender: nil)
             
         // Image processing and machine learning modules are deployed in order to classify objects.
         case let command where command.contains("IDENTIFY"):
             self.performSegue(withIdentifier: "segueToImageClassifier", sender: nil)
             
-        // Modify the confidence threshold value.
-        case let command where command.contains("CONFIDENCE THRESHOLD"):
-            self.modifyConfidenceThreshold(fromCommand: command)
+        // Image processing and machine learning modules are deployed in order to read text.
+        case let command where command.contains("TEXT"):
+            self.performSegue(withIdentifier: "segueToTextRecognizer", sender: nil)
             
         // Command does not exist.
         default:

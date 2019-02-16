@@ -76,6 +76,7 @@
                         <outlet property="lottieVoiceAnimation" destination="xw2-ke-pTE" id="G8S-YH-iUn"/>
                         <segue destination="bRL-9e-s4U" kind="presentation" identifier="segueToImageClassifier" id="5su-lx-k5B"/>
                         <segue destination="9eP-47-ldx" kind="presentation" identifier="segueToTextRecognizer" id="K80-jr-v09"/>
+                        <segue destination="R2w-lI-mN8" kind="presentation" identifier="segueToCurrencyClassifier" id="M4K-FP-ZXH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -135,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXX-op-YwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1063" y="419"/>
+            <point key="canvasLocation" x="41" y="915"/>
         </scene>
         <!--Text Recognition View Controller-->
         <scene sceneID="4Tj-1G-C9B">
@@ -151,7 +152,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBe-yX-vxu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1062" y="-397"/>
+            <point key="canvasLocation" x="1009" y="914"/>
+        </scene>
+        <!--Currency Labelling View Controller-->
+        <scene sceneID="xl5-ZK-fE4">
+            <objects>
+                <viewController modalPresentationStyle="overFullScreen" id="R2w-lI-mN8" customClass="CurrencyLabellingViewController" customModule="theia_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="H6L-yA-sgx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="2EZ-xo-on7"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QRr-b1-gBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-847" y="913"/>
         </scene>
     </scenes>
 </document>

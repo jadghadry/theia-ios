@@ -28,13 +28,15 @@ class ImageLabellingViewController: CaptureSessionViewController {
     
     /**
      Processes the VisionImage input and extracts objects that meet the user-defined confidence threshold.
+     
+     - Parameter visionImage: The VisionImage object to be processed.
      */
     
-    override func process(_ image: VisionImage) {
+    override func process(_ visionImage: VisionImage) {
         
         let synthesizer = THSpeechSynthesizer.shared
         
-        self.labelDetector?.process(image, completion: { (labels, error) in
+        self.labelDetector?.process(visionImage, completion: { (labels, error) in
             
             // Check whether there was an error in labeling the image.
             if let error = error {

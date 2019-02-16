@@ -16,6 +16,7 @@ target 'theia-ios' do
   pod 'Crashlytics'
   pod 'Fabric'
   pod 'Firebase/Core'
+  pod 'Firebase/MLModelInterpreter'
   pod 'Firebase/MLVision'
   pod 'Firebase/MLVisionTextModel'
   pod 'Firebase/MLVisionLabelModel'
