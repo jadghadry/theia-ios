@@ -72,7 +72,7 @@ extension CaptureSessionViewController {
     // MARK: - Functions
 
     /**
-     Adds a UISwipeGestureRecognizer instance used to dismisses the view.
+     Adds a UISwipeGestureRecognizer instance used to dismiss the view.
      */
     
     internal func setUpDismissSwipeGesture() {
@@ -88,7 +88,7 @@ extension CaptureSessionViewController {
     
     
     /**
-     Adds a UITapGestureRecognizer instance used to processes a VisionImage input.
+     Adds a UITapGestureRecognizer instance used to process a VisionImage input.
      */
     
     internal func setUpImageProcessingTapGesture() {

@@ -65,14 +65,8 @@ class ImageLabellingViewController: CaptureSessionViewController {
             synthesizer.speak(text: processedObjectsDescription)
             print(processedObjectsDescription)
             
-            // Get the object identified with the maximum confidence.
-            let maxConfidenceObject = labels.first
-            
             // Modify the label to output the object detected with the highest level of confidence.
-            self.lblProcessedObject.text = maxConfidenceObject?.text
-            
-            // Hide the backdrop view in case no objects were detected.
-            self.viewBackdrop.isHidden = maxConfidenceObject == nil
+            self.lblProcessedObject.text = labels.first?.text
             
         })
 
