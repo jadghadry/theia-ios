@@ -34,7 +34,7 @@
 		26ED16792218120500B4BB9D /* UIImage+TFLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ED16782218120500B4BB9D /* UIImage+TFLite.swift */; };
 		26ED167F2218577E00B4BB9D /* lbp_currency_labels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26ED167E2218577E00B4BB9D /* lbp_currency_labels.txt */; };
 		26FED94B218742C900D1D655 /* voice.json in Resources */ = {isa = PBXBuildFile; fileRef = 26FED94A218742C900D1D655 /* voice.json */; };
-		6717F00DD1416B5EC08EF70B /* Pods_theia_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD59674FDC2E56B8C8A678CC /* Pods_theia_ios.framework */; };
+		CBCD2561AEDAF2A8C1107AE7 /* Pods_theia_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A646BDC4340C5E14D2A734 /* Pods_theia_ios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,7 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		103ABA80BEA54ABA3355FFB5 /* Pods-theia-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theia-ios.debug.xcconfig"; path = "Target Support Files/Pods-theia-ios/Pods-theia-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		1130EB723DCEAF7EA6B47A68 /* Pods-theia-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theia-ios.debug.xcconfig"; path = "Target Support Files/Pods-theia-ios/Pods-theia-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		261606D721BD135C00219637 /* CaptureSessionViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CaptureSessionViewController+Gestures.swift"; sourceTree = "<group>"; };
 		261928172189B68B001734BD /* MainViewController+SpeechToText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+SpeechToText.swift"; sourceTree = "<group>"; };
 		2635653321C031A1007BAF67 /* THKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THKey.swift; sourceTree = "<group>"; };
@@ -82,8 +82,8 @@
 		26ED16782218120500B4BB9D /* UIImage+TFLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TFLite.swift"; sourceTree = "<group>"; };
 		26ED167E2218577E00B4BB9D /* lbp_currency_labels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lbp_currency_labels.txt; sourceTree = "<group>"; };
 		26FED94A218742C900D1D655 /* voice.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = voice.json; sourceTree = "<group>"; };
-		7CCCF9502EF0CF10D49696EA /* Pods-theia-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theia-ios.release.xcconfig"; path = "Target Support Files/Pods-theia-ios/Pods-theia-ios.release.xcconfig"; sourceTree = "<group>"; };
-		BD59674FDC2E56B8C8A678CC /* Pods_theia_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theia_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73A646BDC4340C5E14D2A734 /* Pods_theia_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theia_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEEB3B96859C9EAC89020A99 /* Pods-theia-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theia-ios.release.xcconfig"; path = "Target Support Files/Pods-theia-ios/Pods-theia-ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6717F00DD1416B5EC08EF70B /* Pods_theia_ios.framework in Frameworks */,
+				CBCD2561AEDAF2A8C1107AE7 /* Pods_theia_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +161,7 @@
 				26DD464D215FEAF5000B10E5 /* theia-ios */,
 				26DD464C215FEAF5000B10E5 /* Products */,
 				41476F3E6147AC16699880AC /* Pods */,
-				93AE7BD0945B77E1CC3304D5 /* Frameworks */,
+				2C2C3250926BF9CFD6333270 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -272,21 +272,21 @@
 			path = LottieFiles;
 			sourceTree = "<group>";
 		};
+		2C2C3250926BF9CFD6333270 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				73A646BDC4340C5E14D2A734 /* Pods_theia_ios.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		41476F3E6147AC16699880AC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				103ABA80BEA54ABA3355FFB5 /* Pods-theia-ios.debug.xcconfig */,
-				7CCCF9502EF0CF10D49696EA /* Pods-theia-ios.release.xcconfig */,
+				1130EB723DCEAF7EA6B47A68 /* Pods-theia-ios.debug.xcconfig */,
+				EEEB3B96859C9EAC89020A99 /* Pods-theia-ios.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		93AE7BD0945B77E1CC3304D5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BD59674FDC2E56B8C8A678CC /* Pods_theia_ios.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,15 +296,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26DD465D215FEAF6000B10E5 /* Build configuration list for PBXNativeTarget "theia-ios" */;
 			buildPhases = (
-				4439C022E3E38BE3B95C7232 /* [CP] Check Pods Manifest.lock */,
+				64522A0F9C44EAA664725FE5 /* [CP] Check Pods Manifest.lock */,
 				26916CEE21A2445400239DA8 /* Embed App Extensions */,
 				26DD4647215FEAF5000B10E5 /* Sources */,
 				26DD4648215FEAF5000B10E5 /* Frameworks */,
 				26DD4649215FEAF5000B10E5 /* Resources */,
-				16DA9133A79E58A2DBA60629 /* [CP] Embed Pods Frameworks */,
-				9533E0B3E4E2525CB868B1D8 /* [CP] Copy Pods Resources */,
 				2610498921BBC796003ED351 /* Fabric */,
 				26916CF021A244B200239DA8 /* Warnings */,
+				9CB5190F94E38EB8E2BF8DB6 /* [CP] Embed Pods Frameworks */,
+				6B4396DE8F6DC647F1037264 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -370,46 +370,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		16DA9133A79E58A2DBA60629 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-theia-ios/Pods-theia-ios-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
-				"${BUILT_PRODUCTS_DIR}/JGFramework/JGFramework.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGFramework.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-theia-ios/Pods-theia-ios-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2610498921BBC796003ED351 /* Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -447,7 +407,7 @@
 			shellPath = /bin/sh;
 			shellScript = "TAGS=\"TODO:|FIXME:|WARNING:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\n";
 		};
-		4439C022E3E38BE3B95C7232 /* [CP] Check Pods Manifest.lock */ = {
+		64522A0F9C44EAA664725FE5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -469,7 +429,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9533E0B3E4E2525CB868B1D8 /* [CP] Copy Pods Resources */ = {
+		6B4396DE8F6DC647F1037264 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -489,6 +449,46 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-theia-ios/Pods-theia-ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CB5190F94E38EB8E2BF8DB6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-theia-ios/Pods-theia-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/JGFramework/JGFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-theia-ios/Pods-theia-ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -657,7 +657,7 @@
 		};
 		26DD465E215FEAF6000B10E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 103ABA80BEA54ABA3355FFB5 /* Pods-theia-ios.debug.xcconfig */;
+			baseConfigurationReference = 1130EB723DCEAF7EA6B47A68 /* Pods-theia-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -679,7 +679,7 @@
 		};
 		26DD465F215FEAF6000B10E5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7CCCF9502EF0CF10D49696EA /* Pods-theia-ios.release.xcconfig */;
+			baseConfigurationReference = EEEB3B96859C9EAC89020A99 /* Pods-theia-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

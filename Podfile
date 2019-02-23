@@ -1,4 +1,4 @@
-source 'https://bitbucket.org/jadghadry/jgframework.git'
+source 'https://github.com/jadghadry/jgframework-ios.git'
 source 'https://github.com/CocoaPods/specs.git'
 
 # Uncomment the next line to define a global platform for your project
