@@ -11,13 +11,6 @@ import AVFoundation
 
 class ImageLabellingViewController: CaptureSessionViewController {
     
-    // MARK: - Outlets
-    
-    @IBOutlet weak var lblProcessedObject: UILabel!
-    @IBOutlet weak var viewBackdrop: UIView!
-    
-    
-    
     // MARK: - Optional Properties
     
     var labelDetector: VisionImageLabeler?
@@ -64,9 +57,6 @@ class ImageLabellingViewController: CaptureSessionViewController {
             // Utter and print the list of processed objects.
             synthesizer.speak(text: processedObjectsDescription)
             print(processedObjectsDescription)
-            
-            // Modify the label to output the object detected with the highest level of confidence.
-            self.lblProcessedObject.text = labels.first?.text
             
         })
 

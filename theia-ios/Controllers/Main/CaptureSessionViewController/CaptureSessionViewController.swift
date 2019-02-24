@@ -13,7 +13,6 @@ class CaptureSessionViewController: JGBaseViewController {
     
     // MARK: - Optional Properties
     
-    var processedText: String?
     var sampleBufferToProcess: CMSampleBuffer?
     
     
