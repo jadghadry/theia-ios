@@ -93,9 +93,11 @@ class CurrencyLabellingViewController: CaptureSessionViewController {
      Retrieves the scaled image data required for the model interpreter.
      */
     
-    private func scaledImageData(from image: UIImage, componentsCount: Int = Constants.dimensionComponents.intValue) -> Data? {
+    private func scaledImageData(from image: UIImage) -> Data? {
         
         let batchSize = Constants.dimensionBatchSize.intValue
+        let componentsCount = Constants.dimensionComponents.intValue
+        
         let imageWidth = Constants.dimensionImageWidth.doubleValue
         let imageHeight = Constants.dimensionImageHeight.doubleValue
         let imageSize = CGSize(width: imageWidth, height: imageHeight)
@@ -129,26 +131,18 @@ class CurrencyLabellingViewController: CaptureSessionViewController {
                                                              type: Constants.modelElementType,
                                                              dimensions: outputDimensions)
             
-            let conditions = ModelDownloadConditions(isWiFiRequired: false,
-                                                     canDownloadInBackground: true)
-            
             guard let localModelFilePath = Bundle.main.path(forResource: Constants.localModelFilename, ofType: Constants.modelExtension) else {
                 print("⚠️ Failed to get the local model file path.")
                 return
             }
             
-            // Register the local and hosted TFLite models.
-            let cloudModelSource = CloudModelSource(name: Constants.hostedModelFilename,
-                                                    enableModelUpdates: true,
-                                                    initialConditions: conditions,
-                                                    updateConditions: conditions)
+            // Register the local TFLite model.
             let localModelSource = LocalModelSource(name: Constants.localModelFilename,
                                                     path: localModelFilePath)
-            
+
             modelManager.register(localModelSource)
-            modelManager.register(cloudModelSource)
             
-            let modelOptions = ModelOptions(cloudModelName: Constants.hostedModelFilename,
+            let modelOptions = ModelOptions(cloudModelName: nil,
                                             localModelName: Constants.localModelFilename)
             
             // Set the modelInterpreter object.
