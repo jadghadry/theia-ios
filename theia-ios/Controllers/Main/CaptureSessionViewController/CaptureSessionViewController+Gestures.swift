@@ -37,13 +37,13 @@ extension CaptureSessionViewController {
             return
         }
         
-        // Retrieve a VisionImage to process.
-        guard let visionImage = visionImageToProcess() else {
-            print("⚠️ Could not retrieve a VisionImage object to process.")
+        // Retrieve a UIImage to process.
+        guard let image = imageFromSampleBuffer() else {
+            print("⚠️ Could not retrieve a UIImage object to process.")
             return
         }
         
-        self.process(visionImage)
+        self.process(image)
         
     }
     

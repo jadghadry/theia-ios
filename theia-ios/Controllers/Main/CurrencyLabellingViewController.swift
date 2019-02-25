@@ -22,7 +22,6 @@ private enum Constants {
     
     // Model
     static let localModelFilename = "lbp_currency_detector"
-    static let hostedModelFilename = "lbp_currency_detector"
     static let modelExtension = "tflite"
     
     // Model Dimensions
@@ -71,7 +70,7 @@ class CurrencyLabellingViewController: CaptureSessionViewController {
         
     }()
     
-    lazy var outputDimensions = [Constants.dimensionBatchSize, NSNumber(value: labels.count)]
+    private lazy var outputDimensions = [Constants.dimensionBatchSize, NSNumber(value: labels.count)]
     
     
     
@@ -83,7 +82,7 @@ class CurrencyLabellingViewController: CaptureSessionViewController {
      - Parameter image: The UIImage object to be processed.
      */
     
-    override func process(_ visionImage: VisionImage) {
+    override func process(_ image: UIImage) {
         
     }
     
@@ -139,7 +138,7 @@ class CurrencyLabellingViewController: CaptureSessionViewController {
             // Register the local TFLite model.
             let localModelSource = LocalModelSource(name: Constants.localModelFilename,
                                                     path: localModelFilePath)
-
+            
             modelManager.register(localModelSource)
             
             let modelOptions = ModelOptions(cloudModelName: nil,

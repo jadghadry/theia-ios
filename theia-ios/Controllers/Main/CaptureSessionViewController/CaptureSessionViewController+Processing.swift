@@ -51,17 +51,21 @@ extension CaptureSessionViewController {
     
     
     /**
+     Returns an optional UIImage from the sampleBufferToProcess class instance.
+     */
+    
+    internal func imageFromSampleBuffer() -> UIImage? {
+        return self.imageFromSampleBuffer(self.sampleBufferToProcess)
+    }
+    
+    
+    
+    /**
      Returns a VisionImage object to process using a CMSampleBuffer input.
      Also fixes the orientation of the image according to the orientation of the device.
      */
     
-    internal func visionImageToProcess() -> VisionImage? {
-
-        // Retrieve a UIImage from the CMSampleBuffer object.
-        guard let image = imageFromSampleBuffer(self.sampleBufferToProcess) else {
-            print("⚠️ Could not retrieve a UIImage from the CMSampleBuffer.")
-            return nil
-        }
+    internal func visionImageToProcess(fromImage image: UIImage) -> VisionImage? {
         
         // Modify the orientation of the retrieved buffer before sending it to processing.
         let imageOrientation = THUtilities.imageOrientation

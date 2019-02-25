@@ -35,6 +35,39 @@ class CaptureSessionViewController: JGBaseViewController {
     // MARK: - Functions
     
     /**
+     Processes the UIImage retrieved using the THFrameExtractorDelegate protocol stub.
+     This method should be overridden by inheriting view controllers.
+     
+     - Parameter image: The UIImage object to be processed.
+     */
+    
+    open func process(_ image: UIImage) {
+        
+        guard let visionImage = self.visionImageToProcess(fromImage: image) else {
+            print("⚠️ Could not retrieve a VisionImage object to process.")
+            return
+        }
+        
+        self.process(visionImage)
+        
+    }
+    
+    
+    
+    /**
+     Processes the VisionImage input.
+     This method should be overridden by inheriting view controllers.
+     
+     - Parameter visionImage: The VisionImage object to be processed.
+     */
+    
+    open func process(_ visionImage: VisionImage) {
+        
+    }
+    
+    
+    
+    /**
      Configures the THFrameExtractor instance.
      */
     
@@ -89,19 +122,6 @@ class CaptureSessionViewController: JGBaseViewController {
         self.setUpDismissSwipeGesture()
         self.setUpImageProcessingTapGesture()
         self.setUpTorchGestures()
-        
-    }
-    
-    
-    
-    /**
-     Processes the VisionImage retrieved using the THFrameExtractorDelegate protocol stub.
-     This method should be overridden by inheriting view controllers.
-     
-     - Parameter visionImage: The VisionImage object to be processed.
-     */
-    
-    open func process(_ visionImage: VisionImage) {
         
     }
     
