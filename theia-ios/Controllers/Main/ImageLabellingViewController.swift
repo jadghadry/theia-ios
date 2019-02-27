@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ImageLabellingViewController: CaptureSessionViewController {
+class ImageLabellingViewController: ProcessingViewController {
     
     // MARK: - Optional Properties
     
@@ -40,6 +40,7 @@ class ImageLabellingViewController: CaptureSessionViewController {
             // Check whether results were actually retrieved.
             guard let labels = labels, !labels.isEmpty else {
                 print("⚠️ No Objects Detected.")
+                self.viewBackdrop?.isHidden = true
                 return
             }
             
@@ -53,6 +54,10 @@ class ImageLabellingViewController: CaptureSessionViewController {
                 return "\($0.text) detected with \(Int(confidence * 100))% confidence."
                 
             }).joined(separator: "\n")
+            
+            // Show the backdrop view and update the label text accordingly.
+            self.viewBackdrop?.isHidden = false
+            self.lblOutput?.text = labels.first?.text
             
             // Utter and print the list of processed objects.
             synthesizer.speak(text: processedObjectsDescription)

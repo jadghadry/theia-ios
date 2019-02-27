@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-SemiBold.ttf">
+            <string>Nunito-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -90,14 +95,43 @@
                     <view key="view" contentMode="scaleToFill" id="e2n-hR-gc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mkd-iw-tgC">
+                                <rect key="frame" x="0.0" y="564" width="375" height="103"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Object" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="32" translatesAutoresizingMaskIntoConstraints="NO" id="Paa-tp-FbB">
+                                        <rect key="frame" x="24" y="24" width="327" height="55"/>
+                                        <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="40"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.20293771399999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Paa-tp-FbB" firstAttribute="leading" secondItem="Mkd-iw-tgC" secondAttribute="leading" constant="24" id="Erd-XG-DLC"/>
+                                    <constraint firstAttribute="trailing" secondItem="Paa-tp-FbB" secondAttribute="trailing" constant="24" id="K91-IP-wq5"/>
+                                    <constraint firstItem="Paa-tp-FbB" firstAttribute="top" secondItem="Mkd-iw-tgC" secondAttribute="top" constant="24" id="WSJ-b5-17h"/>
+                                    <constraint firstAttribute="bottom" secondItem="Paa-tp-FbB" secondAttribute="bottom" constant="24" id="kLQ-zZ-iQt"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="Mkd-iw-tgC" firstAttribute="leading" secondItem="Bqr-OM-5l1" secondAttribute="leading" id="1CP-WV-Ajm"/>
+                            <constraint firstItem="Mkd-iw-tgC" firstAttribute="bottom" secondItem="Bqr-OM-5l1" secondAttribute="bottom" id="Hoi-u4-Bys"/>
+                            <constraint firstItem="Mkd-iw-tgC" firstAttribute="trailing" secondItem="Bqr-OM-5l1" secondAttribute="trailing" id="i06-fa-9ZD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Bqr-OM-5l1"/>
                     </view>
+                    <connections>
+                        <outlet property="lblOutput" destination="Paa-tp-FbB" id="2wN-tA-Oik"/>
+                        <outlet property="viewBackdrop" destination="Mkd-iw-tgC" id="wEY-Md-FE7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXX-op-YwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="41" y="915"/>
+            <point key="canvasLocation" x="40.799999999999997" y="914.392803598201"/>
         </scene>
         <!--Text Recognition View Controller-->
         <scene sceneID="4Tj-1G-C9B">

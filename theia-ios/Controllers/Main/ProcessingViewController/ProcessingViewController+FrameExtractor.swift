@@ -1,5 +1,5 @@
 //
-//  CaptureSessionViewController+Processing.swift
+//  ProcessingViewController+FrameExtractor.swift
 //  theia-ios
 //
 //  Created by Jad Ghadry on 12/13/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension CaptureSessionViewController {
+extension ProcessingViewController {
     
     // MARK: - Functions
     
@@ -87,7 +87,7 @@ extension CaptureSessionViewController {
 
 // MARK: - THFrameExtractorDelegate Extension
 
-extension CaptureSessionViewController: THFrameExtractorDelegate {
+extension ProcessingViewController: THFrameExtractorDelegate {
     
     func didCaptureSampleBuffer(_ sampleBuffer: CMSampleBuffer) {
         self.sampleBufferToProcess = sampleBuffer

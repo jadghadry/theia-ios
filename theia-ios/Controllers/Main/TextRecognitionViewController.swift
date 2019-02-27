@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextRecognitionViewController: CaptureSessionViewController {
+class TextRecognitionViewController: ProcessingViewController {
     
     // MARK: - Optional Properties
     

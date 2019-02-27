@@ -38,7 +38,7 @@ private enum Constants {
 
 
 
-class CurrencyLabellingViewController: CaptureSessionViewController {
+class CurrencyLabellingViewController: ProcessingViewController {
     
     // MARK: - Properties
     

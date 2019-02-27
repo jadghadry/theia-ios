@@ -1,5 +1,5 @@
 //
-//  CaptureSessionViewController+Gestures.swift
+//  ProcessingViewController+Gestures.swift
 //  theia-ios
 //
 //  Created by Jad Ghadry on 12/9/18.
@@ -9,7 +9,7 @@
 import AVFoundation
 import UIKit
 
-extension CaptureSessionViewController {
+extension ProcessingViewController {
     
     // MARK: - Selectors
     

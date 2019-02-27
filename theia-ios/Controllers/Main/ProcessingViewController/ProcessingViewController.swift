@@ -1,5 +1,5 @@
 //
-//  CaptureSessionViewController.swift
+//  ProcessingViewController.swift
 //  theia-ios
 //
 //  Created by Jad Ghadry on 11/15/18.
@@ -9,7 +9,14 @@
 import AVFoundation
 import UIKit
 
-class CaptureSessionViewController: JGBaseViewController {
+class ProcessingViewController: JGBaseViewController {
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var lblOutput: UILabel?
+    @IBOutlet weak var viewBackdrop: UIView?
+    
+    
     
     // MARK: - Optional Properties
     
