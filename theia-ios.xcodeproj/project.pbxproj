@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		2604F82622273BAB00582707 /* ProcessingViewController+FrameExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269A281121C265E30001A4C4 /* ProcessingViewController+FrameExtractor.swift */; };
 		261928182189B68B001734BD /* MainViewController+SpeechToText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261928172189B68B001734BD /* MainViewController+SpeechToText.swift */; };
+		262477E122284F050092D234 /* LBPClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 262477E022284F050092D234 /* LBPClassifier.mlmodel */; };
+		262C778F2227F84900E402BF /* CGImagePropertyOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262C778E2227F84900E402BF /* CGImagePropertyOrientation.swift */; };
 		2635653421C031A1007BAF67 /* THKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2635653321C031A1007BAF67 /* THKey.swift */; };
 		26360D2C218DFD4600565EBA /* THSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26360D2B218DFD4600565EBA /* THSpeechSynthesizer.swift */; };
 		2636340E219622190026E463 /* THFrameExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2636340D219622190026E463 /* THFrameExtractor.swift */; };
 		264CF38B219A3FBE008535B1 /* ImageLabellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264CF38A219A3FBE008535B1 /* ImageLabellingViewController.swift */; };
-		265563B3222435D400686402 /* lbp_currency_detector.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 265563B2222435D400686402 /* lbp_currency_detector.tflite */; };
 		2657DA5E2188664800F45147 /* MainViewController+Commands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2657DA5D2188664800F45147 /* MainViewController+Commands.swift */; };
 		2657DCBF219D9B7A009020CB /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2657DCB8219D96A9009020CB /* Nunito-Bold.ttf */; };
 		2657DCC0219D9B7A009020CB /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2657DCB7219D96A9009020CB /* Nunito-ExtraBold.ttf */; };
@@ -31,8 +32,6 @@
 		26DD4656215FEAF6000B10E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26DD4655215FEAF6000B10E5 /* Assets.xcassets */; };
 		26DD4659215FEAF6000B10E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26DD4657215FEAF6000B10E5 /* LaunchScreen.storyboard */; };
 		26DD4667215FED65000B10E5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DD4666215FED65000B10E5 /* MainViewController.swift */; };
-		26ED16792218120500B4BB9D /* UIImage+TFLite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26ED16782218120500B4BB9D /* UIImage+TFLite.swift */; };
-		26ED167F2218577E00B4BB9D /* lbp_currency_labels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 26ED167E2218577E00B4BB9D /* lbp_currency_labels.txt */; };
 		26FED94B218742C900D1D655 /* voice.json in Resources */ = {isa = PBXBuildFile; fileRef = 26FED94A218742C900D1D655 /* voice.json */; };
 		CBCD2561AEDAF2A8C1107AE7 /* Pods_theia_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A646BDC4340C5E14D2A734 /* Pods_theia_ios.framework */; };
 /* End PBXBuildFile section */
@@ -54,11 +53,12 @@
 		1130EB723DCEAF7EA6B47A68 /* Pods-theia-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theia-ios.debug.xcconfig"; path = "Target Support Files/Pods-theia-ios/Pods-theia-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		261606D721BD135C00219637 /* ProcessingViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessingViewController+Gestures.swift"; sourceTree = "<group>"; };
 		261928172189B68B001734BD /* MainViewController+SpeechToText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+SpeechToText.swift"; sourceTree = "<group>"; };
+		262477E022284F050092D234 /* LBPClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LBPClassifier.mlmodel; sourceTree = "<group>"; };
+		262C778E2227F84900E402BF /* CGImagePropertyOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGImagePropertyOrientation.swift; sourceTree = "<group>"; };
 		2635653321C031A1007BAF67 /* THKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THKey.swift; sourceTree = "<group>"; };
 		26360D2B218DFD4600565EBA /* THSpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THSpeechSynthesizer.swift; sourceTree = "<group>"; };
 		2636340D219622190026E463 /* THFrameExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = THFrameExtractor.swift; sourceTree = "<group>"; };
 		264CF38A219A3FBE008535B1 /* ImageLabellingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabellingViewController.swift; sourceTree = "<group>"; };
-		265563B2222435D400686402 /* lbp_currency_detector.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = lbp_currency_detector.tflite; sourceTree = "<group>"; };
 		2657DA5D2188664800F45147 /* MainViewController+Commands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Commands.swift"; sourceTree = "<group>"; };
 		2657DCB6219D96A9009020CB /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		2657DCB7219D96A9009020CB /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -79,8 +79,6 @@
 		26DD465A215FEAF6000B10E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26DD4666215FED65000B10E5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		26DD4669215FEDAB000B10E5 /* Theia-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Theia-Bridging-Header.h"; sourceTree = "<group>"; };
-		26ED16782218120500B4BB9D /* UIImage+TFLite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TFLite.swift"; sourceTree = "<group>"; };
-		26ED167E2218577E00B4BB9D /* lbp_currency_labels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lbp_currency_labels.txt; sourceTree = "<group>"; };
 		26FED94A218742C900D1D655 /* voice.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = voice.json; sourceTree = "<group>"; };
 		73A646BDC4340C5E14D2A734 /* Pods_theia_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_theia_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEEB3B96859C9EAC89020A99 /* Pods-theia-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-theia-ios.release.xcconfig"; path = "Target Support Files/Pods-theia-ios/Pods-theia-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,8 +127,8 @@
 		266C6AC621C5A6AF00B52E8A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				262C778E2227F84900E402BF /* CGImagePropertyOrientation.swift */,
 				266C6AC721C5A6C000B52E8A /* String.swift */,
-				26ED16782218120500B4BB9D /* UIImage+TFLite.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -250,18 +248,17 @@
 			children = (
 				2657DCB3219D9688009020CB /* Fonts */,
 				26FED949218742B700D1D655 /* LottieFiles */,
-				26ED167B2218574600B4BB9D /* TFLite Model */,
+				26ED167B2218574600B4BB9D /* MLModels */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		26ED167B2218574600B4BB9D /* TFLite Model */ = {
+		26ED167B2218574600B4BB9D /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
-				265563B2222435D400686402 /* lbp_currency_detector.tflite */,
-				26ED167E2218577E00B4BB9D /* lbp_currency_labels.txt */,
+				262477E022284F050092D234 /* LBPClassifier.mlmodel */,
 			);
-			path = "TFLite Model";
+			path = MLModels;
 			sourceTree = "<group>";
 		};
 		26FED949218742B700D1D655 /* LottieFiles */ = {
@@ -356,9 +353,7 @@
 				26FED94B218742C900D1D655 /* voice.json in Resources */,
 				26DD4659215FEAF6000B10E5 /* LaunchScreen.storyboard in Resources */,
 				2657DCC1219D9B7A009020CB /* Nunito-Regular.ttf in Resources */,
-				265563B3222435D400686402 /* lbp_currency_detector.tflite in Resources */,
 				2657DCC2219D9B7A009020CB /* Nunito-SemiBold.ttf in Resources */,
-				26ED167F2218577E00B4BB9D /* lbp_currency_labels.txt in Resources */,
 				26DD4656215FEAF6000B10E5 /* Assets.xcassets in Resources */,
 				2657DCBF219D9B7A009020CB /* Nunito-Bold.ttf in Resources */,
 				266E42E22218E1A70049CC41 /* GoogleService-Info.plist in Resources */,
@@ -501,7 +496,6 @@
 				2604F82622273BAB00582707 /* ProcessingViewController+FrameExtractor.swift in Sources */,
 				269A281721C2D0C00001A4C4 /* ProcessingViewController+Gestures.swift in Sources */,
 				26360D2C218DFD4600565EBA /* THSpeechSynthesizer.swift in Sources */,
-				26ED16792218120500B4BB9D /* UIImage+TFLite.swift in Sources */,
 				2657DA5E2188664800F45147 /* MainViewController+Commands.swift in Sources */,
 				266C6AC821C5A6C000B52E8A /* String.swift in Sources */,
 				261928182189B68B001734BD /* MainViewController+SpeechToText.swift in Sources */,
@@ -511,8 +505,10 @@
 				2635653421C031A1007BAF67 /* THKey.swift in Sources */,
 				26B57708219C998400CEACB8 /* THUtilities.swift in Sources */,
 				26DD464F215FEAF5000B10E5 /* AppDelegate.swift in Sources */,
+				262477E122284F050092D234 /* LBPClassifier.mlmodel in Sources */,
 				26AFCA10219DD486005F89AF /* TextRecognitionViewController.swift in Sources */,
 				26DD4667215FED65000B10E5 /* MainViewController.swift in Sources */,
+				262C778F2227F84900E402BF /* CGImagePropertyOrientation.swift in Sources */,
 				26AFCA0E219DCD33005F89AF /* ProcessingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

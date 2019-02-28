@@ -7,70 +7,29 @@
 //
 
 import UIKit
-import FirebaseMLCommon
-
-
-
-// MARK: - Constants
-
-private enum Constants {
-    
-    // Labels
-    static let labelsFilename = "lbp_currency_labels"
-    static let labelsExtension = "txt"
-    static let labelsSeparator = "\n"
-    
-    // Model
-    static let localModelFilename = "lbp_currency_detector"
-    static let modelExtension = "tflite"
-    
-    // Model Dimensions
-    static let dimensionBatchSize: NSNumber = 1
-    static let dimensionImageWidth: NSNumber = 224
-    static let dimensionImageHeight: NSNumber = 224
-    static let dimensionComponents: NSNumber = 3
-    static let inputDimensions = [dimensionBatchSize, dimensionImageWidth, dimensionImageHeight, dimensionComponents]
-    
-    static let modelInputIndex: UInt = 0
-    static let modelElementType: ModelElementType = .uInt8
-    
-}
-
-
+import CoreML
+import Vision
 
 class CurrencyLabellingViewController: ProcessingViewController {
     
-    // MARK: - Properties
-    
-    let modelInputOutputOptions = ModelInputOutputOptions()
-    
-    
-    
-    // MARK: - Optional Properties
-    
-    var modelInterpreter: ModelInterpreter?
-    
-    
-    
     // MARK: - Lazy Properties
     
-    private lazy var labels: [String] = {
+    @available(iOS 11.0, *)
+    lazy var classificationRequest: VNCoreMLRequest = {
         
-        guard let labelsFilePath = Bundle.main.path(forResource: Constants.labelsFilename, ofType: Constants.labelsExtension) else {
-            print("⚠️ Failed to get the labels file path.")
-            return []
+        do {
+            let model = try VNCoreMLModel(for: LBPClassifier().model)
+            
+            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] (request, error) in
+                self?.processClassifications(for: request, error: error)
+            })
+            request.imageCropAndScaleOption = .centerCrop
+            return request
+        } catch {
+            fatalError("⚠️ Failed to load Vision ML model: \(error)")
         }
         
-        let encoding = String.Encoding.utf8.rawValue
-        let contents = try! NSString(contentsOfFile: labelsFilePath, encoding: encoding)
-        
-        return contents.components(separatedBy: Constants.labelsSeparator).filter({
-            return !$0.isEmpty
-        })
-        
     }()
-    
-    private lazy var outputDimensions = [Constants.dimensionBatchSize, NSNumber(value: labels.count)]
     
     
     
@@ -84,72 +43,47 @@ class CurrencyLabellingViewController: ProcessingViewController {
     
     override func process(_ image: UIImage) {
         
-    }
-    
-    
-    
-    /**
-     Retrieves the scaled image data required for the model interpreter.
-     */
-    
-    private func scaledImageData(from image: UIImage) -> Data? {
-        
-        let batchSize = Constants.dimensionBatchSize.intValue
-        let componentsCount = Constants.dimensionComponents.intValue
-        
-        let imageWidth = Constants.dimensionImageWidth.doubleValue
-        let imageHeight = Constants.dimensionImageHeight.doubleValue
-        let imageSize = CGSize(width: imageWidth, height: imageHeight)
-        
-        guard let scaledImageData = image.scaledImageData(with: imageSize, componentsCount: componentsCount, batchSize: batchSize) else {
-            print("⚠️ Failed to scale image to \(imageSize).")
-            return nil
+        if #available(iOS 11.0, *) {
+            self.updateClassifications(for: image)
+        } else {
+            print("⚠️ Custom classification requires iOS 11.0 or newer.")
         }
         
-        return scaledImageData
-        
     }
     
     
     
     /**
-     Configures the MLKit model interpreter with the required options.
+     Processes the VisionImage input and extracts objects that meet the user-defined confidence threshold.
+     
+     - Parameter request: The VNRequest object to process.
+     - Parameter error: The Error thrown by the classification process.
      */
     
-    internal func setUpModelInterpreter() {
+    @available(iOS 11.0, *)
+    func processClassifications(for request: VNRequest, error: Error?) {
         
-        let modelManager = ModelManager.modelManager()
-        
-        do {
+        DispatchQueue.main.async {
             
-            // Define the input and output formats relevant to the model.
-            try self.modelInputOutputOptions.setInputFormat(index: Constants.modelInputIndex,
-                                                            type: Constants.modelElementType,
-                                                            dimensions: Constants.inputDimensions)
-            try self.modelInputOutputOptions.setOutputFormat(index: Constants.modelInputIndex,
-                                                             type: Constants.modelElementType,
-                                                             dimensions: outputDimensions)
-            
-            guard let localModelFilePath = Bundle.main.path(forResource: Constants.localModelFilename, ofType: Constants.modelExtension) else {
-                print("⚠️ Failed to get the local model file path.")
+            guard let results = request.results else {
+                print("⚠️ \(error!.localizedDescription)")
                 return
             }
             
-            // Register the local TFLite model.
-            let localModelSource = LocalModelSource(name: Constants.localModelFilename,
-                                                    path: localModelFilePath)
+            guard let classifications = results as? [VNClassificationObservation], !classifications.isEmpty else {
+                print("⚠️ No currency recognized.")
+                return
+            }
             
-            modelManager.register(localModelSource)
+            // Retrieve the classification result with the highest degree of confidence.
+            let topClassification = classifications.first?.identifier
             
-            let modelOptions = ModelOptions(cloudModelName: nil,
-                                            localModelName: Constants.localModelFilename)
+            // Update the displayed label text.
+            self.displayedOutputText = topClassification
             
-            // Set the modelInterpreter object.
-            self.modelInterpreter = ModelInterpreter.modelInterpreter(options: modelOptions)
+            // Provide vocal feedback of the processed text.
+            self.spokenOutputText = topClassification
             
-        } catch let error as NSError {
-            print("⚠️ Failed to load the model due to \(error.localizedDescription).")
-            return
         }
         
     }
@@ -157,12 +91,32 @@ class CurrencyLabellingViewController: ProcessingViewController {
     
     
     /**
-     Call relevant view controller configurations.
+     Performs classification on the retrieved image object.
+     
+     - Parameter image: The UIImage object that will be fed to the VNCoreMLModel.
      */
     
-    override func setUpViewController() {
-        super.setUpViewController()
-        self.setUpModelInterpreter()
+    @available(iOS 11.0, *)
+    func updateClassifications(for image: UIImage) {
+        
+        print("📃 Classifying...")
+        
+        let orientation = CGImagePropertyOrientation(image.imageOrientation)
+        
+        // Retrieve a CIImage object.
+        guard let ciImage = CIImage(image: image) else {
+            fatalError("⚠️ Unable to create \(CIImage.self) from \(image).")
+        }
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
+            do {
+                try handler.perform([self.classificationRequest])
+            } catch {
+                // Catch general image processing errors.
+                print("⚠️ Failed to perform classification due to \(error.localizedDescription).")
+            }
+        }
     }
     
 }

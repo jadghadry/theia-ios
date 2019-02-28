@@ -18,13 +18,53 @@ class ProcessingViewController: JGBaseViewController {
     
     
     
+    // MARK: - Computed Properties
+    
+    var displayedOutputText: String? = nil {
+        
+        willSet (newValue) {
+            
+            guard let newValue = newValue, !newValue.isEmpty else {
+                print("⚠️ The displayedOutputText is empty.")
+                self.viewBackdrop?.isHidden = true
+                return
+            }
+            
+            self.viewBackdrop?.isHidden = false
+            self.lblOutput?.text = newValue
+            
+        }
+        
+    }
+    
+    var spokenOutputText: String? = nil {
+        
+        willSet (newValue) {
+            
+            guard let newValue = newValue, !newValue.isEmpty else {
+                print("⚠️ The spokenOutputText is empty.")
+                return
+            }
+            
+            // Utter and print the list of processed objects.
+            let synthesizer = THSpeechSynthesizer.shared
+                synthesizer.speak(text: newValue)
+            
+            print(newValue)
+            
+        }
+        
+    }
+    
+    
+    
     // MARK: - Optional Properties
     
     var sampleBufferToProcess: CMSampleBuffer?
     
     
     
-    // MARK: - Lazy Variable Properties
+    // MARK: - Lazy Properties
     
     lazy var frameExtractor = THFrameExtractor()
     

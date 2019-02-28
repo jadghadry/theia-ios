@@ -28,24 +28,16 @@ class TextRecognitionViewController: ProcessingViewController {
     
     override func process(_ visionImage: VisionImage) {
         
-        let synthesizer = THSpeechSynthesizer.shared
-        
         self.textRecognizer.process(visionImage, completion: { (result, error) in
             
-            // Check whether there was an error in performing OCR on the image.
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            
             // Check whether results were actually retrieved.
-            guard let result = result else {
-                print("⚠️ No text detected.")
+            guard let result = result, error == nil else {
+                print("⚠️ There was an error processing the Text Recognition input.")
                 return
             }
             
-            synthesizer.speak(text: result.text)
-            print(result.text)
+            // Provide vocal feedback of the processed text.
+            self.spokenOutputText = result.text
             
         })
         

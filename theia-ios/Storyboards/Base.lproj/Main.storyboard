@@ -156,10 +156,39 @@
                     <view key="view" contentMode="scaleToFill" id="H6L-yA-sgx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAz-gb-fLk">
+                                <rect key="frame" x="0.0" y="564" width="375" height="103"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Object" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="32" translatesAutoresizingMaskIntoConstraints="NO" id="3mr-HV-bU1">
+                                        <rect key="frame" x="24" y="24" width="327" height="55"/>
+                                        <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="40"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.20293771399999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="3mr-HV-bU1" secondAttribute="bottom" constant="24" id="6Wz-jg-TAS"/>
+                                    <constraint firstItem="3mr-HV-bU1" firstAttribute="top" secondItem="UAz-gb-fLk" secondAttribute="top" constant="24" id="PHp-Qc-oi3"/>
+                                    <constraint firstItem="3mr-HV-bU1" firstAttribute="leading" secondItem="UAz-gb-fLk" secondAttribute="leading" constant="24" id="URH-9m-FlT"/>
+                                    <constraint firstAttribute="trailing" secondItem="3mr-HV-bU1" secondAttribute="trailing" constant="24" id="Zy3-Bm-NVr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="UAz-gb-fLk" firstAttribute="trailing" secondItem="2EZ-xo-on7" secondAttribute="trailing" id="5g4-DO-zsn"/>
+                            <constraint firstItem="UAz-gb-fLk" firstAttribute="leading" secondItem="2EZ-xo-on7" secondAttribute="leading" id="INs-6B-o6O"/>
+                            <constraint firstItem="2EZ-xo-on7" firstAttribute="bottom" secondItem="UAz-gb-fLk" secondAttribute="bottom" id="hdu-G3-5Wx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2EZ-xo-on7"/>
                     </view>
+                    <connections>
+                        <outlet property="lblOutput" destination="3mr-HV-bU1" id="4F3-jx-ibs"/>
+                        <outlet property="viewBackdrop" destination="UAz-gb-fLk" id="iwa-a8-kKS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRr-b1-gBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
