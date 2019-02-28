@@ -12,7 +12,9 @@ class TextRecognitionViewController: ProcessingViewController {
     
     // MARK: - Optional Properties
     
-    var textRecognizer: VisionTextRecognizer?
+    private lazy var textRecognizer: VisionTextRecognizer = {
+        return Vision.vision().onDeviceTextRecognizer()
+    }()
     
     
     
@@ -28,7 +30,7 @@ class TextRecognitionViewController: ProcessingViewController {
         
         let synthesizer = THSpeechSynthesizer.shared
         
-        self.textRecognizer?.process(visionImage, completion: { (result, error) in
+        self.textRecognizer.process(visionImage, completion: { (result, error) in
             
             // Check whether there was an error in performing OCR on the image.
             if let error = error {
@@ -47,27 +49,6 @@ class TextRecognitionViewController: ProcessingViewController {
             
         })
         
-    }
-    
-    
-    
-    /**
-     Configures the MLKit text recognizer.
-     */
-    
-    internal func setUpTextRecognizer() {
-        self.textRecognizer = Vision.vision().onDeviceTextRecognizer()
-    }
-    
-    
-    
-    /**
-     Call relevant view controller configurations.
-     */
-    
-    override func setUpViewController() {
-        super.setUpViewController()
-        self.setUpTextRecognizer()
     }
 
 }

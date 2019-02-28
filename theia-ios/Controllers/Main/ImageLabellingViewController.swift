@@ -11,9 +11,19 @@ import AVFoundation
 
 class ImageLabellingViewController: ProcessingViewController {
     
-    // MARK: - Optional Properties
+    // MARK: - Lazy Properties
     
-    var labelDetector: VisionImageLabeler?
+    private lazy var labelDetector: VisionImageLabeler = {
+        
+        // Retrieve the user-defined confidence threshold.
+        let confidenceThreshold = UserDefaults.standard.float(forKey: THKey.confidenceThreshold)
+        
+        let options = VisionOnDeviceImageLabelerOptions()
+            options.confidenceThreshold = confidenceThreshold
+        
+        return Vision.vision().onDeviceImageLabeler(options: options)
+        
+    }()
     
     
     
@@ -29,7 +39,7 @@ class ImageLabellingViewController: ProcessingViewController {
         
         let synthesizer = THSpeechSynthesizer.shared
         
-        self.labelDetector?.process(visionImage, completion: { (labels, error) in
+        self.labelDetector.process(visionImage, completion: { (labels, error) in
             
             // Check whether there was an error in labeling the image.
             if let error = error {
@@ -65,35 +75,6 @@ class ImageLabellingViewController: ProcessingViewController {
             
         })
 
-    }
-    
-    
-    
-    /**
-     Configures the MLKit label detector with the required models and confidence threshold.
-     */
-    
-    internal func setUpLabelDetector() {
-        
-        // Retrieve the user-defined confidence threshold.
-        let confidenceThreshold = UserDefaults.standard.float(forKey: THKey.confidenceThreshold)
-        
-        let options = VisionOnDeviceImageLabelerOptions()
-            options.confidenceThreshold = confidenceThreshold
-        
-        self.labelDetector = Vision.vision().onDeviceImageLabeler(options: options)
-        
-    }
-    
-    
-    
-    /**
-     Call relevant view controller configurations.
-     */
-    
-    override func setUpViewController() {
-        super.setUpViewController()
-        self.setUpLabelDetector()
     }
 
 }
