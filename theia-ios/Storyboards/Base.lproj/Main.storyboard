@@ -27,8 +27,9 @@
                                 <rect key="frame" x="16" y="36" width="343" height="615"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xw2-ke-pTE" customClass="LOTAnimationView">
-                                        <rect key="frame" x="64" y="200" width="215" height="215"/>
+                                        <rect key="frame" x="71.5" y="207.5" width="200" height="200"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="9a1-lq-6jg"/>
                                             <constraint firstAttribute="width" secondItem="xw2-ke-pTE" secondAttribute="height" id="FKp-DF-GN9"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -39,9 +40,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="xw2-ke-pTE" firstAttribute="leading" secondItem="82v-sf-rnw" secondAttribute="leading" constant="64" id="0Tj-mE-8zd"/>
                                     <constraint firstItem="xw2-ke-pTE" firstAttribute="centerX" secondItem="82v-sf-rnw" secondAttribute="centerX" id="NRd-je-MSc"/>
-                                    <constraint firstAttribute="trailing" secondItem="xw2-ke-pTE" secondAttribute="trailing" constant="64" id="Olb-0k-kn8"/>
                                     <constraint firstItem="xw2-ke-pTE" firstAttribute="centerY" secondItem="82v-sf-rnw" secondAttribute="centerY" id="afR-GX-M0L"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
