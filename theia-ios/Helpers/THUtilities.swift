@@ -47,17 +47,28 @@ class THUtilities {
     // MARK: - Functions
     
     /**
+     Returns true if the user has previously finished unboarding, false otherwise.
+     This value resets only if the app is uninstalled from the device.
+     */
+    
+    static func didFinishOnboarding() -> Bool {
+        return UserDefaults.standard.bool(forKey: THKey.onboardingCompleted)
+    }
+    
+    
+    
+    /**
      Returns true if the app was launched for the very first time by the user.
-     Note that this value resets only if the app is uninstalled from the device.
+     This value resets only if the app is uninstalled from the device.
      */
     
     static func isFirstApplicationLaunch() -> Bool {
         
-        if UserDefaults.standard.bool(forKey: THKey.notFirstLaunch) {
+        if UserDefaults.standard.bool(forKey: THKey.launchedOnce) {
             return false
         }
         
-        UserDefaults.standard.set(true, forKey: THKey.notFirstLaunch)
+        UserDefaults.standard.set(true, forKey: THKey.launchedOnce)
         return true
         
     }

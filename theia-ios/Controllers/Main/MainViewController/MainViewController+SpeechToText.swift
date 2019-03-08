@@ -44,18 +44,6 @@ extension MainViewController {
     // MARK: - Functions
     
     /**
-     Asks the user to grant your app the permission to perform speech recognition.
-     */
-    
-    internal func requestSpeechRecognitionAuthorization(completion: ((Bool) -> Void)? = nil) {
-        SFSpeechRecognizer.requestAuthorization { authStatus in
-            completion?(authStatus == .authorized)
-        }
-    }
-    
-    
-    
-    /**
      Installs an audio tap on the bus to record, monitor, and observe the output of the node.
      
      Only one tap may be installed on any bus. Taps may be safely installed and removed while the engine is running.

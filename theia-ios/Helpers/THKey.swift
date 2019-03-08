@@ -10,13 +10,9 @@ import Foundation
 
 struct THKey {
     
-    // Miscellaneous
-    static let notFirstLaunch = "NOT_FIRST_LAUNCH"
-    
-    // Permissions
-    static let videoPermission = "VIDEO_PERMISSION"
-    
-    // Settings
     static let confidenceThreshold = "CONFIDENCE_THRESHOLD"
+    static let launchedOnce = "FIRST_LAUNCH"
+    static let videoPermission = "VIDEO_PERMISSION"
+    static let onboardingCompleted = "ONBOARDING_COMPLETED"
     
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BLTNBoard
 import Lottie
 import Speech
 
@@ -21,6 +22,15 @@ class MainViewController: JGBaseViewController {
     // MARK: - Constant Properties
     
     let audioEngine = AVAudioEngine()
+    
+    
+    
+    // MARK: - Lazy Properties
+    
+    lazy var bulletinManager: BLTNItemManager = {
+        let rootItem = self.onboardingIntroduction()
+        return BLTNItemManager(rootItem: rootItem)
+    }()
     
     
     
@@ -139,9 +149,6 @@ class MainViewController: JGBaseViewController {
         self.setUpNotifications()
         self.configureLottieAnimation()
         
-        // Request speech input authorization.
-        self.requestSpeechRecognitionAuthorization()
-        
     }
     
     
@@ -153,10 +160,14 @@ class MainViewController: JGBaseViewController {
     
     internal func showOnboardingScreens() {
         
-        if THUtilities.isFirstApplicationLaunch() {
-            // WARNING: Add onboarding screens.
+        if !THUtilities.didFinishOnboarding() {
+            
+            DispatchQueue.main.async {
+                self.bulletinManager.showBulletin(above: self)
+            }
+            
         }
-    
+        
     }
     
 }

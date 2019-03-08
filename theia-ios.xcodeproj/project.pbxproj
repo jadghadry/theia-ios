@@ -26,6 +26,8 @@
 		269A281721C2D0C00001A4C4 /* ProcessingViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261606D721BD135C00219637 /* ProcessingViewController+Gestures.swift */; };
 		26AFCA0E219DCD33005F89AF /* ProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFCA0D219DCD33005F89AF /* ProcessingViewController.swift */; };
 		26AFCA10219DD486005F89AF /* TextRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AFCA0F219DD486005F89AF /* TextRecognitionViewController.swift */; };
+		26B07E822231EA2A002F831C /* MainViewController+Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B07E812231EA2A002F831C /* MainViewController+Onboarding.swift */; };
+		26B07E842231ED40002F831C /* THColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B07E832231ED40002F831C /* THColor.swift */; };
 		26B57708219C998400CEACB8 /* THUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B57707219C998400CEACB8 /* THUtilities.swift */; };
 		26DD464F215FEAF5000B10E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DD464E215FEAF5000B10E5 /* AppDelegate.swift */; };
 		26DD4654215FEAF5000B10E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26DD4652215FEAF5000B10E5 /* Main.storyboard */; };
@@ -70,6 +72,8 @@
 		269A281121C265E30001A4C4 /* ProcessingViewController+FrameExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessingViewController+FrameExtractor.swift"; sourceTree = "<group>"; };
 		26AFCA0D219DCD33005F89AF /* ProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingViewController.swift; sourceTree = "<group>"; };
 		26AFCA0F219DD486005F89AF /* TextRecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionViewController.swift; sourceTree = "<group>"; };
+		26B07E812231EA2A002F831C /* MainViewController+Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainViewController+Onboarding.swift"; sourceTree = "<group>"; };
+		26B07E832231ED40002F831C /* THColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THColor.swift; sourceTree = "<group>"; };
 		26B57707219C998400CEACB8 /* THUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THUtilities.swift; sourceTree = "<group>"; };
 		26DD464B215FEAF5000B10E5 /* theia-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "theia-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26DD464E215FEAF5000B10E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 			children = (
 				26DD4666215FED65000B10E5 /* MainViewController.swift */,
 				2657DA5D2188664800F45147 /* MainViewController+Commands.swift */,
+				26B07E812231EA2A002F831C /* MainViewController+Onboarding.swift */,
 				261928172189B68B001734BD /* MainViewController+SpeechToText.swift */,
 			);
 			path = MainViewController;
@@ -237,6 +242,7 @@
 		26DD466A215FF5D7000B10E5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				26B07E832231ED40002F831C /* THColor.swift */,
 				2635653321C031A1007BAF67 /* THKey.swift */,
 				26B57707219C998400CEACB8 /* THUtilities.swift */,
 			);
@@ -400,7 +406,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "TAGS=\"TODO:|FIXME:|WARNING:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\n";
+			shellScript = "TAGS=\"FIXME:|WARNING:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"\n";
 		};
 		64522A0F9C44EAA664725FE5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -455,6 +461,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-theia-ios/Pods-theia-ios-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BulletinBoard/BLTNBoard.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -470,6 +477,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BLTNBoard.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
@@ -495,6 +503,7 @@
 			files = (
 				2604F82622273BAB00582707 /* ProcessingViewController+FrameExtractor.swift in Sources */,
 				269A281721C2D0C00001A4C4 /* ProcessingViewController+Gestures.swift in Sources */,
+				26B07E822231EA2A002F831C /* MainViewController+Onboarding.swift in Sources */,
 				26360D2C218DFD4600565EBA /* THSpeechSynthesizer.swift in Sources */,
 				2657DA5E2188664800F45147 /* MainViewController+Commands.swift in Sources */,
 				266C6AC821C5A6C000B52E8A /* String.swift in Sources */,
@@ -505,6 +514,7 @@
 				2635653421C031A1007BAF67 /* THKey.swift in Sources */,
 				26B57708219C998400CEACB8 /* THUtilities.swift in Sources */,
 				26DD464F215FEAF5000B10E5 /* AppDelegate.swift in Sources */,
+				26B07E842231ED40002F831C /* THColor.swift in Sources */,
 				262477E122284F050092D234 /* LBPClassifier.mlmodel in Sources */,
 				26AFCA10219DD486005F89AF /* TextRecognitionViewController.swift in Sources */,
 				26DD4667215FED65000B10E5 /* MainViewController.swift in Sources */,
