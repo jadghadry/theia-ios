@@ -51,8 +51,7 @@ extension MainViewController {
     
     internal func configureAudioTap() {
         
-        let audioEngine = self.audioEngine
-        let inputNode = audioEngine.inputNode
+        let inputNode = self.audioEngine.inputNode
         let inputNodeFormat = inputNode.inputFormat(forBus: 0)
         
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: inputNodeFormat, block: { [unowned self] buffer, time in
@@ -77,19 +76,20 @@ extension MainViewController {
         
         self.recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest, resultHandler: { [unowned self] result, error in
             
-            if error != nil {
-                
-                // Stop the audio engine and recognition task.
-                self.stopSpeechRecognition()
-                
-            } else if let result = result {
-                
-                let bestTranscriptionString = result.bestTranscription.formattedString
-                
-                self.command = bestTranscriptionString
-                print(bestTranscriptionString)
-                
+            // Check for errors.
+            guard error == nil else {
+                return
             }
+            
+            // Retrieve result.
+            guard let result = result else {
+                return
+            }
+            
+            let bestTranscriptionString = result.bestTranscription.formattedString
+            
+            self.command = bestTranscriptionString
+            print(bestTranscriptionString)
             
         })
         
@@ -113,13 +113,19 @@ extension MainViewController {
         self.configureAudioTap()
         self.startRecognitionTask()
         
-        // Start the audioEngine and the recognition task.
+        // Start the audio engine and the recognition task.
         self.audioEngine.prepare()
         do {
             try self.audioEngine.start()
         } catch {
             print("⚠️ Could not start the audioEngine property.")
+            return
         }
+        
+        // Start the animation.
+        self.lottieVoiceAnimation.play()
+        
+        print("🎙 Listening")
         
     }
     
@@ -146,8 +152,13 @@ extension MainViewController {
         self.recognitionTask?.cancel()
         self.recognitionTask = nil
         
+        // Stop the animation.
+        self.lottieVoiceAnimation.stop()
+        
+        print("🎙 Stopped listening")
+        
     }
-
+    
 }
 
 
