@@ -66,7 +66,7 @@ class CurrencyLabellingViewController: ProcessingViewController {
         DispatchQueue.main.async {
             
             guard let results = request.results else {
-                print("⚠️ \(error!.localizedDescription)")
+                print("⚠️ \(error!.localizedDescription).")
                 return
             }
             

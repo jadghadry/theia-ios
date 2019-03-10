@@ -75,7 +75,7 @@
                         <outlet property="lottieVoiceAnimation" destination="xw2-ke-pTE" id="G8S-YH-iUn"/>
                         <segue destination="bRL-9e-s4U" kind="presentation" identifier="segueToImageClassifier" id="5su-lx-k5B"/>
                         <segue destination="9eP-47-ldx" kind="presentation" identifier="segueToTextRecognizer" id="K80-jr-v09"/>
-                        <segue destination="R2w-lI-mN8" kind="presentation" identifier="segueToCurrencyClassifier" id="M4K-FP-ZXH"/>
+                        <segue destination="R2w-lI-mN8" kind="presentation" identifier="segueToCurrencyClassifier" id="zA5-Ti-mT5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -90,7 +90,7 @@
         <!--Image Labelling View Controller-->
         <scene sceneID="WCJ-Ko-pFn">
             <objects>
-                <viewController modalPresentationStyle="overFullScreen" id="bRL-9e-s4U" customClass="ImageLabellingViewController" customModule="theia_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bRL-9e-s4U" customClass="ImageLabellingViewController" customModule="theia_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e2n-hR-gc1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -135,7 +135,7 @@
         <!--Text Recognition View Controller-->
         <scene sceneID="4Tj-1G-C9B">
             <objects>
-                <viewController modalPresentationStyle="overFullScreen" id="9eP-47-ldx" customClass="TextRecognitionViewController" customModule="theia_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9eP-47-ldx" customClass="TextRecognitionViewController" customModule="theia_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kkQ-YQ-y4u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,7 +151,7 @@
         <!--Currency Labelling View Controller-->
         <scene sceneID="xl5-ZK-fE4">
             <objects>
-                <viewController modalPresentationStyle="overFullScreen" id="R2w-lI-mN8" customClass="CurrencyLabellingViewController" customModule="theia_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="R2w-lI-mN8" customClass="CurrencyLabellingViewController" customModule="theia_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H6L-yA-sgx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -185,8 +185,8 @@
                         <viewLayoutGuide key="safeArea" id="2EZ-xo-on7"/>
                     </view>
                     <connections>
-                        <outlet property="lblOutput" destination="3mr-HV-bU1" id="4F3-jx-ibs"/>
-                        <outlet property="viewBackdrop" destination="UAz-gb-fLk" id="iwa-a8-kKS"/>
+                        <outlet property="lblOutput" destination="3mr-HV-bU1" id="UlG-If-cdW"/>
+                        <outlet property="viewBackdrop" destination="UAz-gb-fLk" id="wU3-iN-PgO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRr-b1-gBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
