@@ -21,6 +21,7 @@
 		2657DCC0219D9B7A009020CB /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2657DCB7219D96A9009020CB /* Nunito-ExtraBold.ttf */; };
 		2657DCC1219D9B7A009020CB /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2657DCB9219D96A9009020CB /* Nunito-Regular.ttf */; };
 		2657DCC2219D9B7A009020CB /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2657DCB6219D96A9009020CB /* Nunito-SemiBold.ttf */; };
+		2667937822451C05005BB02A /* ColorLabellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2667937722451C05005BB02A /* ColorLabellingViewController.swift */; };
 		266C6AC821C5A6C000B52E8A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C6AC721C5A6C000B52E8A /* String.swift */; };
 		266E42E22218E1A70049CC41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 266E42E12218E1A70049CC41 /* GoogleService-Info.plist */; };
 		2671BC8D2217ACA40020E964 /* CurrencyLabellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2671BC8C2217ACA40020E964 /* CurrencyLabellingViewController.swift */; };
@@ -65,6 +66,7 @@
 		2657DCB7219D96A9009020CB /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
 		2657DCB8219D96A9009020CB /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		2657DCB9219D96A9009020CB /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		2667937722451C05005BB02A /* ColorLabellingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorLabellingViewController.swift; sourceTree = "<group>"; };
 		266C6AC721C5A6C000B52E8A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		266E42E12218E1A70049CC41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2671BC8C2217ACA40020E964 /* CurrencyLabellingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyLabellingViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			children = (
 				269A281521C2CAE60001A4C4 /* MainViewController */,
 				269A281621C2CAF30001A4C4 /* ProcessingViewController */,
+				2667937722451C05005BB02A /* ColorLabellingViewController.swift */,
 				2671BC8C2217ACA40020E964 /* CurrencyLabellingViewController.swift */,
 				264CF38A219A3FBE008535B1 /* ImageLabellingViewController.swift */,
 				26AFCA0F219DD486005F89AF /* TextRecognitionViewController.swift */,
@@ -504,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2604F82622273BAB00582707 /* ProcessingViewController+FrameExtractor.swift in Sources */,
+				2667937822451C05005BB02A /* ColorLabellingViewController.swift in Sources */,
 				269A281721C2D0C00001A4C4 /* ProcessingViewController+Gestures.swift in Sources */,
 				26B07E822231EA2A002F831C /* MainViewController+Onboarding.swift in Sources */,
 				26360D2C218DFD4600565EBA /* THSpeechSynthesizer.swift in Sources */,

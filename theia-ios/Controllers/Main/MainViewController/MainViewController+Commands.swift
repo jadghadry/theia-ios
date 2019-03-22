@@ -32,6 +32,10 @@ extension MainViewController {
         case let command where command.contains("CONFIDENCE THRESHOLD"):
             self.modifyConfidenceThreshold(fromCommand: command)
             
+        // Image processing modules are deployed in order to identify colors.
+        case let command where command.contains("COLOR"):
+            self.performSegue(withIdentifier: "segueToColorClassifier", sender: nil)
+            
         // Image processing and machine learning modules are deployed in order to detect currency values.
         case let command where command.contains("CURRENCY"):
             self.performSegue(withIdentifier: "segueToCurrencyClassifier", sender: nil)

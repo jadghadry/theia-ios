@@ -76,6 +76,7 @@
                         <segue destination="bRL-9e-s4U" kind="presentation" identifier="segueToImageClassifier" id="5su-lx-k5B"/>
                         <segue destination="9eP-47-ldx" kind="presentation" identifier="segueToTextRecognizer" id="K80-jr-v09"/>
                         <segue destination="R2w-lI-mN8" kind="presentation" identifier="segueToCurrencyClassifier" id="zA5-Ti-mT5"/>
+                        <segue destination="XUk-Rn-9F1" kind="presentation" identifier="segueToColorClassifier" id="1sc-eX-Rsu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -130,7 +131,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IXX-op-YwJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40.799999999999997" y="914.392803598201"/>
+            <point key="canvasLocation" x="486" y="936"/>
         </scene>
         <!--Text Recognition View Controller-->
         <scene sceneID="4Tj-1G-C9B">
@@ -146,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBe-yX-vxu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="934" y="913"/>
+            <point key="canvasLocation" x="1378" y="934"/>
         </scene>
         <!--Currency Labelling View Controller-->
         <scene sceneID="xl5-ZK-fE4">
@@ -159,7 +160,7 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAz-gb-fLk">
                                 <rect key="frame" x="0.0" y="564" width="375" height="103"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Object" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="32" translatesAutoresizingMaskIntoConstraints="NO" id="3mr-HV-bU1">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currency" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="32" translatesAutoresizingMaskIntoConstraints="NO" id="3mr-HV-bU1">
                                         <rect key="frame" x="24" y="24" width="327" height="55"/>
                                         <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="40"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -191,7 +192,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRr-b1-gBT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-847" y="913"/>
+            <point key="canvasLocation" x="-402" y="934"/>
+        </scene>
+        <!--Color Labelling View Controller-->
+        <scene sceneID="mNs-mE-d2x">
+            <objects>
+                <viewController id="XUk-Rn-9F1" customClass="ColorLabellingViewController" customModule="theia_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Szo-YJ-Ytx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s3d-eK-0AK">
+                                <rect key="frame" x="0.0" y="564" width="375" height="103"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="32" translatesAutoresizingMaskIntoConstraints="NO" id="8vm-sm-NLv">
+                                        <rect key="frame" x="24" y="24" width="327" height="55"/>
+                                        <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="40"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.20293771399999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="8vm-sm-NLv" secondAttribute="bottom" constant="24" id="CX9-J7-dLS"/>
+                                    <constraint firstItem="8vm-sm-NLv" firstAttribute="top" secondItem="s3d-eK-0AK" secondAttribute="top" constant="24" id="NXk-0y-0lU"/>
+                                    <constraint firstItem="8vm-sm-NLv" firstAttribute="leading" secondItem="s3d-eK-0AK" secondAttribute="leading" constant="24" id="byt-XF-lU7"/>
+                                    <constraint firstAttribute="trailing" secondItem="8vm-sm-NLv" secondAttribute="trailing" constant="24" id="dFq-bG-Krx"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="cRQ-38-i2v" firstAttribute="bottom" secondItem="s3d-eK-0AK" secondAttribute="bottom" id="FaC-b8-cqP"/>
+                            <constraint firstItem="s3d-eK-0AK" firstAttribute="trailing" secondItem="cRQ-38-i2v" secondAttribute="trailing" id="ZY7-Xc-E4Y"/>
+                            <constraint firstItem="s3d-eK-0AK" firstAttribute="leading" secondItem="cRQ-38-i2v" secondAttribute="leading" id="c3F-NC-ziC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cRQ-38-i2v"/>
+                    </view>
+                    <connections>
+                        <outlet property="lblOutput" destination="8vm-sm-NLv" id="zTC-Hw-UvP"/>
+                        <outlet property="viewBackdrop" destination="s3d-eK-0AK" id="fQT-vV-6xz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dJC-Qv-bhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1334" y="933"/>
         </scene>
     </scenes>
 </document>
