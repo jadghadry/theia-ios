@@ -12,7 +12,7 @@ struct THColor {
     
     // MARK: - Constants
     
-    static let flatBlue = UIColor(hex: 0x317EFF)
+    static let flatBlue = UIColor(hex: 0x0FB5F0)
     static let flatPurple = UIColor(hex: 0x7550DA)
     static let flatRed = UIColor(hex: 0xFF2641)
     static let green = UIColor(hex: 0x24D787)
