@@ -12,7 +12,7 @@ class ColorLabellingViewController: ProcessingViewController {
     
     // MARK: - Lazy Properties
     
-    private lazy var context = CIContext(options: [.workingColorSpace: kCFNull])
+    private lazy var context = CIContext(options: [.workingColorSpace: kCFNull as Any])
     
     
     
@@ -30,59 +30,13 @@ class ColorLabellingViewController: ProcessingViewController {
             return
         }
         
-        let colorName = self.getName(ofColor: averageColor)
+        let colorName = averageColor.getName()
         
         self.displayedOutputText = colorName
         self.spokenOutputText = colorName
         
         // Update the background color of the backdrop view.
         self.viewBackdrop?.backgroundColor = averageColor
-        
-    }
-    
-    
-    
-    /**
-     Retrieves the color name that best describes the input.
-     
-     - Parameter color: The color to name.
-     */
-    
-    private func getName(ofColor color: UIColor) -> String? {
-        
-        var minDistance: CGFloat = CGFloat.greatestFiniteMagnitude
-        var colorName: String = String.init()
-        
-        // Retrieve the input color components.
-        guard let colorComponents = color.cgColor.components else {
-            print("⚠️ There was an error retrieving the input color components")
-            return nil
-        }
-        
-        // Iterate through the dictionary of colors.
-        for entry in THColor.colorsDictionary {
-            
-            // Retrieve the color and value components.
-            guard let valueComponents = entry.value.cgColor.components else {
-                print("⚠️ There was an error retrieving the value color components")
-                return nil
-            }
-            
-            var distance: CGFloat = 0
-            
-            // Compute the color distance.
-            for i in 0...2 {
-                distance = distance + pow(colorComponents[i] - valueComponents[i], 2)
-            }
-            
-            if distance < minDistance {
-                minDistance = distance
-                colorName = entry.key
-            }
-            
-        }
-        
-        return colorName
         
     }
     

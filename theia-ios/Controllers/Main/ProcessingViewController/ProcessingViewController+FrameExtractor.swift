@@ -67,9 +67,13 @@ extension ProcessingViewController {
     
     internal func visionImageToProcess(fromImage image: UIImage) -> VisionImage? {
         
-        // Modify the orientation of the retrieved buffer before sending it to processing.
-        let imageOrientation = THUtilities.imageOrientation
-        let visionOrientation = THUtilities.visionImageOrientation(from: imageOrientation)
+        // Retrieve a VisionOrientation object from the input image.
+        guard
+            let imageOrientation = THUtilities.imageOrientation,
+            let visionOrientation = THUtilities.visionImageOrientation(from: imageOrientation) else {
+                print("⚠️ Unable to retrieve the orientation of the input image.")
+                return nil
+        }
         
         let customMetadata = VisionImageMetadata()
             customMetadata.orientation = visionOrientation

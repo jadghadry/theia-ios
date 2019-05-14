@@ -17,7 +17,7 @@ class THUtilities {
      Retrieves the actual image orientation as taken by the back camera.
      */
     
-    static var imageOrientation: UIImage.Orientation {
+    static var imageOrientation: UIImage.Orientation? {
         
         get {
             
@@ -27,14 +27,21 @@ class THUtilities {
                 
             case .portrait:
                 return .right
+                
             case .portraitUpsideDown:
                 return .left
+                
             case .landscapeLeft:
                 return .up
+                
             case .landscapeRight:
                 return .down
+                
             case .faceDown, .faceUp, .unknown:
                 return .up
+                
+            @unknown default:
+                return nil
                 
             }
             
@@ -81,27 +88,36 @@ class THUtilities {
      - Parameter imageOrientation: The intended display orientation for an image.
      */
     
-    static func visionImageOrientation(from imageOrientation: UIImage.Orientation) -> VisionDetectorImageOrientation {
+    static func visionImageOrientation(from imageOrientation: UIImage.Orientation) -> VisionDetectorImageOrientation? {
         
         switch (imageOrientation) {
             
         case .up:
             return .topLeft
+            
         case .down:
             return .bottomRight
+            
         case .left:
             return .leftBottom
+            
         case .right:
             return .rightTop
+            
         case .upMirrored:
             return .topRight
+            
         case .downMirrored:
             return .bottomLeft
+            
         case .leftMirrored:
             return .leftTop
+            
         case .rightMirrored:
             return .rightBottom
             
+        @unknown default:
+            return nil
         }
         
     }

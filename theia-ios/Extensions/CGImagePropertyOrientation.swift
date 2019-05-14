@@ -13,7 +13,7 @@ extension CGImagePropertyOrientation {
     
     // MARK: - Initializers
    
-    init(_ orientation: UIImage.Orientation) {
+    init?(_ orientation: UIImage.Orientation) {
         
         switch orientation {
             
@@ -41,6 +41,8 @@ extension CGImagePropertyOrientation {
         case .rightMirrored:
             self = .rightMirrored
             
+        @unknown default:
+            return nil
         }
         
     }

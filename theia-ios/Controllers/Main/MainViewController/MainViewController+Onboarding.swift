@@ -116,6 +116,8 @@ extension MainViewController {
                         self.bulletinManager.displayNextItem()
                     }
                     
+                @unknown default:
+                    return
                 }
                 
                 
@@ -137,7 +139,7 @@ extension MainViewController {
     internal func onboardingCameraAccess() -> BLTNPageItem {
         
         let card = onboardingCommonCard(withTitle: "Camera Access",
-                                        colorTheme: THColor.flatBlue)
+                                        colorTheme: THColor.crayolaBlue)
         
         card.descriptionText = "Lastly, you'll have to grant me camera access if you want me to identify objects for you."
         card.actionButtonTitle = "Grant Access"

@@ -101,11 +101,16 @@ class CurrencyLabellingViewController: ProcessingViewController {
         
         print("📃 Classifying...")
         
-        let orientation = CGImagePropertyOrientation(image.imageOrientation)
+        // Retrieve a CGImagePropertyOrientation from the input image.
+        guard let orientation = CGImagePropertyOrientation(image.imageOrientation) else {
+            print("⚠️ Unable to retrieve the \(CGImagePropertyOrientation.self) from \(image).")
+            return
+        }
         
-        // Retrieve a CIImage object.
+        // Retrieve a CIImage object from the input image.
         guard let ciImage = CIImage(image: image) else {
-            fatalError("⚠️ Unable to create \(CIImage.self) from \(image).")
+            print("⚠️ Unable to create a \(CIImage.self) object from \(image).")
+            return
         }
         
         DispatchQueue.global(qos: .userInitiated).async {
