@@ -21,6 +21,10 @@ target 'theia-ios' do
   pod 'Firebase/MLVisionTextModel'
   pod 'Firebase/MLVisionLabelModel'
   pod 'JGFramework'
+  pod 'RxCocoa'
+  pod 'RxGesture'
+  pod 'RxSwift'
+  
   pod 'lottie-ios', '~> 2.5.2'
 
 end

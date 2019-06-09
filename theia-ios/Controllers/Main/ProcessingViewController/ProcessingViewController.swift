@@ -7,6 +7,8 @@
 //
 
 import AVFoundation
+import RxGesture
+import RxSwift
 import UIKit
 
 class ProcessingViewController: JGBaseViewController {
@@ -15,6 +17,12 @@ class ProcessingViewController: JGBaseViewController {
     
     @IBOutlet weak var lblOutput: UILabel?
     @IBOutlet weak var viewBackdrop: UIView?
+    
+    
+    
+    // MARK: - Properties
+    
+    let disposeBag = DisposeBag()
     
     
     

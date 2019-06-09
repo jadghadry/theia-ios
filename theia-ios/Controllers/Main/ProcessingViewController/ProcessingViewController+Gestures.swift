@@ -11,64 +11,6 @@ import UIKit
 
 extension ProcessingViewController {
     
-    // MARK: - Selectors
-    
-    /**
-     Dismisses the view and removes it from the view hierarchy.
-     */
-    
-    @objc func dismissView(_ sender: UISwipeGestureRecognizer) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    
-    /**
-     Processes a given VisionImage input depending on the invoked user command.
-     */
-    
-    @objc func processSampleBuffer(_ sender: UITapGestureRecognizer) {
-        
-        let synthesizer = THSpeechSynthesizer.shared
-        
-        // WARNING: _BeginSpeaking: couldn't begin playback.
-        if synthesizer.isSpeaking() {
-            synthesizer.stopSpeaking()
-            return
-        }
-        
-        // Retrieve a UIImage to process.
-        guard let image = imageFromSampleBuffer() else {
-            print("⚠️ Could not retrieve a UIImage object to process.")
-            return
-        }
-        
-        self.process(image)
-        
-    }
-    
-    
-    
-    /**
-     If available, turns on the device's torch.
-     */
-    
-    @objc internal func turnOnTorch(_ sender: UISwipeGestureRecognizer) {
-        self.toggleTorch(true)
-    }
-    
-    
-    
-    /**
-     If available, turns off the device's torch.
-     */
-    
-    @objc internal func turnOffTorch(_ sender: UISwipeGestureRecognizer) {
-        self.toggleTorch(false)
-    }
-    
-    
-    
     // MARK: - Functions
 
     /**
@@ -77,11 +19,13 @@ extension ProcessingViewController {
     
     internal func setUpDismissSwipeGesture() {
         
-        let swipeGesture = UISwipeGestureRecognizer()
-            swipeGesture.direction = .down
-            swipeGesture.addTarget(self, action: #selector(self.dismissView(_ :)))
-        
-        self.view.addGestureRecognizer(swipeGesture)
+        view.rx
+            .swipeGesture(.down)
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
         
     }
     
@@ -93,11 +37,30 @@ extension ProcessingViewController {
     
     internal func setUpImageProcessingTapGesture() {
         
-        let tapGesture = UITapGestureRecognizer()
-            tapGesture.numberOfTapsRequired = 2
-            tapGesture.addTarget(self, action: #selector(self.processSampleBuffer(_ :)))
-        
-        self.view.addGestureRecognizer(tapGesture)
+        view.rx
+            .tapGesture(configuration: { gesture, _ in
+                gesture.numberOfTapsRequired = 2
+            })
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                
+                THSpeechSynthesizer.shared.toggleSpeaking({ [weak self] isSpeaking in
+                    
+                    if isSpeaking {
+                        return
+                    }
+                    
+                    guard let image = self?.imageFromSampleBuffer() else {
+                        print("⚠️ Could not retrieve a UIImage object to process.")
+                        return
+                    }
+                    
+                    self?.process(image)
+                    
+                })
+                
+            })
+            .disposed(by: disposeBag)
         
     }
     
@@ -109,21 +72,21 @@ extension ProcessingViewController {
     
     internal func setUpTorchGestures() {
         
-        // UISwipeGestureRecognizer used to turn the torch on.
-        let onSwipeGesture = UISwipeGestureRecognizer()
-            onSwipeGesture.direction = .up
-            onSwipeGesture.numberOfTouchesRequired = 2
-            onSwipeGesture.addTarget(self, action: #selector(self.turnOnTorch))
-        
-        self.view.addGestureRecognizer(onSwipeGesture)
-        
-        // UISwipeGestureRecognizer used to turn the torch off.
-        let offSwipeGesture = UISwipeGestureRecognizer()
-            offSwipeGesture.direction = .down
-            offSwipeGesture.numberOfTouchesRequired = 2
-            offSwipeGesture.addTarget(self, action: #selector(self.turnOffTorch))
-        
-        self.view.addGestureRecognizer(offSwipeGesture)
+        view.rx
+            .swipeGesture([.up, .down], configuration: { gesture, _ in
+                gesture.numberOfTouchesRequired = 2
+            })
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] gesture in
+                
+                if gesture.direction == .up {
+                    self?.toggleTorch(true)
+                } else if gesture.direction == .down {
+                    self?.toggleTorch(false)
+                }
+                
+            })
+            .disposed(by: disposeBag)
         
     }
     
