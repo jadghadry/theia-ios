@@ -55,8 +55,7 @@ class ProcessingViewController: JGBaseViewController {
             }
             
             // Utter and print the list of processed objects.
-            let synthesizer = THSpeechSynthesizer.shared
-                synthesizer.speak(text: newValue)
+            THSpeechSynthesizer.shared.speak(text: newValue)
             
             print(newValue)
             
@@ -188,12 +187,8 @@ class ProcessingViewController: JGBaseViewController {
     
     internal func stopTasks() {
         
-        let synthesizer = THSpeechSynthesizer.shared
-        
         // Stop uttering any current text.
-        if synthesizer.isSpeaking() {
-            synthesizer.stopSpeaking()
-        }
+        THSpeechSynthesizer.shared.toggleSpeaking()
         
         // Stop the frame extractor from running.
         self.frameExtractor.stopRunning()

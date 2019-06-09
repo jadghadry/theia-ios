@@ -47,27 +47,28 @@ class MainViewController: JGBaseViewController {
     
     @IBAction func didTapView(_ sender: UITapGestureRecognizer) {
         
-        let synthesizer = THSpeechSynthesizer.shared
-        
         // Check wether the synthesizer is speaking.
-        if synthesizer.isSpeaking() {
-            synthesizer.stopSpeaking()
-            return
-        }
-        
-        // Check the audio engine status.
-        if self.audioEngine.isRunning {
+        THSpeechSynthesizer.shared.toggleSpeaking({ [weak self] isSpeaking in
             
-            // If the audio engine was running, then we need to stop receiving audio input.
-            self.stopSpeechRecognition()
-            self.runCommand()
+            if isSpeaking {
+                return
+            }
             
-        } else {
+            // Check the audio engine status.
+            if let audioEngine = self?.audioEngine, audioEngine.isRunning {
+                
+                // If the audio engine was running, then we need to stop receiving audio input.
+                self?.stopSpeechRecognition()
+                self?.runCommand()
+                
+            } else {
+                
+                // If the audio engine was not running, then we need to start receiving audio input.
+                self?.startSpeechRecognition()
+                
+            }
             
-            // If the audio engine was not running, then we need to start receiving audio input.
-            self.startSpeechRecognition()
-            
-        }
+        })
         
     }
     
@@ -76,7 +77,7 @@ class MainViewController: JGBaseViewController {
     // MARK: - Functions
     
     /**
-     Configures the SFSpeechRecognizer object using an english locale.
+     Configures the main lottie animation.
      */
     
     internal func configureLottieAnimation() {
@@ -150,8 +151,8 @@ class MainViewController: JGBaseViewController {
     
     
     /**
-     Display tutorial screens to the user.
-     Note that these screens should only be displayed after the first app launch.
+     Display onboarding screens to the user.
+     Note that these screens should not be displayed if the user has already completed the onboarding procedure.
      */
     
     internal func showOnboardingScreens() {

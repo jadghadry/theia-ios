@@ -26,7 +26,7 @@ class THSpeechSynthesizer {
     // MARK: - Private Initializer
     
     private init() {
-        self.synthesizer = AVSpeechSynthesizer()
+        synthesizer = AVSpeechSynthesizer()
     }
     
     
@@ -48,29 +48,32 @@ class THSpeechSynthesizer {
             utterance.voice = AVSpeechSynthesisVoice(language: language)
             utterance.rate = rate
         
-        self.synthesizer.speak(utterance)
+        synthesizer.speak(utterance)
         
     }
     
     
     
     /**
-     Returns true if the AVSpeechSynthesizer object is currently speaking, false otherwise.
+     Toggles the speaking state of the synthesizer.
+     
+     - Parameter handler: The callback triggered with the synthesizer.isSpeaking boolean parameter.
      */
     
-    open func isSpeaking() -> Bool {
-        return self.synthesizer.isSpeaking
-    }
-    
-    
-    
-    /**
-     Immediately stops the AVSpeechSynthesizer object from speaking and triggers a vibration.
-     */
-    
-    open func stopSpeaking() {
-        self.synthesizer.stopSpeaking(at: .immediate)
-        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    open func toggleSpeaking(_ handler: ((Bool) -> Void)? = nil) {
+        
+        if synthesizer.isSpeaking {
+            
+            handler?(true)
+            synthesizer.stopSpeaking(at: .immediate)
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            
+        } else {
+            
+            handler?(false)
+            
+        }
+        
     }
     
 }
