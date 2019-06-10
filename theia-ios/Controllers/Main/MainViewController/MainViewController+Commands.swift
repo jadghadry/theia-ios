@@ -24,8 +24,6 @@ extension MainViewController {
             return
         }
         
-        let synthesizer = THSpeechSynthesizer.shared
-        
         switch (command) {
             
         // Modify the confidence threshold value.
@@ -50,7 +48,7 @@ extension MainViewController {
             
         // Command does not exist.
         default:
-            synthesizer.speak(text: "Command not found")
+            THSpeechSynthesizer.shared.speak(text: "Command not found")
             
         }
         
@@ -68,22 +66,20 @@ extension MainViewController {
     
     internal func modifyConfidenceThreshold(fromCommand command: String) {
         
-        let synthesizer = THSpeechSynthesizer.shared
-        
         // Check whether the invoked command contains a number.
         guard let extractedNumber = command.extractNumber() else {
-            synthesizer.speak(text: "Could not extract value.")
+            THSpeechSynthesizer.shared.speak(text: "Could not extract value.")
             return
         }
         
         // Check if the extracted number falls between 25 and 100%.
         guard (25...100).contains(extractedNumber) else {
-            synthesizer.speak(text: "Please provide a value between 25 and 100%.")
+            THSpeechSynthesizer.shared.speak(text: "Please provide a value between 25 and 100%.")
             return
         }
         
         UserDefaults.standard.set(extractedNumber/100.0, forKey: THKey.confidenceThreshold)
-        synthesizer.speak(text: "Ok, done!")
+        THSpeechSynthesizer.shared.speak(text: "Ok, done!")
         
     }
     
