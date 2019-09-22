@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,10 +22,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82v-sf-rnw">
-                                <rect key="frame" x="16" y="36" width="343" height="615"/>
+                                <rect key="frame" x="16" y="16" width="343" height="635"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xw2-ke-pTE" customClass="LOTAnimationView">
-                                        <rect key="frame" x="71.5" y="207.5" width="200" height="200"/>
+                                        <rect key="frame" x="71.5" y="217.5" width="200" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="9a1-lq-6jg"/>
                                             <constraint firstAttribute="width" secondItem="xw2-ke-pTE" secondAttribute="height" id="FKp-DF-GN9"/>
@@ -73,10 +71,10 @@
                     </view>
                     <connections>
                         <outlet property="lottieVoiceAnimation" destination="xw2-ke-pTE" id="G8S-YH-iUn"/>
-                        <segue destination="bRL-9e-s4U" kind="presentation" identifier="segueToImageClassifier" id="5su-lx-k5B"/>
-                        <segue destination="9eP-47-ldx" kind="presentation" identifier="segueToTextRecognizer" id="K80-jr-v09"/>
-                        <segue destination="R2w-lI-mN8" kind="presentation" identifier="segueToCurrencyClassifier" id="zA5-Ti-mT5"/>
-                        <segue destination="XUk-Rn-9F1" kind="presentation" identifier="segueToColorClassifier" id="1sc-eX-Rsu"/>
+                        <segue destination="bRL-9e-s4U" kind="presentation" identifier="segueToImageClassifier" modalPresentationStyle="fullScreen" id="5su-lx-k5B"/>
+                        <segue destination="9eP-47-ldx" kind="presentation" identifier="segueToTextRecognizer" modalPresentationStyle="fullScreen" id="K80-jr-v09"/>
+                        <segue destination="R2w-lI-mN8" kind="presentation" identifier="segueToCurrencyClassifier" modalPresentationStyle="fullScreen" id="zA5-Ti-mT5"/>
+                        <segue destination="XUk-Rn-9F1" kind="presentation" identifier="segueToColorClassifier" modalPresentationStyle="fullScreen" id="1sc-eX-Rsu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
